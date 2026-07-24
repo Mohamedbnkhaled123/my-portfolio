@@ -154,7 +154,7 @@ export const About: React.FC = () => {
                 />
               )}
 
-              <p className="relative z-10 p-6 sm:p-8 md:p-10">{t('about.description')}</p>
+              <p className="relative z-10 p-6 sm:p-8 md:p-10 whitespace-pre-line">{t('about.description')}</p>
             </RevealCard>
             
           </div>

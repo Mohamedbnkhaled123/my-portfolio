@@ -107,7 +107,7 @@ export const translations: Record<Language, Dictionary> = {
     },
     hero: {
       name: "Mohamed Khaled AbdelSattar",
-      role: "Frontend Developer | React Specialist",
+      role: "Web Developer | MEAN Stack",
       intro: "Crafting premium, scalable web applications with a focus on modern UI/UX and high-performance architecture.",
       viewProjects: "View Projects",
       contactMe: "Contact Me",
@@ -115,7 +115,26 @@ export const translations: Record<Language, Dictionary> = {
     },
     about: {
       title: "About Me",
-      description: "I am a passionate Frontend Developer specializing in React, Next.js 15, and building robust real-time applications. My expertise lies in designing scalable architectures, optimistic UI patterns, and delivering premium digital experiences."
+      description: `Full-Stack Engineer (MEAN Stack) | NTI Certified | Angular, Node.js & MongoDB | UI/UX & Problem Solving
+
+Passionate Full-Stack Engineer specializing in the MEAN Stack, with a strong focus on algorithmic problem solving and high-performance UI/UX design. Certified by the National Telecommunication Institute (NTI), I bridge creative frontend experiences with robust backend architecture to deliver scalable, enterprise-grade web applications.
+
+After building a solid engineering foundation in modern frontend systems (including React 19 and Firebase), I expanded my full-stack capabilities through intensive NTI training, fully mastering MongoDB, Express.js, Angular, and Node.js. 
+
+I leverage this stack to architect production-ready solutions, most notably a fully-featured Real E-Commerce Platform built with Angular and Node.js. The system incorporates secure JWT authentication, dynamic product cataloging, advanced search/filtering, cart management, and optimized RESTful APIs designed for high traffic and speed.
+
+Core Technical Expertise:
+• Frontend & UI/UX: Angular, TypeScript, Tailwind CSS, Component Modularization, Intuitive UI/UX Design (React 19).
+• Backend & Databases: Node.js, Express.js, MongoDB, Mongoose ORM, RESTful API Architecture, Firebase.
+• State Management: RxJS, Reactive Forms, Zustand.
+• Engineering Best Practices:
+  - Problem Solving: Algorithmic thinking and efficient data structure utilization.
+  - User-Centric Design: Responsive, pixel-perfect, and accessible interfaces.
+  - Architecture & Security: Clean Architecture, DRY Principles, Secure JWT Auth.
+  - Performance: Optimistic UI Patterns and Asynchronous Processing.
+
+I thrive on solving complex engineering problems and transforming business needs into clean, maintainable, and scalable code.
+Open to connecting with software engineers, tech leaders, and full-stack opportunities!`
     },
     skills: {
       title: "Technical Skills",
@@ -199,7 +218,7 @@ export const translations: Record<Language, Dictionary> = {
     },
     hero: {
       name: "محمد خالد عبدالستار",
-      role: "مطور واجهات أمامية | متخصص في React",
+      role: "مطور ويب | MEAN Stack",
       intro: "مهتم بتطوير تطبيقات ويب عصرية، ذات جودة عالية وهندسة برمجية متقدمة.",
       viewProjects: "عرض المشاريع",
       contactMe: "تواصل معي",
@@ -207,7 +226,26 @@ export const translations: Record<Language, Dictionary> = {
     },
     about: {
       title: "من أنا",
-      description: "أنا مطور واجهات أمامية متخصص في React، Next.js 15، وبناء تطبيقات ديناميكية تفاعلية. أتميز بهندسة الأنظمة القابلة للتوسع وتقديم تجربة مستخدم مبهرة."
+      description: `مهندس برمجيات (MEAN Stack) | معتمد من NTI | Angular, Node.js & MongoDB | واجهات المستخدم وحل المشكلات
+
+مهندس برمجيات شغوف ومتخصص في تقنيات MEAN Stack، مع تركيز قوي على حل المشكلات الخوارزمية وتصميم واجهات مستخدم (UI/UX) عالية الأداء. حاصل على اعتماد من المعهد القومي للاتصالات (NTI)، وأجمع بين تجارب الواجهة الأمامية الإبداعية وبنية الواجهة الخلفية القوية لتقديم تطبيقات ويب متكاملة وقابلة للتوسع.
+
+بعد بناء أساس هندسي قوي في الأنظمة الأمامية الحديثة (بما في ذلك React 19 و Firebase)، قمت بتوسيع قدراتي الشاملة من خلال تدريب NTI المكثف، وإتقان تقنيات MongoDB، Express.js، Angular، و Node.js بالكامل.
+
+أعتمد على هذه التقنيات لبناء حلول جاهزة للإنتاج، أبرزها منصة تجارة إلكترونية حقيقية متكاملة تم تطويرها باستخدام Angular و Node.js. يدمج النظام مصادقة JWT آمنة، وإدارة ديناميكية للمنتجات، وبحث متقدم، وإدارة سلة المشتريات، وواجهات برمجة تطبيقات (RESTful APIs) محسنة مصممة لتحمل حركة المرور العالية والسرعة.
+
+أبرز الخبرات التقنية:
+• الواجهة الأمامية (Frontend & UI/UX): تقنيات Angular, TypeScript, Tailwind CSS, Component Modularization, وتصميم واجهات بديهية (React 19).
+• الواجهة الخلفية وقواعد البيانات (Backend & Databases): تقنيات Node.js, Express.js, MongoDB, Mongoose ORM, بناء هيكلية RESTful API, Firebase.
+• إدارة الحالة (State Management): أدوات RxJS, Reactive Forms, Zustand.
+• أفضل الممارسات الهندسية:
+  - حل المشكلات: التفكير الخوارزمي والاستخدام الفعال لهياكل البيانات.
+  - التصميم المتمحور حول المستخدم: واجهات متجاوبة ودقيقة (Pixel-perfect) وقابلة للوصول.
+  - المعمارية والأمان: Clean Architecture، مبادئ DRY، مصادقة JWT آمنة.
+  - الأداء: أنماط Optimistic UI والمعالجة غير المتزامنة (Asynchronous Processing).
+
+أجد متعتي في حل المشكلات الهندسية المعقدة وتحويل متطلبات العمل إلى كود نظيف، قابل للصيانة، وقابل للتوسع.
+منفتح للتواصل مع مهندسي البرمجيات، قادة التكنولوجيا، والفرص المهنية!`
     },
     skills: {
       title: "المهارات التقنية",

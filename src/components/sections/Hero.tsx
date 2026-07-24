@@ -605,6 +605,7 @@ export const Hero: React.FC = () => {
                     WebkitMaskImage: glowTemplate,
                   }}
                 />
+                
 
                 {/* Border Pulse Layer */}
                 <motion.div
