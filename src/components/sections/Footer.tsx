@@ -2,7 +2,7 @@ import React from 'react';
 import { useAppStore } from '../../store/useAppStore';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { Mail, Phone, ArrowUp, Heart, Download } from 'lucide-react';
+import { Mail, Phone, ArrowUp, Download } from 'lucide-react';
 import { RevealInteractive } from '../RevealInteractive';
 
 export const Footer: React.FC = () => {
@@ -156,13 +156,9 @@ export const Footer: React.FC = () => {
 
         </div>
 
-        {/* Bottom Copyright & Credits */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+        {/* Bottom Copyright */}
+        <div className="pt-8 flex justify-center items-center text-xs text-slate-500 dark:text-slate-400 text-center">
           <p>© {new Date().getFullYear()} Mohamed Khaled AbdelSattar. {t('footer.rights')}</p>
-          <div className="flex items-center gap-1.5">
-            <span>{t('footer.madeWith')}</span>
-            <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500 animate-pulse" />
-          </div>
         </div>
 
       </div>
