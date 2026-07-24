@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAppStore } from '../../store/useAppStore';
 import { RevealCard } from '../RevealCard';
-import { Briefcase, Calendar, Building2 } from 'lucide-react';
+import { Calendar, Building2 } from 'lucide-react';
 
 interface ExperienceItem {
   id: string;
@@ -50,13 +50,9 @@ export const Experience: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent-cyan/10 border border-accent-cyan/30 text-accent-cyan text-xs font-bold uppercase tracking-wider mb-4">
-            <Briefcase className="w-3.5 h-3.5" />
-            <span>{t('nav.experience')}</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary mb-4 relative inline-block">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary mb-6 relative inline-block pb-3">
             {t('experience.title')}
-            <span className="absolute -bottom-2 left-1/4 right-1/4 h-1 bg-premium-gradient rounded-full"></span>
+            <span className="absolute bottom-0 left-0 right-0 h-1 bg-premium-gradient rounded-full"></span>
           </h2>
           <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-sm md:text-base mt-2">
             {t('experience.subtitle')}
