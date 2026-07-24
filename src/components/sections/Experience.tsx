@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAppStore } from '../../store/useAppStore';
 import { RevealCard } from '../RevealCard';
-import { Briefcase, Calendar, Building2, Sparkles } from 'lucide-react';
+import { Briefcase, Calendar, Building2 } from 'lucide-react';
 
 interface ExperienceItem {
   id: string;
@@ -19,19 +19,28 @@ interface ExperienceItem {
 export const Experience: React.FC = () => {
   const { t, lang } = useAppStore();
 
-  // Initial structured items - ready to receive exact user inputs
   const experienceList: ExperienceItem[] = [
     {
       id: 'exp-1',
-      roleEn: 'Frontend Developer',
-      roleAr: 'مطور واجهات أمامية',
-      companyEn: 'Freelance / Projects',
-      companyAr: 'مشاريع حرة / مستقل',
-      periodEn: '2024 - Present',
-      periodAr: '2024 - الحالي',
-      descriptionEn: 'Developing responsive, high-performance web applications using React, Next.js, TypeScript, and TailwindCSS. Focused on optimistic UI patterns and state management.',
-      descriptionAr: 'تطوير تطبيقات ويب عصرية وسريعة الاستجابة باستخدام React, Next.js, TypeScript, و TailwindCSS، مع التركيز على تجربة المستخدم وإدارة الحالة المتقدمة.',
-      skills: ['React', 'Next.js 15', 'TypeScript', 'TailwindCSS', 'Zustand', 'REST APIs']
+      roleEn: 'MEAN Stack Training',
+      roleAr: 'تدريب MEAN Stack',
+      companyEn: 'NTI (National Telecommunication Institute)',
+      companyAr: 'المعهد القومي للاتصالات (NTI)',
+      periodEn: 'Completed',
+      periodAr: 'تدريب مكتمل',
+      descriptionEn: `• Completed intensive hands-on software engineering training focused on full-stack web development using the MEAN Stack (MongoDB, Express.js, Angular, Node.js).
+• Engineered a production-ready Real E-Commerce Platform from scratch using Angular and Node.js, featuring secure JWT authentication, dynamic cataloging, cart management, and optimized RESTful APIs.
+• Implemented robust backend services, custom Express middlewares, and Mongoose data modeling adhering to Clean Architecture and DRY principles.
+• Created dynamic, highly responsive, and high-performance frontend interfaces utilizing Angular, RxJS, Reactive Forms, and Tailwind CSS.
+• Applied sharp problem-solving skills to optimize asynchronous data handling, state management, and application performance.
+• Collaborated in an agile-like environment, managing codebases via Git/GitHub, writing modular code, and practicing modern engineering workflows.`,
+      descriptionAr: `• إتمام تدريب عملي مكثف في هندسة البرمجيات مع التركيز على تطوير الويب الشامل باستخدام تقنيات MEAN Stack (MongoDB, Express.js, Angular, Node.js).
+• بناء منصة تجارة إلكترونية متكاملة من الصفر باستخدام Angular و Node.js، تتضمن مصادقة آمنة عبر JWT، إدارة ديناميكية للكتالوج وعربة التسوق، مع بناء واجهات برمجة تطبيقات (RESTful APIs) محسّنة.
+• تنفيذ خدمات خلفية قوية (Backend Services)، وبرمجيات وسيطة مخصصة (Middlewares)، ونمذجة بيانات عبر Mongoose مع الالتزام بهندسة البرمجيات النظيفة (Clean Architecture) ومبادئ (DRY).
+• إنشاء واجهات أمامية تفاعلية وديناميكية عالية الأداء باستخدام Angular، RxJS، النماذج التفاعلية، و Tailwind CSS.
+• توظيف مهارات متقدمة في حل المشكلات لتحسين معالجة البيانات غير المتزامنة، وإدارة الحالة، ورفع أداء التطبيق.
+• العمل والتنسيق في بيئة مرنة (Agile-like)، وإدارة الكود البرمجي عبر Git/GitHub، مع تطبيق أساليب هندسة البرمجيات الحديثة.`,
+      skills: ['MongoDB', 'Express.js', 'Angular', 'Node.js', 'JavaScript']
     }
   ];
 
@@ -82,7 +91,7 @@ export const Experience: React.FC = () => {
                   </div>
                 </div>
 
-                <p className="text-slate-600 dark:text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+                <p className="text-slate-600 dark:text-slate-300 text-sm md:text-base leading-relaxed mb-6 whitespace-pre-line">
                   {lang === 'ar' ? item.descriptionAr : item.descriptionEn}
                 </p>
 
@@ -100,14 +109,6 @@ export const Experience: React.FC = () => {
               </RevealCard>
             </div>
           ))}
-        </div>
-
-        {/* User Prompt Box - Clear visual callout for user to supply their exact data */}
-        <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-accent-cyan/10 via-accent-magenta/10 to-accent-cyan/10 border border-accent-cyan/30 text-center relative overflow-hidden">
-          <div className="flex items-center justify-center gap-2 text-accent-cyan font-bold text-sm md:text-base mb-2">
-            <Sparkles className="w-5 h-5 animate-spin-slow" />
-            <span>{t('experience.placeholderNotice')}</span>
-          </div>
         </div>
 
       </div>

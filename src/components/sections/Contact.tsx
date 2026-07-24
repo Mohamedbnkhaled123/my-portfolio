@@ -52,7 +52,7 @@ export const Contact: React.FC = () => {
       icon: FaLinkedin,
       label: 'contact.linkedin',
       value: 'MohamedbnKhaled',
-      href: 'https://linkedin.com/in/MohamedbnKhaled',
+      href: 'https://www.linkedin.com/in/mohamedbn-khaled',
       blank: true,
       color: '#0a66c2',
       bgColor: 'rgba(10,102,194,0.12)',
