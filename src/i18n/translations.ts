@@ -57,6 +57,9 @@ export type Dictionary = {
     title: string;
     degree: string;
     university: string;
+    ntiTitle: string;
+    ntiInstitute: string;
+    ntiPeriod: string;
   };
   contact: {
     title: string;
@@ -167,9 +170,12 @@ Open to connecting with software engineers, tech leaders, and full-stack opportu
       techStack: "Tech Stack"
     },
     education: {
-      title: "Education",
-      degree: "Student",
-      university: "High Institute for Computers and Information Systems"
+      title: "Education & Certifications",
+      degree: "Graduated",
+      university: "High Institute for Computers and Information Systems",
+      ntiTitle: "MEAN Stack Software Engineering Training",
+      ntiInstitute: "NTI (National Telecommunication Institute)",
+      ntiPeriod: "Certified / Completed"
     },
     contact: {
       title: "Get In Touch",
@@ -278,9 +284,12 @@ Open to connecting with software engineers, tech leaders, and full-stack opportu
       techStack: "التقنيات المستخدمة"
     },
     education: {
-      title: "التعليم",
-      degree: "طالب",
-      university: "معهد التجمع الأول للحاسبات ونظم المعلومات"
+      title: "التعليم والشهادات",
+      degree: "خريج (Graduated)",
+      university: "المعهد العالي للحاسبات ونظم المعلومات (High Institute for Computers and Information Systems)",
+      ntiTitle: "تدريب هندسة البرمجيات MEAN Stack",
+      ntiInstitute: "المعهد القومي للاتصالات (NTI)",
+      ntiPeriod: "شهادة معتمدة / مكتمل"
     },
     contact: {
       title: "تواصل معي",
