@@ -79,7 +79,7 @@ export const About: React.FC = () => {
           
           {/* Image Container with Premium Borders */}
           <div className="w-full lg:w-5/12 flex justify-center z-10">
-            <div className="relative group w-72 sm:w-80 lg:w-full max-w-sm">
+            <div className="relative group w-72 sm:w-80 lg:w-full max-w-sm lg:max-w-md">
               {/* Outer Decorative Gradient Frame */}
               <div className="absolute -inset-1 bg-premium-gradient rounded-[2rem] blur-lg opacity-30 group-hover:opacity-70 transition duration-1000 -z-10"></div>
               
@@ -87,7 +87,7 @@ export const About: React.FC = () => {
               <div
                 ref={imageRef}
                 onMouseMove={handleImageMouseMove}
-                className="relative aspect-[4/5] flex items-center justify-center z-10 group/about cursor-pointer rounded-[2rem] transition-shadow duration-500 hover:shadow-[0_0_40px_rgb(var(--accent-cyan)_/_0.3)]"
+                className="relative aspect-[3/4] sm:aspect-[4/5] flex items-center justify-center z-10 group/about cursor-pointer rounded-[2rem] transition-shadow duration-500 hover:shadow-[0_0_40px_rgb(var(--accent-cyan)_/_0.3)]"
                 style={{
                   '--mouse-x': `${imageMousePos.x}px`,
                   '--mouse-y': `${imageMousePos.y}px`,
@@ -108,7 +108,7 @@ export const About: React.FC = () => {
                   <img 
                     src={aboutImg} 
                     alt={t('hero.name')} 
-                    className="w-full h-full object-cover grayscale-[15%] group-hover/about:grayscale-0 transition-transform duration-700 scale-100 group-hover/about:scale-105"
+                    className="w-full h-full object-cover object-top grayscale-[15%] group-hover/about:grayscale-0 transition-transform duration-700 scale-100 group-hover/about:scale-105"
                   />
                   {/* Subtle bottom vignette — only in dark mode */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 dark:opacity-60 z-10 pointer-events-none"></div>
