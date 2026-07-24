@@ -53,8 +53,8 @@ export const Footer: React.FC = () => {
             </div>
             <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-sm mb-6">
               {lang === 'ar' 
-                ? 'مطور واجهات أمامية متخصص في بناء تطبيقات ويب عصرية، سريعة، وتفاعلية باستخدام React و Next.js و TypeScript.'
-                : 'Frontend Developer specializing in building modern, high-performance, and interactive web applications with React, Next.js, and TypeScript.'}
+                ? 'مهندس برمجيات (MEAN Stack) معتمد من NTI، متخصص في تطوير حلول ويب متكاملة، سريعة، وعالية الأداء مع تصميم UI/UX مميز.'
+                : 'Full-Stack Engineer (MEAN Stack) & NTI Certified, specializing in building modern, scalable web applications with high-performance UI/UX.'}
             </p>
 
             {/* Social Icons Row */}
@@ -63,7 +63,7 @@ export const Footer: React.FC = () => {
                 href="https://www.linkedin.com/in/mohamedbn-khaled"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-[#0a66c2] hover:bg-[#0a66c2]/10 hover:border-[#0a66c2]/40 transition-all duration-300 shadow-sm"
+                className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-[#0a66c2] hover:bg-[#0a66c2]/10 hover:border-[#0a66c2]/40 hover:-translate-y-1 transition-all duration-300 shadow-sm"
                 aria-label="LinkedIn"
               >
                 <FaLinkedin className="w-5 h-5" />
@@ -73,7 +73,7 @@ export const Footer: React.FC = () => {
                 href="https://github.com/Mohamedbnkhaled123"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-accent-cyan hover:bg-accent-cyan/10 hover:border-accent-cyan/40 transition-all duration-300 shadow-sm"
+                className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-accent-cyan hover:bg-accent-cyan/10 hover:border-accent-cyan/40 hover:-translate-y-1 transition-all duration-300 shadow-sm"
                 aria-label="GitHub"
               >
                 <FaGithub className="w-5 h-5" />
@@ -81,7 +81,7 @@ export const Footer: React.FC = () => {
 
               <a
                 href="mailto:momokhaled937@gmail.com"
-                className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-red-500 hover:bg-red-500/10 hover:border-red-500/40 transition-all duration-300 shadow-sm"
+                className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-red-500 hover:bg-red-500/10 hover:border-red-500/40 hover:-translate-y-1 transition-all duration-300 shadow-sm"
                 aria-label="Email"
               >
                 <Mail className="w-5 h-5" />
@@ -89,7 +89,7 @@ export const Footer: React.FC = () => {
 
               <a
                 href="tel:01024891448"
-                className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-green-500 hover:bg-green-500/10 hover:border-green-500/40 transition-all duration-300 shadow-sm"
+                className="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-green-500 hover:bg-green-500/10 hover:border-green-500/40 hover:-translate-y-1 transition-all duration-300 shadow-sm"
                 aria-label="Phone"
               >
                 <Phone className="w-5 h-5" />
@@ -110,14 +110,14 @@ export const Footer: React.FC = () => {
                   <button
                     key={link.key}
                     onClick={() => handleNavClick(link.path)}
-                    className={`text-left text-sm font-medium py-1.5 transition-colors duration-200 flex items-center gap-1.5 cursor-pointer ${
+                    className={`text-left text-sm font-medium py-1.5 transition-all duration-200 flex items-center gap-1.5 cursor-pointer group/link ${
                       isActive
                         ? 'text-accent-cyan font-bold'
-                        : 'text-slate-600 dark:text-slate-400 hover:text-primary'
+                        : 'text-slate-600 dark:text-slate-400 hover:text-accent-cyan'
                     }`}
                   >
-                    <span className="text-xs text-accent-cyan opacity-60">›</span>
-                    <span>{t(`nav.${link.key}`)}</span>
+                    <span className="text-xs text-accent-cyan opacity-60 transition-transform duration-200 group-hover/link:scale-125">›</span>
+                    <span className="transition-transform duration-200 group-hover/link:translate-x-1">{t(`nav.${link.key}`)}</span>
                   </button>
                 );
               })}
