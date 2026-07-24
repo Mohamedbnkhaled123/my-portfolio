@@ -1,0 +1,116 @@
+import React from 'react';
+import { useAppStore } from '../../store/useAppStore';
+import { RevealCard } from '../RevealCard';
+import { Briefcase, Calendar, Building2, Sparkles } from 'lucide-react';
+
+interface ExperienceItem {
+  id: string;
+  roleEn: string;
+  roleAr: string;
+  companyEn: string;
+  companyAr: string;
+  periodEn: string;
+  periodAr: string;
+  descriptionEn: string;
+  descriptionAr: string;
+  skills: string[];
+}
+
+export const Experience: React.FC = () => {
+  const { t, lang } = useAppStore();
+
+  // Initial structured items - ready to receive exact user inputs
+  const experienceList: ExperienceItem[] = [
+    {
+      id: 'exp-1',
+      roleEn: 'Frontend Developer',
+      roleAr: 'مطور واجهات أمامية',
+      companyEn: 'Freelance / Projects',
+      companyAr: 'مشاريع حرة / مستقل',
+      periodEn: '2024 - Present',
+      periodAr: '2024 - الحالي',
+      descriptionEn: 'Developing responsive, high-performance web applications using React, Next.js, TypeScript, and TailwindCSS. Focused on optimistic UI patterns and state management.',
+      descriptionAr: 'تطوير تطبيقات ويب عصرية وسريعة الاستجابة باستخدام React, Next.js, TypeScript, و TailwindCSS، مع التركيز على تجربة المستخدم وإدارة الحالة المتقدمة.',
+      skills: ['React', 'Next.js 15', 'TypeScript', 'TailwindCSS', 'Zustand', 'REST APIs']
+    }
+  ];
+
+  return (
+    <section id="experience" className="py-16 md:py-24 bg-card/30 section-fade-edge scroll-mt-24">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="text-center mb-12 md:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent-cyan/10 border border-accent-cyan/30 text-accent-cyan text-xs font-bold uppercase tracking-wider mb-4">
+            <Briefcase className="w-3.5 h-3.5" />
+            <span>{t('nav.experience')}</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary mb-4 relative inline-block">
+            {t('experience.title')}
+            <span className="absolute -bottom-2 left-1/4 right-1/4 h-1 bg-premium-gradient rounded-full"></span>
+          </h2>
+          <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-sm md:text-base mt-2">
+            {t('experience.subtitle')}
+          </p>
+        </div>
+
+        {/* Timeline List */}
+        <div className="relative border-l-2 border-accent-cyan/20 dark:border-white/10 ml-4 md:ml-8 pl-6 md:pl-10 space-y-10">
+          {experienceList.map((item) => (
+            <div key={item.id} className="relative group">
+              {/* Timeline Dot Indicator */}
+              <div className="absolute -left-[31px] md:-left-[47px] top-1 w-6 h-6 rounded-full bg-background border-2 border-accent-cyan flex items-center justify-center shadow-[0_0_12px_rgba(0,251,255,0.5)] group-hover:scale-110 transition-transform duration-300">
+                <div className="w-2 h-2 rounded-full bg-accent-cyan animate-pulse"></div>
+              </div>
+
+              {/* Card Container */}
+              <RevealCard className="p-6 md:p-8 hover:border-accent-cyan/40 transition-all duration-300">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4 border-b border-slate-200 dark:border-white/5 pb-4">
+                  <div>
+                    <h3 className="text-xl md:text-2xl font-bold text-primary flex items-center gap-2">
+                      <span>{lang === 'ar' ? item.roleAr : item.roleEn}</span>
+                    </h3>
+                    <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm font-medium mt-1">
+                      <Building2 className="w-4 h-4 text-accent-cyan" />
+                      <span>{lang === 'ar' ? item.companyAr : item.companyEn}</span>
+                    </div>
+                  </div>
+
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 text-xs font-bold self-start md:self-auto border border-slate-200 dark:border-white/10">
+                    <Calendar className="w-3.5 h-3.5 text-accent-cyan" />
+                    <span>{lang === 'ar' ? item.periodAr : item.periodEn}</span>
+                  </div>
+                </div>
+
+                <p className="text-slate-600 dark:text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+                  {lang === 'ar' ? item.descriptionAr : item.descriptionEn}
+                </p>
+
+                {/* Tech Badges */}
+                <div className="flex flex-wrap gap-2">
+                  {item.skills.map((skill, idx) => (
+                    <span
+                      key={idx}
+                      className="px-3 py-1 text-xs font-semibold rounded-md bg-accent-cyan/10 border border-accent-cyan/20 text-accent-cyan"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </RevealCard>
+            </div>
+          ))}
+        </div>
+
+        {/* User Prompt Box - Clear visual callout for user to supply their exact data */}
+        <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-accent-cyan/10 via-accent-magenta/10 to-accent-cyan/10 border border-accent-cyan/30 text-center relative overflow-hidden">
+          <div className="flex items-center justify-center gap-2 text-accent-cyan font-bold text-sm md:text-base mb-2">
+            <Sparkles className="w-5 h-5 animate-spin-slow" />
+            <span>{t('experience.placeholderNotice')}</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+};

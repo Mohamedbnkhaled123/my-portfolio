@@ -1,0 +1,277 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  :root {
+    --bg-main: #f8fafc;
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --accent: #06b6d4;
+    --accent-cyan: 13 148 136;
+    /* #0d9488 RGB */
+    --accent-magenta: #d946ef;
+    /* Electric Magenta — updated to spec */
+    --accent-purple: #8b5cf6;
+    --glow: rgba(139, 92, 246, 0.15);
+    /* Violet glow — static anchor */
+    --glow-magenta: rgba(217, 70, 239, 0.15);
+    /* Magenta glow — static anchor */
+
+    /* Shimmer-ready gradients: C → V → M → V → C with +15% Cyan focus */
+    --gradient-primary: linear-gradient(135deg, #06b6d4 0%, #06b6d4 15%, #8b5cf6 35%, #d946ef 50%, #8b5cf6 65%, #06b6d4 85%, #06b6d4 100%);
+    --gradient-border: linear-gradient(90deg, #06b6d4 0%, #06b6d4 15%, #8b5cf6 35%, #d946ef 50%, #8b5cf6 65%, #06b6d4 85%, #06b6d4 100%);
+
+    /* Reveal Intensity configuration - Light Mode */
+    --reveal-idle-opacity: 0.35;
+    --reveal-hover-opacity: 1.0;
+    /* Full opacity to pop against off-white */
+
+    /* Spotlight Reveal Effect - Light Mode (Same Violet/Magenta as Dark, boosted intensity) */
+    --spotlight-core: rgba(139, 92, 246, 0.8);
+    /* Violet Core — boosted */
+    --spotlight-fade: rgba(217, 70, 239, 0.4);
+    /* Magenta Fade — boosted */
+    --spotlight-hover-opacity: 0.5;
+  }
+
+  .dark {
+    --bg-main: #020617;
+    /* Deep Midnight Slate */
+    --bg-card: rgba(13, 22, 45, 0.7);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent: #06b6d4;
+    /* Neon Cyan */
+    --accent-cyan: 0 251 255;
+    /* #00FBFF RGB */
+    --accent-blue: #06b6d4;
+    /* Legacy cyan fallback */
+    --accent-magenta: #d946ef;
+    /* Electric Magenta — updated to spec */
+    --accent-purple: #8b5cf6;
+    /* Electric Violet */
+    --glow: rgba(139, 92, 246, 0.2);
+    /* Violet Glow — static anchor */
+    --glow-magenta: rgba(217, 70, 239, 0.15);
+    /* Magenta Glow — static anchor */
+
+    /* Shimmer-ready gradients: C → V → M → V → C with +15% Cyan focus */
+    --gradient-primary: linear-gradient(135deg, #06b6d4 0%, #06b6d4 15%, #8b5cf6 35%, #d946ef 50%, #8b5cf6 65%, #06b6d4 85%, #06b6d4 100%);
+    --gradient-border: linear-gradient(90deg, #06b6d4 0%, #06b6d4 15%, #8b5cf6 35%, #d946ef 50%, #8b5cf6 65%, #06b6d4 85%, #06b6d4 100%);
+
+    /* Reveal Intensity configuration - Dark Mode */
+    --reveal-idle-opacity: 0.1;
+    --reveal-hover-opacity: 0.5;
+    /* Boosted by ~15-20% for premium punch */
+
+    /* Spotlight Reveal Effect - Dark Mode (Electric Violet #8b5cf6) */
+    --spotlight-core: rgba(139, 92, 246, 0.5);
+    /* Violet Core */
+    --spotlight-fade: rgba(217, 70, 239, 0.2);
+    /* Magenta Fade */
+    --spotlight-hover-opacity: 0.3;
+  }
+
+  html:not(.dark) .light-teal-spotlight {
+    --spotlight-core: rgba(0, 122, 124, 0.85);
+    /* #007A7C */
+    --spotlight-fade: rgba(0, 122, 124, 0.35);
+    --spotlight-hover-opacity: 0.7;
+  }
+
+  body {
+    @apply bg-background text-primary antialiased min-h-screen;
+  }
+
+  /* Smooth cross-fade for the entire root */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.4s;
+    animation-timing-function: ease-in-out;
+  }
+
+  /* Global cursor: pointer on all interactive elements */
+  a,
+  button,
+  [role="button"],
+  input[type="submit"],
+  input[type="button"],
+  select,
+  summary {
+    cursor: pointer;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   CYBER-SHIMMER KEYFRAME ENGINE
+   Smoothly oscillates background-position across a
+   mirrored C→V→M→V→C gradient for seamless looping.
+   ═══════════════════════════════════════════════════ */
+@keyframes cyber-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-card backdrop-blur-lg border border-slate-200 dark:border-white/10 shadow-slate-200/50 shadow-md dark:shadow-none dark:shadow-lg rounded-xl transition-all duration-300 relative overflow-hidden z-10;
+  }
+
+  .glass-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: var(--gradient-border);
+    background-size: 200% auto;
+    animation: cyber-shimmer 8s linear infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+
+  .glass-card:hover::before {
+    opacity: 1;
+  }
+
+  .glass-card:hover {
+    @apply shadow-[0_0_20px_var(--glow)] -translate-y-1;
+  }
+
+  /* ═══════════════════════════════════════════════════
+     SHIMMER-ENABLED GRADIENT BACKGROUNDS
+     Used by buttons, dividers, and accent blocks.
+     ═══════════════════════════════════════════════════ */
+  .bg-premium-gradient {
+    background-image: var(--gradient-primary);
+    background-size: 200% auto;
+    animation: cyber-shimmer 8s linear infinite;
+  }
+
+  /* ═══════════════════════════════════════════════════
+     SHIMMER-ENABLED GRADIENT TEXT
+     Used by headings and highlighted text only.
+     Body/paragraph text remains off-white/slate.
+     ═══════════════════════════════════════════════════ */
+  .text-premium-gradient {
+    background-image: var(--gradient-primary);
+    background-size: 200% auto;
+    animation: cyber-shimmer 8s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* ═══════════════════════════════════════════════════
+     ARABIC VERTICAL ALIGNMENT FIX (SUNKEN TEXT)
+     Arabic characters often sit lower on the baseline.
+     This utility balances them for a premium UI feel.
+     ═══════════════════════════════════════════════════ */
+  .arabic-text-fix {
+    line-height: 1.6 !important;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+  }
+
+  /* ═══════════════════════════════════════════════════
+     SECTION FADE EDGE
+     Feathers the top & bottom of sections with distinct
+     backgrounds (bg-card/10, bg-card/30) so they blend
+     smoothly into the body instead of a hard cut-off.
+     ═══════════════════════════════════════════════════ */
+  .section-fade-edge {
+    -webkit-mask-image: linear-gradient(to bottom,
+        transparent 0%,
+        black 60px,
+        black calc(100% - 60px),
+        transparent 100%);
+    mask-image: linear-gradient(to bottom,
+        transparent 0%,
+        black 60px,
+        black calc(100% - 60px),
+        transparent 100%);
+  }
+}
+
+/* Global RTL Typography Adjustments */
+[dir="rtl"] body {
+  line-height: 1.7;
+  /* Relaxed default for Arabic script */
+}
+
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3 {
+  line-height: 1.4;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-scanline {
+  animation: scanline 4s linear infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(var(--float-dist, -15px));
+  }
+}
+
+.animate-float-icon {
+  animation: float var(--duration, 6s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+/* Only pause float on hover for pointer devices (desktop) */
+@media (hover: hover) and (pointer: fine) {
+  .animate-float-icon:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* ═══ Typewriter Cursor Blink ═══ */
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 0.9s ease-in-out infinite;
+}
