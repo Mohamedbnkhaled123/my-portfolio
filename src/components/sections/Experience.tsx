@@ -20,6 +20,7 @@ interface ExperienceItem {
 
 export const Experience: React.FC = () => {
   const { t, lang } = useAppStore();
+  const isRtl = lang === 'ar';
 
   const experienceList: ExperienceItem[] = [
     {
