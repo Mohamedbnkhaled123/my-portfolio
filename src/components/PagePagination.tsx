@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { usePathname, useRouter } from 'next/navigation';
 import { useAppStore } from '../store/useAppStore';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { RevealInteractive } from './RevealInteractive';
@@ -20,11 +22,11 @@ export const PAGES: PageRoute[] = [
 ];
 
 export const PagePagination: React.FC = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
+  const pathname = usePathname();
+  const router = useRouter();
   const { lang, t, fireContactPulse } = useAppStore();
 
-  const currentPath = location.pathname.toLowerCase();
+  const currentPath = (pathname || '/').toLowerCase();
   const currentIndex = PAGES.findIndex(p => p.path === currentPath);
   const activeIndex = currentIndex === -1 ? 0 : currentIndex;
 
@@ -35,7 +37,9 @@ export const PagePagination: React.FC = () => {
     if (path === '/contact') {
       fireContactPulse();
     }
-    navigate(path);
+    if (pathname !== path) {
+      router.push(path);
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -74,9 +78,10 @@ export const PagePagination: React.FC = () => {
               className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full text-[11px] sm:text-xs font-bold transition-all duration-300 flex items-center justify-center flex-shrink-0 cursor-pointer ${
                 isActive
                   ? 'bg-premium-gradient text-slate-950 shadow-[0_0_10px_rgba(0,251,255,0.4)] scale-110'
-                  : 'text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-slate-200 dark:hover:bg-white/10'
+                  : 'text-slate-500 dark:text-slate-300 hover:text-primary hover:bg-slate-200 dark:hover:bg-white/10'
               }`}
               title={t(`nav.${page.key}`)}
+              aria-label={t(`nav.${page.key}`)}
             >
               {idx + 1}
             </button>

@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { useAppStore } from '../../store/useAppStore';
 import { RevealCard } from '../RevealCard';
@@ -157,10 +159,10 @@ export const Projects: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-premium-gradient mb-4 relative inline-block tracking-widest uppercase">
+          <h1 className="text-3xl md:text-4xl font-bold text-premium-gradient mb-4 relative inline-block tracking-widest uppercase">
             {t('projects.title')}
             <span className="absolute -bottom-2 left-0 w-full h-px bg-premium-gradient opacity-50" />
-          </h2>
+          </h1>
         </div>
 
         <div className="flex flex-wrap justify-center items-stretch gap-8">

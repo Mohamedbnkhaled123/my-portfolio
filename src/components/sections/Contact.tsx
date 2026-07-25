@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { useAppStore } from '../../store/useAppStore';
 import { RevealCard } from '../RevealCard';
@@ -113,12 +115,12 @@ export const Contact: React.FC = () => {
             </button>
           </RevealInteractive>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-4 leading-tight mt-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-4 leading-tight mt-6">
             {isRtl ? 'لنبني شيئاً ' : "Let's Build "}
             <span className="text-premium-gradient">
               {isRtl ? 'مذهلاً معاً' : 'Something Great'}
             </span>
-          </h2>
+          </h1>
           <p className="text-secondary text-lg max-w-xl mx-auto">
             {isRtl
               ? 'أنا متاح للمشاريع الجديدة والتعاون. تواصل معي عبر أي من القنوات التالية.'

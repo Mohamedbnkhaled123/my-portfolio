@@ -13,8 +13,11 @@ interface AppState {
   t: (key: string) => string;
 }
 
+const isClient = typeof window !== 'undefined';
+
 // Helper to determine initial Theme
 const getInitialTheme = (): Theme => {
+  if (!isClient) return 'dark';
   const saved = localStorage.getItem('portfolio-theme') as Theme | null;
   if (saved === 'light' || saved === 'dark') return saved;
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -22,17 +25,17 @@ const getInitialTheme = (): Theme => {
 
 // Helper to determine initial Lang
 const getInitialLang = (): Language => {
+  if (!isClient) return 'en';
   return (localStorage.getItem('portfolio-lang') as Language) || 'en';
 };
 
 export const useAppStore = create<AppState>((set, get) => {
-  // Setup side-effects for DOM on initial load (although better done via effects in a component, 
-  // we do a first pass here for the default values)
   const initialTheme = getInitialTheme();
   const initialLang = getInitialLang();
 
   // Apply initial HTML classes
   const applyTheme = (t: Theme) => {
+    if (!isClient) return;
     const root = document.documentElement;
     root.classList.remove('light', 'dark');
     root.classList.add(t);
@@ -40,22 +43,25 @@ export const useAppStore = create<AppState>((set, get) => {
   };
   
   const applyLang = (l: Language) => {
+    if (!isClient) return;
     const html = document.documentElement;
     html.lang = l;
     html.dir = l === 'ar' ? 'rtl' : 'ltr';
     if (l === 'ar') {
-      document.body.classList.add('font-arabic');
-      document.body.classList.remove('font-english');
+      document.body?.classList.add('font-arabic');
+      document.body?.classList.remove('font-english');
     } else {
-      document.body.classList.add('font-english');
-      document.body.classList.remove('font-arabic');
+      document.body?.classList.add('font-english');
+      document.body?.classList.remove('font-arabic');
     }
     localStorage.setItem('portfolio-lang', l);
   };
 
   // Run on store creation (Client Side only)
-  applyTheme(initialTheme);
-  applyLang(initialLang);
+  if (isClient) {
+    applyTheme(initialTheme);
+    applyLang(initialLang);
+  }
 
   let pulseTimer: ReturnType<typeof setTimeout> | null = null;
 

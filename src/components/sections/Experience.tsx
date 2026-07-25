@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { useAppStore } from '../../store/useAppStore';
 import { RevealCard } from '../RevealCard';
@@ -50,10 +52,10 @@ export const Experience: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary mb-6 relative inline-block pb-3">
-            {t('experience.title')}
-            <span className="absolute bottom-0 left-0 right-0 h-1 bg-premium-gradient rounded-full"></span>
-          </h2>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary mb-6 relative inline-block pb-3">
+            {isRtl ? 'مسيرتي ' : 'My '}
+            <span className="text-premium-gradient">{t('experience.title')}</span>
+          </h1>
           <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-sm md:text-base mt-2">
             {t('experience.subtitle')}
           </p>

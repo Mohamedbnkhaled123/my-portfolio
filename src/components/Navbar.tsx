@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { usePathname, useRouter } from 'next/navigation';
 import { useAppStore } from '../store/useAppStore';
 import { Menu, Moon, Sun, X, Globe, Download } from 'lucide-react';
 import { RevealInteractive } from './RevealInteractive';
@@ -12,8 +14,8 @@ interface NavItem {
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
+  const pathname = usePathname();
+  const router = useRouter();
   const { theme, toggleTheme } = useAppStore();
   const { lang, toggleLang, t, fireContactPulse } = useAppStore();
 
@@ -32,7 +34,9 @@ export const Navbar: React.FC = () => {
       fireContactPulse();
     }
     setIsOpen(false);
-    navigate(path);
+    if (pathname !== path) {
+      router.push(path);
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -51,7 +55,7 @@ export const Navbar: React.FC = () => {
           {/* ═══ DESKTOP NAV LINKS — visible from md (768px) ═══ */}
           <div className="hidden md:flex items-center gap-x-1 lg:gap-x-2 xl:gap-x-4">
             {navItems.map((item) => {
-              const isActive = location.pathname === item.path || (item.path === '/' && location.pathname === '');
+              const isActive = pathname === item.path || (item.path === '/' && pathname === '/');
               return (
                 <RevealInteractive 
                   key={item.key} 
@@ -126,14 +130,15 @@ export const Navbar: React.FC = () => {
 
             {/* Toggle Group & Hamburger */}
             <div className="flex items-center gap-1 ml-auto min-[376px]:ml-0 min-[376px]:flex-1 min-[376px]:justify-end">
-              <button onClick={toggleLang} className="text-secondary p-1 cursor-pointer">
+              <button onClick={toggleLang} aria-label="Toggle Language" className="text-secondary p-1 cursor-pointer">
                 <span className="text-sm font-bold uppercase">{lang === 'en' ? 'AR' : 'EN'}</span>
               </button>
-              <button onClick={toggleTheme} className="text-secondary p-1 cursor-pointer">
+              <button onClick={toggleTheme} aria-label="Toggle Theme" className="text-secondary p-1 cursor-pointer">
                 {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
               <button
                 onClick={() => setIsOpen(!isOpen)}
+                aria-label="Toggle Navigation Menu"
                 className="text-secondary hover:text-primary p-2 cursor-pointer"
               >
                 {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -156,7 +161,7 @@ export const Navbar: React.FC = () => {
           >
             <div className="px-6 pt-2 pb-5 space-y-2">
               {navItems.map((item) => {
-                const isActive = location.pathname === item.path || (item.path === '/' && location.pathname === '');
+                const isActive = pathname === item.path || (item.path === '/' && pathname === '/');
                 return (
                   <button
                     key={item.key}

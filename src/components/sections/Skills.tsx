@@ -1,8 +1,10 @@
+'use client';
+
 import React from 'react';
 import { useAppStore } from '../../store/useAppStore';
 import { RevealCard } from '../RevealCard';
 import { motion, AnimatePresence } from 'framer-motion';
-import { SiReact, SiNextdotjs, SiTypescript, SiFirebase, SiJavascript, SiHtml5 } from 'react-icons/si';
+import { SiReact, SiNextdotjs, SiTypescript, SiFirebase, SiJavascript, SiHtml5, SiAngular, SiNodedotjs, SiMongodb, SiExpress } from 'react-icons/si';
 import { FaCss3Alt, FaGitAlt } from 'react-icons/fa';
 
 // --- Enriched Skill Data ---
@@ -16,14 +18,18 @@ interface SkillData {
 }
 
 const coreSkills: SkillData[] = [
-  { name: 'React',       Icon: SiReact,      color: '#61DAFB', glowColor: '#61DAFB', swirlColor: '#61DAFB' },
-  { name: 'Next.js',     Icon: SiNextdotjs,  color: 'var(--text-primary)', glowColor: '#94a3b8', swirlColor: '#94a3b8' },
-  { name: 'TypeScript',  Icon: SiTypescript,  color: '#3178C6', glowColor: '#3178C6', swirlColor: '#3178C6' },
-  { name: 'Git',         Icon: FaGitAlt,      color: '#F05032', glowColor: '#F05032', swirlColor: '#F05032' },
-  { name: 'Firebase',    Icon: SiFirebase,    color: '#FFCA28', glowColor: '#FFCA28', swirlColor: '#FFCA28' },
-  { name: 'JavaScript',  Icon: SiJavascript,  color: '#F7DF1E', glowColor: '#F7DF1E', swirlColor: '#F7DF1E' },
-  { name: 'HTML5',       Icon: SiHtml5,       color: '#E34F26', glowColor: '#E34F26', swirlColor: '#E34F26' },
-  { name: 'CSS3',        Icon: FaCss3Alt,     color: '#1572B6', glowColor: '#1572B6', swirlColor: '#1572B6' },
+  { name: 'Angular',    Icon: SiAngular,   color: '#DD0031', glowColor: '#DD0031', swirlColor: '#DD0031' },
+  { name: 'Node.js',    Icon: SiNodedotjs, color: '#5FA04E', glowColor: '#5FA04E', swirlColor: '#5FA04E' },
+  { name: 'MongoDB',    Icon: SiMongodb,   color: '#47A248', glowColor: '#47A248', swirlColor: '#47A248' },
+  { name: 'Express.js', Icon: SiExpress,   color: 'var(--text-primary)', glowColor: '#94a3b8', swirlColor: '#94a3b8' },
+  { name: 'React',      Icon: SiReact,     color: '#61DAFB', glowColor: '#61DAFB', swirlColor: '#61DAFB' },
+  { name: 'Next.js',    Icon: SiNextdotjs, color: 'var(--text-primary)', glowColor: '#94a3b8', swirlColor: '#94a3b8' },
+  { name: 'TypeScript', Icon: SiTypescript,color: '#3178C6', glowColor: '#3178C6', swirlColor: '#3178C6' },
+  { name: 'JavaScript', Icon: SiJavascript,color: '#F7DF1E', glowColor: '#F7DF1E', swirlColor: '#F7DF1E' },
+  { name: 'Firebase',   Icon: SiFirebase,  color: '#FFCA28', glowColor: '#FFCA28', swirlColor: '#FFCA28' },
+  { name: 'Git',        Icon: FaGitAlt,    color: '#F05032', glowColor: '#F05032', swirlColor: '#F05032' },
+  { name: 'HTML5',      Icon: SiHtml5,     color: '#E34F26', glowColor: '#E34F26', swirlColor: '#E34F26' },
+  { name: 'CSS3',       Icon: FaCss3Alt,   color: '#1572B6', glowColor: '#1572B6', swirlColor: '#1572B6' },
 ];
 
 // --- Advanced WebGL Fragment Shader Continuous Fluid Simulation ---
@@ -338,7 +344,7 @@ const SkillCard = ({ skill, isActive, onClick, isDark }: { skill: SkillData; isA
           </motion.div>
 
           {/* Skill Name — font size fluidly bound to card width */}
-          <h3
+          <h2
             className="font-medium text-primary tracking-wide mx-auto w-full text-center block leading-tight transition-all duration-300"
             style={{
               fontSize: '7.77cqw',
@@ -349,7 +355,7 @@ const SkillCard = ({ skill, isActive, onClick, isDark }: { skill: SkillData; isA
             }}
           >
             {skill.name}
-          </h3>
+          </h2>
         </div>
       </RevealCard>
     </div>
@@ -394,9 +400,9 @@ export const Skills: React.FC = () => {
           Reduced by a total of 35% across the board starting at 1025px per request. */}
       <div className="w-[95vw] lg:w-[90vw] min-[1025px]:w-[60vw] max-w-[1440px] min-[1025px]:max-w-[950px] mx-auto px-4 md:px-8 transition-all duration-300">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-premium-gradient mb-4 relative inline-block no-underline tracking-normal leading-relaxed">
+          <h1 className="text-3xl md:text-4xl font-bold text-premium-gradient mb-4 relative inline-block no-underline tracking-normal leading-relaxed">
             {t('skills.title')}
-          </h2>
+          </h1>
         </div>
 
         <motion.div

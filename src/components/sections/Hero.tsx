@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useState, useEffect } from 'react';
 import { useAppStore } from '../../store/useAppStore';
 import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate, AnimatePresence } from 'framer-motion';
@@ -5,8 +7,8 @@ import profileImg from '../../assets/profile.jpg';
 import { RevealInteractive } from '../RevealInteractive';
 import { Typewriter } from '../Typewriter';
 import { playClickSound } from '../../utils/sounds';
-import { SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiTailwindcss, SiFirebase } from 'react-icons/si';
-import { FaGitAlt, FaGithub, FaHtml5, FaCss3Alt } from 'react-icons/fa';
+import { SiReact, SiNextdotjs, SiTypescript, SiJavascript, SiTailwindcss, SiAngular, SiNodedotjs, SiMongodb, SiExpress } from 'react-icons/si';
+import { FaHtml5, FaCss3Alt } from 'react-icons/fa';
 
 // ═══════════════════════════════════════════════════
 // ICON DATA — Pure data, zero positioning logic
@@ -18,16 +20,17 @@ interface OrbitIcon {
 }
 
 const orbitIcons: OrbitIcon[] = [
+  { Icon: SiAngular, color: '#DD0031', name: 'Angular' },
   { Icon: SiReact, color: '#61DAFB', name: 'React' },
-  { Icon: FaHtml5, color: '#E34F26', name: 'HTML5' },
-  { Icon: SiTailwindcss, color: '#06B6D4', name: 'Tailwind CSS' },
-  { Icon: FaGitAlt, color: '#F05032', name: 'Git' },
+  { Icon: SiNodedotjs, color: '#5FA04E', name: 'Node.js' },
   { Icon: SiNextdotjs, color: 'currentColor', name: 'Next.js' },
-  { Icon: FaCss3Alt, color: '#1572B6', name: 'CSS3' },
-  { Icon: SiFirebase, color: '#FFCA28', name: 'Firebase' },
-  { Icon: SiJavascript, color: '#F7DF1E', name: 'JavaScript' },
-  { Icon: FaGithub, color: 'currentColor', name: 'GitHub' },
+  { Icon: SiMongodb, color: '#47A248', name: 'MongoDB' },
+  { Icon: SiExpress, color: 'currentColor', name: 'Express.js' },
   { Icon: SiTypescript, color: '#3178C6', name: 'TypeScript' },
+  { Icon: SiJavascript, color: '#F7DF1E', name: 'JavaScript' },
+  { Icon: SiTailwindcss, color: '#06B6D4', name: 'Tailwind CSS' },
+  { Icon: FaHtml5, color: '#E34F26', name: 'HTML5' },
+  { Icon: FaCss3Alt, color: '#1572B6', name: 'CSS3' },
 ];
 
 // ═══════════════════════════════════════════════════════════════════
@@ -71,7 +74,7 @@ interface OrbitDimensions {
  * at 321px to toggle stacked vs side-by-side.
  */
 function useOrbitDimensions(): OrbitDimensions {
-  const [dims, setDims] = useState<OrbitDimensions>(() => computeDimensions(typeof window !== 'undefined' ? window.innerWidth : 1024));
+  const [dims, setDims] = useState<OrbitDimensions>(() => computeDimensions(1024));
 
   useEffect(() => {
     const update = () => setDims(computeDimensions(window.innerWidth));
@@ -165,6 +168,7 @@ const OrbitSlot: React.FC<{
 
   return (
     <motion.div
+      suppressHydrationWarning
       className="absolute"
       style={{ left: '50%', top: '50%', x, y, zIndex: 30 }}
     >
@@ -244,6 +248,7 @@ const StaticOrbitIcon: React.FC<{
         }}
       >
         <motion.div
+          suppressHydrationWarning
           animate={{
             scale: isClicked ? 1.2 : isHovered ? 1.08 : 1,
             boxShadow: getBoxShadow(),
@@ -530,6 +535,7 @@ export const Hero: React.FC = () => {
 
             <motion.div
               ref={containerRef}
+              suppressHydrationWarning
               className="relative flex items-center justify-center"
               style={{
                 width: containerSize,
@@ -542,6 +548,7 @@ export const Hero: React.FC = () => {
             >
               {/* Outer Glow Ring — Cyber-Noir ambient emission */}
               <motion.div
+                suppressHydrationWarning
                 className="absolute rounded-full blur-xl z-0 pointer-events-none"
                 style={{
                   width: profileSize + 40,
@@ -624,7 +631,7 @@ export const Hero: React.FC = () => {
                   }}
                 >
                   <img
-                    src={profileImg}
+                    src={(profileImg as any).src || profileImg}
                     alt={t('hero.name')}
                     className="w-full h-full object-cover grayscale-[10%] group-hover/profile:grayscale-0 transition-colors duration-700 rounded-full"
                     draggable={false}

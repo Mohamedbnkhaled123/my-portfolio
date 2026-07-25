@@ -1,14 +1,16 @@
+'use client';
+
 import React from 'react';
 import { useAppStore } from '../../store/useAppStore';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { usePathname, useRouter } from 'next/navigation';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { Mail, Phone, ArrowUp, Download } from 'lucide-react';
 import { RevealInteractive } from '../RevealInteractive';
 
 export const Footer: React.FC = () => {
   const { theme, lang, t } = useAppStore();
-  const navigate = useNavigate();
-  const location = useLocation();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const navLinks = [
     { key: 'home', path: '/' },
@@ -21,7 +23,9 @@ export const Footer: React.FC = () => {
   ];
 
   const handleNavClick = (path: string) => {
-    navigate(path);
+    if (pathname !== path) {
+      router.push(path);
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -105,7 +109,7 @@ export const Footer: React.FC = () => {
             </h3>
             <div className="grid grid-cols-2 gap-2">
               {navLinks.map((link) => {
-                const isActive = location.pathname === link.path || (link.path === '/' && location.pathname === '');
+                const isActive = pathname === link.path || (link.path === '/' && pathname === '/');
                 return (
                   <button
                     key={link.key}

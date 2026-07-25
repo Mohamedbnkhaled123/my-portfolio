@@ -1,16 +1,18 @@
+'use client';
+
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { usePathname } from 'next/navigation';
 import { useAppStore } from '../store/useAppStore';
 
 export const SEOHead: React.FC = () => {
-  const location = useLocation();
+  const pathname = usePathname();
   const { lang, t } = useAppStore();
 
   useEffect(() => {
     let titleKey = 'seo.homeTitle';
     let descKey = 'seo.homeDesc';
 
-    const path = location.pathname.toLowerCase();
+    const path = (pathname || '/').toLowerCase();
 
     if (path === '/about') {
       titleKey = 'seo.aboutTitle';
@@ -50,7 +52,7 @@ export const SEOHead: React.FC = () => {
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
 
-  }, [location.pathname, lang, t]);
+  }, [pathname, lang, t]);
 
   return null;
 };
