@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { useAppStore } from '../../store/useAppStore';
 import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate, AnimatePresence } from 'framer-motion';
 import profileImg from '../../assets/profile.jpg';
@@ -297,6 +298,7 @@ const StaticOrbitIcon: React.FC<{
 // MAIN HERO COMPONENT
 // ═══════════════════════════════════════════════════
 export const Hero: React.FC = () => {
+  const router = useRouter();
   const { lang, t, fireContactPulse } = useAppStore();
   const isRtl = lang === 'ar';
   const [isGlowFlash, setIsGlowFlash] = useState(false);
@@ -496,7 +498,10 @@ export const Hero: React.FC = () => {
               {/* PRIMARY CTA */}
               <RevealInteractive radiusClass="rounded-lg" className="flex-1 min-w-0 md:flex-none md:w-40 h-8 min-[425px]:h-10 md:h-12">
                 <button
-                  onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => {
+                    playClickSound();
+                    router.push('/projects');
+                  }}
                   className="w-full h-full bg-premium-gradient text-white rounded-lg font-bold flex items-center justify-center transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(217,70,239,0.4)] cursor-pointer text-[9px] min-[425px]:text-[11px] sm:text-xs md:text-base whitespace-nowrap px-1"
                 >
                   {t('hero.viewProjects')}
@@ -511,7 +516,7 @@ export const Hero: React.FC = () => {
                     fireContactPulse();
                     setIsGlowFlash(true);
                     setTimeout(() => setIsGlowFlash(false), 800);
-                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                    router.push('/contact');
                   }}
                   whileTap={{ scale: 0.95 }}
                   className="relative overflow-hidden w-full h-full bg-transparent border-2 border-black/10 dark:border-white/10 text-accent-cyan rounded-lg font-bold flex items-center justify-center transition-all hover:bg-accent-cyan/10 hover:border-accent-cyan hover:shadow-[0_0_15px_rgb(var(--accent-cyan)_/_0.25)] cursor-pointer text-[9px] min-[425px]:text-[11px] sm:text-xs md:text-base whitespace-nowrap px-1"
