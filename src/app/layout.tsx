@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   keywords: ['Mohamed Khaled', 'Full-Stack Engineer', 'MEAN Stack', 'React 19', 'Next.js', 'TypeScript', 'Portfolio'],
   authors: [{ name: 'Mohamed Khaled AbdelSattar' }],
   creator: 'Mohamed Khaled',
-  metadataBase: new URL('https://mohamedkhaled.dev'),
+  metadataBase: new URL('https://mohamedkhaled-dev-portfolio.vercel.app'),
   icons: {
     icon: '/favicon.png',
     shortcut: '/favicon.png',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://mohamedkhaled.dev',
+    url: 'https://mohamedkhaled-dev-portfolio.vercel.app',
     title: 'Mohamed Khaled | Full-Stack Engineer',
     description: 'Crafting premium, scalable web applications with modern architecture.',
     siteName: 'Mohamed Khaled Portfolio',
