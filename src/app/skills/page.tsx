@@ -1,8 +1,14 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import { Skills } from '@/components/sections/Skills';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/sections/Footer';
 import { PagePagination } from '@/components/PagePagination';
+
+export const metadata: Metadata = {
+  title: 'Skills & Technical Stack',
+  description: 'Explore technical skills of Mohamed Khaled: React 19, Next.js 15, TypeScript, Node.js, MongoDB, Express, and Tailwind CSS.',
+};
 
 export default function SkillsPage() {
   return (

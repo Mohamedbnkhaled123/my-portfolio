@@ -1,8 +1,14 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import { About } from '@/components/sections/About';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/sections/Footer';
 import { PagePagination } from '@/components/PagePagination';
+
+export const metadata: Metadata = {
+  title: 'About',
+  description: 'Learn more about Mohamed Khaled - Full-Stack Engineer and MEAN Stack specialist based in Cairo, Egypt.',
+};
 
 export default function AboutPage() {
   return (

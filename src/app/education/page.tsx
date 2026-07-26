@@ -1,8 +1,14 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import { Education } from '@/components/sections/Education';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/sections/Footer';
 import { PagePagination } from '@/components/PagePagination';
+
+export const metadata: Metadata = {
+  title: 'Education & Certifications',
+  description: 'Academic background, computer science studies, and professional web development certifications of Mohamed Khaled.',
+};
 
 export default function EducationPage() {
   return (

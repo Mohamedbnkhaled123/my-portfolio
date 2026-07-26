@@ -1,8 +1,14 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import { Projects } from '@/components/sections/Projects';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/sections/Footer';
 import { PagePagination } from '@/components/PagePagination';
+
+export const metadata: Metadata = {
+  title: 'Featured Projects',
+  description: 'Full-stack web applications built by Mohamed Khaled including Paris Clinic management system, Velora Bags e-commerce, and Next.js E-Shop.',
+};
 
 export default function ProjectsPage() {
   return (

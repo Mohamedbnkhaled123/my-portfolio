@@ -1,8 +1,14 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import { Experience } from '@/components/sections/Experience';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/sections/Footer';
 import { PagePagination } from '@/components/PagePagination';
+
+export const metadata: Metadata = {
+  title: 'Work Experience',
+  description: 'Professional engineering experience and career timeline of Mohamed Khaled - Full-Stack Engineer in Cairo, Egypt.',
+};
 
 export default function ExperiencePage() {
   return (

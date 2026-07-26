@@ -17,11 +17,30 @@ const cairo = Cairo({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Mohamed Khaled | Full-Stack Engineer (MEAN Stack & React)',
-    template: '%s | Mohamed Khaled',
+    default: 'Mohamed Khaled | Full-Stack Engineer (MEAN Stack & React 19 / Next.js)',
+    template: '%s | Mohamed Khaled - Full-Stack Engineer',
   },
-  description: 'Portfolio of Mohamed Khaled AbdelSattar - Full-Stack Engineer specializing in MEAN Stack, React 19, Next.js, and high-performance UI/UX.',
-  keywords: ['Mohamed Khaled', 'Full-Stack Engineer', 'MEAN Stack', 'React 19', 'Next.js', 'TypeScript', 'Portfolio'],
+  description: 'Official portfolio of Mohamed Khaled AbdelSattar - Full-Stack Engineer in Cairo, Egypt. Specializing in MEAN Stack, React 19, Next.js 15, TypeScript, and high-performance Web Applications.',
+  keywords: [
+    'Mohamed Khaled',
+    'Mohamed Khaled Portfolio',
+    'Mohamed Khaled Developer',
+    'Full-Stack Engineer',
+    'MEAN Stack Developer',
+    'React 19 Developer',
+    'Next.js 15 Developer',
+    'TypeScript Developer',
+    'Full Stack Engineer Cairo',
+    'Full Stack Developer Egypt',
+    'Software Engineer Cairo',
+    'مطور فول ستاك',
+    'مهندس برمجيات',
+    'مطور رياكت مصر',
+    'مطور مواقع القاهرة',
+    'Remote Full Stack Developer',
+    'E-commerce Developer Egypt',
+    'Clinic System Developer',
+  ],
   authors: [{ name: 'Mohamed Khaled AbdelSattar' }],
   creator: 'Mohamed Khaled',
   metadataBase: new URL('https://mohamedkhaled-dev-portfolio.vercel.app'),
@@ -35,7 +54,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://mohamedkhaled-dev-portfolio.vercel.app',
     title: 'Mohamed Khaled | Full-Stack Engineer',
-    description: 'Crafting premium, scalable web applications with modern architecture.',
+    description: 'Crafting premium, scalable web applications with MEAN Stack, React 19, and Next.js 15.',
     siteName: 'Mohamed Khaled Portfolio',
     images: [
       {
@@ -49,7 +68,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Mohamed Khaled | Full-Stack Engineer',
-    description: 'Crafting premium, scalable web applications with modern architecture.',
+    description: 'Crafting premium, scalable web applications with MEAN Stack, React 19, and Next.js 15.',
     images: ['/og-image.png'],
   },
 };
@@ -90,6 +109,36 @@ const themeInitScript = `
   })();
 `;
 
+const jsonLdData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mohamed Khaled AbdelSattar",
+  "alternateName": ["Mohamed Khaled", "محمد خالد عبد الستار", "Mohamed Khaled Developer"],
+  "jobTitle": "Full-Stack Engineer",
+  "url": "https://mohamedkhaled-dev-portfolio.vercel.app",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Cairo",
+    "addressCountry": "Egypt"
+  },
+  "sameAs": [
+    "https://github.com/Mohamedbnkhaled123",
+    "https://www.linkedin.com/in/mohamedbn-khaled"
+  ],
+  "knowsAbout": [
+    "Full-Stack Engineering",
+    "MEAN Stack",
+    "React 19",
+    "Next.js 15",
+    "TypeScript",
+    "Node.js",
+    "MongoDB",
+    "Express.js",
+    "Tailwind CSS",
+    "Web Application Development"
+  ]
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -100,6 +149,10 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{ __html: themeInitScript }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdData) }}
         />
       </head>
       <body className="bg-background text-primary antialiased min-h-screen flex flex-col justify-between" suppressHydrationWarning>

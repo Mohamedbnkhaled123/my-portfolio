@@ -135,19 +135,19 @@ export const Projects: React.FC = () => {
       key: 'parisClinic',
       tech: ['React', 'Firebase', 'Tailwind CSS', 'Cloud Firestore'],
       githubUrl: 'https://github.com/Mohamedbnkhaled123/react-firebase-clinic-system',
-      liveUrl: 'https://paris-clinic.netlify.app/',
+      liveUrl: 'https://paris-clinic.vercel.app/',
     },
     {
       key: 'veloraBags',
       tech: ['React', 'Firebase', 'Zustand', 'Context API'],
       githubUrl: 'https://github.com/Mohamedbnkhaled123/E-commerce-firebase-React-system',
-      liveUrl: 'https://velora-bags.netlify.app/',
+      liveUrl: 'https://velora-bag.vercel.app/',
     },
     {
       key: 'eShop',
       tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Server Components'],
       githubUrl: 'https://github.com/Mohamedbnkhaled123/E-commerce-React-Next.js',
-      liveUrl: 'https://e-shopelectronic.netlify.app/',
+      liveUrl: 'https://electronice-ecommerce-alpha.vercel.app/',
     }
   ];
 

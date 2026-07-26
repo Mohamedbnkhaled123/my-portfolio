@@ -1,8 +1,14 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import { Contact } from '@/components/sections/Contact';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/sections/Footer';
 import { PagePagination } from '@/components/PagePagination';
+
+export const metadata: Metadata = {
+  title: 'Contact & Hire',
+  description: 'Get in touch with Mohamed Khaled for full-stack engineering opportunities, remote work, or custom web application development.',
+};
 
 export default function ContactPage() {
   return (
