@@ -58,7 +58,7 @@ export const Footer: React.FC = () => {
                 className="h-16 w-auto object-contain scale-110 origin-left" 
               />
             </div>
-            <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-sm mb-6">
+            <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed max-w-sm mb-6">
               {lang === 'ar' 
                 ? 'مهندس برمجيات (MEAN Stack) معتمد من NTI، متخصص في تطوير حلول ويب متكاملة، سريعة، وعالية الأداء مع تصميم UI/UX مميز.'
                 : 'Full-Stack Engineer (MEAN Stack) & NTI Certified, specializing in building modern, scalable web applications with high-performance UI/UX.'}
@@ -106,10 +106,10 @@ export const Footer: React.FC = () => {
 
           {/* Column 2: Quick Links (Col span 4) */}
           <div className="md:col-span-4">
-            <h3 className="text-sm font-bold text-primary uppercase tracking-wider mb-4 relative inline-block">
+            <h2 className="text-sm font-bold text-primary uppercase tracking-wider mb-4 relative inline-block">
               {lang === 'ar' ? 'روابط السريعة' : 'Quick Navigation'}
               <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-accent-cyan rounded-full"></span>
-            </h3>
+            </h2>
             <div className="grid grid-cols-2 gap-2">
               {navLinks.map((link) => {
                 const isActive = pathname === link.path || (link.path === '/' && pathname === '/');
@@ -120,7 +120,7 @@ export const Footer: React.FC = () => {
                     className={`text-left text-sm font-medium py-1.5 transition-all duration-200 flex items-center gap-1.5 cursor-pointer group/link ${
                       isActive
                         ? 'text-accent-cyan font-bold'
-                        : 'text-slate-600 dark:text-slate-400 hover:text-accent-cyan'
+                        : 'text-slate-700 dark:text-slate-300 hover:text-accent-cyan'
                     }`}
                   >
                     <span className="text-xs text-accent-cyan opacity-60 transition-transform duration-200 group-hover/link:scale-125">›</span>
@@ -134,9 +134,9 @@ export const Footer: React.FC = () => {
           {/* Column 3: Actions & Back To Top (Col span 3) */}
           <div className="md:col-span-3 flex flex-col justify-between items-start md:items-end gap-6">
             <div>
-              <h3 className="text-sm font-bold text-primary uppercase tracking-wider mb-4 relative inline-block">
+              <h2 className="text-sm font-bold text-primary uppercase tracking-wider mb-4 relative inline-block">
                 {lang === 'ar' ? 'السيرة الذاتية' : 'Resume / CV'}
-              </h3>
+              </h2>
               <RevealInteractive radiusClass="rounded-xl">
                 <a
                   href="/Mohamed_Khaled_CV.pdf"
@@ -164,7 +164,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Copyright */}
-        <div className="pt-8 flex justify-center items-center text-xs text-slate-500 dark:text-slate-400 text-center">
+        <div className="pt-8 flex justify-center items-center text-xs text-slate-600 dark:text-slate-300 text-center">
           <p>© {new Date().getFullYear()} Mohamed Khaled AbdelSattar. {t('footer.rights')}</p>
         </div>
 

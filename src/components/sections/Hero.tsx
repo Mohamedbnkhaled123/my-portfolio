@@ -263,6 +263,7 @@ const StaticOrbitIcon: React.FC<{
           style={{ outline: 'none', padding: iconPadding }}
         >
           <item.Icon
+            aria-label={item.name}
             className="text-primary"
             style={{
               ...(item.color !== 'currentColor' ? { color: item.color } : {}),

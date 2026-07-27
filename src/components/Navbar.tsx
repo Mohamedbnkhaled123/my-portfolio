@@ -67,7 +67,7 @@ export const Navbar: React.FC = () => {
                     className={`rounded-lg px-2 lg:px-3 py-2 text-xs lg:text-sm font-bold transition-all duration-200 block cursor-pointer whitespace-nowrap ${
                       isActive
                         ? 'text-accent-cyan bg-accent-cyan/10 shadow-[0_0_12px_rgba(0,251,255,0.2)] border border-accent-cyan/30'
-                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-900/5 dark:hover:bg-white/10'
+                        : 'text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-900/5 dark:hover:bg-white/10'
                     }`}
                   >
                     {t(`nav.${item.key}`)}
@@ -94,7 +94,7 @@ export const Navbar: React.FC = () => {
             <RevealInteractive radiusClass="rounded-full">
               <button
                 onClick={toggleLang}
-                className="flex items-center justify-center gap-1.5 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-900/5 dark:hover:bg-white/10 px-2 lg:px-3 py-2 rounded-full w-full h-full transition-colors cursor-pointer"
+                className="flex items-center justify-center gap-1.5 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-900/5 dark:hover:bg-white/10 px-2 lg:px-3 py-2 rounded-full w-full h-full transition-colors cursor-pointer"
                 aria-label="Toggle Language"
               >
                 <Globe className="w-4 h-4 lg:w-5 lg:h-5" />
@@ -105,7 +105,7 @@ export const Navbar: React.FC = () => {
             <RevealInteractive radiusClass="rounded-full">
               <button
                 onClick={toggleTheme}
-                className="flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-900/5 dark:hover:bg-white/10 p-2 rounded-full w-full h-full transition-colors cursor-pointer"
+                className="flex items-center justify-center text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-900/5 dark:hover:bg-white/10 p-2 rounded-full w-full h-full transition-colors cursor-pointer"
                 aria-label="Toggle Theme"
               >
                 {theme === 'dark' ? <Sun className="w-4 h-4 lg:w-5 lg:h-5" /> : <Moon className="w-4 h-4 lg:w-5 lg:h-5" />}
@@ -171,7 +171,7 @@ export const Navbar: React.FC = () => {
                     className={`block w-full text-left px-3 py-2 rounded-md font-medium transition-colors cursor-pointer ${
                       isActive
                         ? 'text-accent-cyan bg-accent-cyan/10 border border-accent-cyan/30'
-                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-transparent'
+                        : 'text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-transparent'
                     }`}
                   >
                     {t(`nav.${item.key}`)}
