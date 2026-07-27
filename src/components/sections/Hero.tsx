@@ -2,6 +2,7 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { useAppStore } from '../../store/useAppStore';
 import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate, AnimatePresence } from 'framer-motion';
 import profileImg from '../../assets/profile.jpg';
@@ -635,10 +636,13 @@ export const Hero: React.FC = () => {
                     boxShadow: '0 0 50px rgba(139,92,246,0.5)',
                   }}
                 >
-                  <img
-                    src={(profileImg as any).src || profileImg}
+                  <Image
+                    src={profileImg}
                     alt={t('hero.name')}
-                    className="w-full h-full object-cover grayscale-[10%] group-hover/profile:grayscale-0 transition-colors duration-700 rounded-full"
+                    fill
+                    sizes="(max-width: 768px) 150px, 250px"
+                    priority
+                    className="object-cover grayscale-[10%] group-hover/profile:grayscale-0 transition-colors duration-700 rounded-full"
                     draggable={false}
                   />
                 </div>

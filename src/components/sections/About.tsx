@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
+import Image from 'next/image';
 import { useAppStore } from '../../store/useAppStore';
 import { motion } from 'framer-motion';
 
@@ -107,10 +108,12 @@ export const About: React.FC = () => {
 
                 {/* The actual image container - inset creates the exact 1px/2px frame */}
                 <div className="absolute inset-[2px] overflow-hidden rounded-[calc(2rem-2px)] z-10 bg-card" style={{ boxShadow: '0 0 25px rgba(139,92,246,0.25), 0 0 50px rgba(217,70,239,0.1)' }}>
-                  <img 
-                    src={(aboutImg as any).src || aboutImg} 
+                  <Image 
+                    src={aboutImg} 
                     alt={t('hero.name')} 
-                    className="w-full h-full object-cover object-top grayscale-[15%] group-hover/about:grayscale-0 transition-transform duration-700 scale-100 group-hover/about:scale-105"
+                    fill
+                    sizes="(max-width: 768px) 320px, 448px"
+                    className="object-cover object-top grayscale-[15%] group-hover/about:grayscale-0 transition-transform duration-700 scale-100 group-hover/about:scale-105"
                   />
                   {/* Subtle bottom vignette — only in dark mode */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 dark:opacity-60 z-10 pointer-events-none"></div>

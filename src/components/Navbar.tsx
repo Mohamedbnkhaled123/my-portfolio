@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { useAppStore } from '../store/useAppStore';
 import { Menu, Moon, Sun, X, Globe, Download } from 'lucide-react';
 import { RevealInteractive } from './RevealInteractive';
@@ -49,7 +50,7 @@ export const Navbar: React.FC = () => {
           
           {/* ═══ LOGO ═══ */}
           <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => handleNavClick('/')}>
-            <img src={theme === 'dark' ? "/night-logo.png" : "/Light-logo.png"} alt="Logo" className="h-16 w-auto object-contain scale-110 origin-left translate-y-1" />
+            <Image src={theme === 'dark' ? "/night-logo.png" : "/Light-logo.png"} alt="Logo" width={160} height={64} className="h-16 w-auto object-contain scale-110 origin-left translate-y-1" priority />
           </div>
 
           {/* ═══ DESKTOP NAV LINKS — visible from md (768px) ═══ */}

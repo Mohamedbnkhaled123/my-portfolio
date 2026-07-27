@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { useAppStore } from '../../store/useAppStore';
 import { usePathname, useRouter } from 'next/navigation';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
@@ -49,9 +50,11 @@ export const Footer: React.FC = () => {
           {/* Column 1: Brand & Bio (Col span 5) */}
           <div className="md:col-span-5 flex flex-col items-start">
             <div className="flex items-center cursor-pointer mb-4" onClick={() => handleNavClick('/')}>
-              <img 
+              <Image 
                 src={theme === 'dark' ? "/night-logo.png" : "/Light-logo.png"} 
                 alt="Logo" 
+                width={160}
+                height={64}
                 className="h-16 w-auto object-contain scale-110 origin-left" 
               />
             </div>

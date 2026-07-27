@@ -233,6 +233,7 @@
 
 .animate-scanline {
   animation: scanline 4s linear infinite;
+  will-change: transform;
 }
 
 @keyframes float {
@@ -250,6 +251,7 @@
 .animate-float-icon {
   animation: float var(--duration, 6s) ease-in-out infinite;
   animation-delay: var(--delay, 0s);
+  will-change: transform;
 }
 
 /* Only pause float on hover for pointer devices (desktop) */
@@ -274,4 +276,5 @@
 
 .animate-blink {
   animation: blink 0.9s ease-in-out infinite;
+  will-change: opacity;
 }

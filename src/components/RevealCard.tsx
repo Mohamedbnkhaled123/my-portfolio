@@ -52,9 +52,34 @@ export const RevealCard: React.FC<RevealCardProps> = ({
   useEffect(() => {
     if (!hasHover) return;
 
-    let rafId: number;
+    let rafId: number | null = null;
     let targetProximity = 0;
     let currentProximity = 0;
+    let isAnimating = false;
+
+    const startAnimating = () => {
+      if (isAnimating) return;
+      isAnimating = true;
+      const animate = () => {
+        if (cardRef.current) {
+          currentProximity += (targetProximity - currentProximity) * 0.08;
+
+          if (currentProximity > 0.001) {
+            cardRef.current.style.setProperty('--proximity', currentProximity.toFixed(4));
+            rafId = requestAnimationFrame(animate);
+          } else {
+            currentProximity = 0;
+            cardRef.current.style.setProperty('--proximity', '0');
+            isAnimating = false;
+            rafId = null;
+          }
+        } else {
+          isAnimating = false;
+          rafId = null;
+        }
+      };
+      rafId = requestAnimationFrame(animate);
+    };
 
     const handleGlobalMouseMove = (e: MouseEvent) => {
       if (!cardRef.current) return;
@@ -72,7 +97,7 @@ export const RevealCard: React.FC<RevealCardProps> = ({
       const maxDist = 80; // Activation radius in px
       targetProximity = dist === 0 ? 1 : Math.max(0, 1 - dist / maxDist);
 
-      // Performance Optimization: Halt tracking globally if strictly outside the activation zone
+      // Performance Optimization: Don't start loop if strictly outside activation zone
       if (targetProximity === 0 && currentProximity < 0.001) return;
 
       // Set mouse position exactly to cursor (no clamping) to cast a realistic external light source
@@ -80,29 +105,16 @@ export const RevealCard: React.FC<RevealCardProps> = ({
         cardRef.current.style.setProperty('--mouse-x', `${x}px`);
         cardRef.current.style.setProperty('--mouse-y', `${y}px`);
       }
-    };
 
-    // Slow lerp (0.08) = intentionally smooth fade, NOT lag
-    const animate = () => {
-      if (cardRef.current) {
-        currentProximity += (targetProximity - currentProximity) * 0.08;
-
-        if (currentProximity > 0.001) {
-          cardRef.current.style.setProperty('--proximity', currentProximity.toFixed(4));
-        } else {
-          currentProximity = 0;
-          cardRef.current.style.setProperty('--proximity', '0');
-        }
-      }
-      rafId = requestAnimationFrame(animate);
+      // Start animation loop on-demand
+      startAnimating();
     };
 
     window.addEventListener('mousemove', handleGlobalMouseMove, { passive: true });
-    rafId = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener('mousemove', handleGlobalMouseMove);
-      cancelAnimationFrame(rafId);
+      if (rafId !== null) cancelAnimationFrame(rafId);
     };
   }, [hasHover]);
 

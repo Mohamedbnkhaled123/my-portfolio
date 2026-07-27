@@ -45,9 +45,9 @@ export const metadata: Metadata = {
   creator: 'Mohamed Khaled',
   metadataBase: new URL('https://mohamedkhaled-dev-portfolio.vercel.app'),
   icons: {
-    icon: '/favicon.png',
-    shortcut: '/favicon.png',
-    apple: '/favicon.png',
+    icon: '/mk-web-developer-preview.png',
+    shortcut: '/mk-web-developer-preview.png',
+    apple: '/mk-web-developer-preview.png',
   },
   openGraph: {
     type: 'website',
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     siteName: 'Mohamed Khaled Portfolio',
     images: [
       {
-        url: '/og-image.png',
+        url: '/mk-web-developer-preview.png',
         width: 1200,
         height: 630,
         alt: 'Mohamed Khaled Portfolio',
@@ -69,7 +69,10 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Mohamed Khaled | Full-Stack Engineer',
     description: 'Crafting premium, scalable web applications with MEAN Stack, React 19, and Next.js 15.',
-    images: ['/og-image.png'],
+    images: ['/mk-web-developer-preview.png'],
+  },
+  verification: {
+    google: 'k3GEuvEUGwyTALrLCKlcddDq3exItwA1R1Zhd',
   },
 };
 
