@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="relative bg-background border-t border-slate-200 dark:border-white/10 pt-16 pb-12 overflow-hidden transition-colors duration-300">
+    <footer className="relative bg-background/30 backdrop-blur-xl border-t border-slate-200/30 dark:border-white/10 pt-16 pb-12 overflow-hidden transition-colors duration-300">
       {/* Top Accent Gradient Line */}
       <div className="absolute top-0 left-0 w-full h-[2px] bg-premium-gradient"></div>
 
@@ -53,9 +53,9 @@ export const Footer: React.FC = () => {
               <Image 
                 src={theme === 'dark' ? "/night-logo.png" : "/Light-logo.png"} 
                 alt="Logo" 
-                width={160}
-                height={64}
-                className="h-16 w-auto object-contain scale-110 origin-left" 
+                width={140}
+                height={50}
+                className="h-9 sm:h-11 w-auto object-contain origin-left" 
               />
             </div>
             <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed max-w-sm mb-6">

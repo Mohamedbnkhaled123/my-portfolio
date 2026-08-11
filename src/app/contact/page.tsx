@@ -20,7 +20,7 @@ export default function ContactPage() {
 
       <Navbar />
 
-      <main className="pt-20 flex-1 flex flex-col justify-between">
+      <main className="pt-16 sm:pt-20 flex-1 flex flex-col justify-between">
         <Contact />
         <PagePagination />
       </main>

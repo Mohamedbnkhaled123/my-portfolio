@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: 'var(--bg-main)',
+        background: 'rgb(var(--bg-main) / <alpha-value>)',
         card: 'var(--bg-card)',
         primary: 'var(--text-primary)',
         secondary: 'var(--text-secondary)',

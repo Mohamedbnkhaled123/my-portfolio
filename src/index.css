@@ -3,7 +3,8 @@
 
 @layer base {
   :root {
-    --bg-main: #f8fafc;
+    --bg-main: 248 250 252;
+    /* #f8fafc */
     --bg-card: rgba(255, 255, 255, 0.9);
     --text-primary: #0f172a;
     --text-secondary: #334155;
@@ -36,8 +37,8 @@
   }
 
   .dark {
-    --bg-main: #020617;
-    /* Deep Midnight Slate */
+    --bg-main: 2 6 23;
+    /* Deep Midnight Slate (#020617) */
     --bg-card: rgba(13, 22, 45, 0.7);
     --text-primary: #f8fafc;
     --text-secondary: #cbd5e1;

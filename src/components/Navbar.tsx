@@ -42,7 +42,7 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="fixed w-full z-[100] top-0 left-0 border-b border-slate-200 dark:border-white/5 bg-background/80 backdrop-blur-md shadow-sm dark:shadow-none transition-all duration-300">
+    <nav className="fixed w-full z-[100] top-0 left-0 border-b border-slate-200/30 dark:border-white/10 bg-background/30 backdrop-blur-xl shadow-sm dark:shadow-none transition-all duration-300">
       {/* Top Accent Gradient Line */}
       <div className="absolute top-0 left-0 w-full h-[2px] bg-premium-gradient"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,7 +50,7 @@ export const Navbar: React.FC = () => {
           
           {/* ═══ LOGO ═══ */}
           <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => handleNavClick('/')}>
-            <Image src={theme === 'dark' ? "/night-logo.png" : "/Light-logo.png"} alt="Logo" width={160} height={64} className="h-16 w-auto object-contain scale-110 origin-left translate-y-1" priority />
+            <Image src={theme === 'dark' ? "/night-logo.png" : "/Light-logo.png"} alt="Logo" width={140} height={50} className="h-9 sm:h-11 w-auto object-contain origin-left" priority />
           </div>
 
           {/* ═══ DESKTOP NAV LINKS — visible from md (768px) ═══ */}
