@@ -44,7 +44,7 @@ export const PagePagination: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-3 sm:px-6 py-6 mt-12 border-t border-slate-200 dark:border-white/10 flex flex-row items-center justify-between gap-2 sm:gap-4">
+    <div className="w-full max-w-5xl mx-auto px-3 sm:px-6 py-6 mt-4 sm:mt-8 flex flex-row items-center justify-between gap-2 sm:gap-4">
       
       {/* Previous Page Button (Icon-only on mobile, full text on sm+) */}
       <div className="flex-shrink-0">

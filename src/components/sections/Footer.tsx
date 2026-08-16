@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="relative bg-background/30 backdrop-blur-xl border-t border-slate-200/30 dark:border-white/10 pt-16 pb-12 overflow-hidden transition-colors duration-300">
+    <footer className="relative bg-slate-950 dark:bg-[#020617] border-t border-slate-200/40 dark:border-white/10 pt-16 pb-12 overflow-hidden transition-colors duration-300">
       {/* Top Accent Gradient Line */}
       <div className="absolute top-0 left-0 w-full h-[2px] bg-premium-gradient"></div>
 

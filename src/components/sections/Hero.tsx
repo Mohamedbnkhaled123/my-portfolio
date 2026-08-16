@@ -463,7 +463,7 @@ export const Hero: React.FC = () => {
   const total = orbitIcons.length;
 
   return (
-    <section id="hero" className="min-h-0 sm:min-h-[calc(100vh-5rem)] flex items-center justify-center py-2 sm:py-6 md:py-12 relative overflow-hidden scroll-mt-20">
+    <section id="hero" className="min-h-[calc(100vh-4.5rem)] sm:min-h-[calc(100vh-5rem)] flex items-center justify-center py-6 sm:py-8 md:py-12 relative overflow-hidden scroll-mt-20">
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[rgba(139,92,246,0.2)] rounded-full blur-[128px] -z-10 pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[rgba(217,70,239,0.15)] rounded-full blur-[128px] -z-10 pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[rgba(6,182,212,0.08)] rounded-full blur-[180px] -z-10 pointer-events-none" />

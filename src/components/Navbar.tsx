@@ -42,7 +42,7 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="fixed w-full z-[100] top-0 left-0 border-b border-slate-200/30 dark:border-white/10 bg-background/30 backdrop-blur-xl shadow-sm dark:shadow-none transition-all duration-300">
+    <nav className="fixed w-full z-[100] top-0 left-0 border-b border-slate-200/20 dark:border-white/5 bg-background/20 backdrop-blur-xl shadow-sm dark:shadow-none transition-all duration-300">
       {/* Top Accent Gradient Line */}
       <div className="absolute top-0 left-0 w-full h-[2px] bg-premium-gradient"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
