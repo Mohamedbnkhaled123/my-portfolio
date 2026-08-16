@@ -67,8 +67,8 @@ export const PagePagination: React.FC = () => {
         )}
       </div>
 
-      {/* Page Numbers Indicator (Compact pills) */}
-      <div className="flex items-center gap-1 sm:gap-1.5 bg-slate-100 dark:bg-white/5 p-1 sm:p-1.5 rounded-full border border-slate-200 dark:border-white/10 overflow-x-auto max-w-full">
+      {/* Page Numbers Indicator (Glowing compact pills) */}
+      <div className="flex items-center gap-1 sm:gap-1.5 bg-slate-900/60 dark:bg-white/10 backdrop-blur-md p-1 sm:p-1.5 rounded-full border border-slate-200/50 dark:border-white/15 shadow-[0_0_20px_rgba(139,92,246,0.25)] overflow-x-auto max-w-full">
         {PAGES.map((page, idx) => {
           const isActive = idx === activeIndex;
           return (
