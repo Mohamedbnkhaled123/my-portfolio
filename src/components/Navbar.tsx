@@ -42,11 +42,11 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="fixed w-full z-[100] top-0 left-0 border-b border-white/10 bg-slate-950/40 dark:bg-[#020617]/40 bg-gradient-to-r from-[rgba(6,182,212,0.15)] via-[rgba(139,92,246,0.15)] to-[rgba(217,70,239,0.15)] backdrop-blur-xl shadow-sm dark:shadow-none transition-all duration-300">
+    <nav className="fixed w-full z-[100] top-0 left-0 border-b border-slate-200/80 dark:border-white/10 bg-white/80 dark:bg-[#020617]/40 dark:bg-gradient-to-r dark:from-[rgba(6,182,212,0.15)] dark:via-[rgba(139,92,246,0.15)] dark:to-[rgba(217,70,239,0.15)] backdrop-blur-xl shadow-sm dark:shadow-none transition-all duration-300">
       {/* Top Accent Gradient Line */}
       <div className="absolute top-0 left-0 w-full h-[2px] bg-premium-gradient"></div>
-      {/* Ambient Top Glow */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[rgba(139,92,246,0.1)] to-transparent pointer-events-none -z-10"></div>
+      {/* Ambient Top Glow (Dark Mode Only) */}
+      <div className="absolute inset-0 hidden dark:block bg-gradient-to-b from-[rgba(139,92,246,0.1)] to-transparent pointer-events-none -z-10"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           

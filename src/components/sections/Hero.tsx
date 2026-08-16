@@ -464,10 +464,10 @@ export const Hero: React.FC = () => {
 
   return (
     <section id="hero" className="min-h-0 sm:min-h-[calc(100vh-5rem)] flex items-center justify-center py-6 sm:py-8 md:py-12 relative scroll-mt-20">
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[rgba(139,92,246,0.25)] rounded-full blur-[128px] -z-10 pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[rgba(217,70,239,0.2)] rounded-full blur-[128px] -z-10 pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[rgba(6,182,212,0.12)] rounded-full blur-[180px] -z-10 pointer-events-none" />
-      <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[rgba(139,92,246,0.15)] rounded-full blur-[140px] -z-10 pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-[rgba(139,92,246,0.15)] rounded-full blur-[128px] -z-10 pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-[rgba(217,70,239,0.12)] rounded-full blur-[128px] -z-10 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[500px] h-[280px] sm:h-[500px] bg-[rgba(6,182,212,0.04)] sm:bg-[rgba(6,182,212,0.08)] rounded-full blur-[120px] sm:blur-[180px] -z-10 pointer-events-none" />
+      <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[400px] sm:w-[600px] h-[200px] sm:h-[300px] bg-[rgba(139,92,246,0.08)] rounded-full blur-[120px] -z-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-8 w-full">
         <div className="grid grid-cols-12 gap-y-8 gap-x-2 sm:gap-x-4 md:gap-x-10 lg:gap-x-16 items-center">
