@@ -44,7 +44,9 @@ export const PagePagination: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-3 sm:px-6 py-6 mt-4 sm:mt-8 flex flex-row items-center justify-between gap-2 sm:gap-4">
+    <div className="relative w-full max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-5 my-4 sm:my-6 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-[rgba(6,182,212,0.12)] via-[rgba(139,92,246,0.15)] to-[rgba(217,70,239,0.12)] border border-white/10 backdrop-blur-xl shadow-[0_0_30px_rgba(139,92,246,0.18)] flex flex-row items-center justify-between gap-2 sm:gap-4 overflow-hidden">
+      {/* Ambient Gradient Glow inside the pagination container */}
+      <div className="absolute inset-0 bg-gradient-radial from-[rgba(139,92,246,0.2)] via-transparent to-transparent pointer-events-none -z-10"></div>
       
       {/* Previous Page Button (Icon-only on mobile, full text on sm+) */}
       <div className="flex-shrink-0">
