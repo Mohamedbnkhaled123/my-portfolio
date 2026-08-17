@@ -48,13 +48,9 @@ export const useAppStore = create<AppState>((set, get) => {
     html.lang = l;
     html.dir = l === 'ar' ? 'rtl' : 'ltr';
     if (l === 'ar') {
-      html.classList.add('font-arabic');
-      html.classList.remove('font-english');
       document.body?.classList.add('font-arabic');
       document.body?.classList.remove('font-english');
     } else {
-      html.classList.add('font-english');
-      html.classList.remove('font-arabic');
       document.body?.classList.add('font-english');
       document.body?.classList.remove('font-arabic');
     }

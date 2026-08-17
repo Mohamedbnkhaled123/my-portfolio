@@ -172,11 +172,9 @@ const themeInitScript = `
       document.documentElement.lang = savedLang;
       document.documentElement.dir = savedLang === 'ar' ? 'rtl' : 'ltr';
       if (savedLang === 'ar') {
-        document.documentElement.classList.add('font-arabic');
-        document.documentElement.classList.remove('font-english');
+        document.body ? document.body.classList.add('font-arabic') : null;
       } else {
-        document.documentElement.classList.add('font-english');
-        document.documentElement.classList.remove('font-arabic');
+        document.body ? document.body.classList.add('font-english') : null;
       }
     } catch (e) {}
   })();

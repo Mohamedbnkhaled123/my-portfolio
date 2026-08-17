@@ -207,29 +207,16 @@
   }
 }
 
-/* Global RTL & Arabic Typography Engine */
-html[lang="ar"],
-[dir="rtl"],
-.font-arabic {
-  font-family: var(--font-cairo), 'Cairo', sans-serif !important;
-}
-
-html[lang="en"],
-[dir="ltr"],
-.font-english {
-  font-family: var(--font-inter), 'Inter', sans-serif;
-}
-
+/* Global RTL Typography Adjustments */
 [dir="rtl"] body {
-  line-height: 1.8;
-  font-family: var(--font-cairo), 'Cairo', sans-serif !important;
+  line-height: 1.7;
+  /* Relaxed default for Arabic script */
 }
 
 [dir="rtl"] h1,
 [dir="rtl"] h2,
 [dir="rtl"] h3 {
-  line-height: 1.5;
-  font-family: var(--font-cairo), 'Cairo', sans-serif !important;
+  line-height: 1.4;
 }
 
 @keyframes scanline {

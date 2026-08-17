@@ -27,9 +27,9 @@ export const Education: React.FC = () => {
     <section id="education" className="py-20 bg-card/30 section-fade-edge scroll-mt-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h1 className="text-3xl md:text-4xl font-bold text-premium-gradient pb-3 mb-4 relative inline-block">
+          <h1 className="text-3xl md:text-4xl font-bold text-premium-gradient mb-4 relative inline-block">
             {t('education.title')}
-            <span className="absolute bottom-0 left-1/4 right-1/4 h-[3px] bg-premium-gradient rounded-full"></span>
+            <span className="absolute -bottom-2 left-1/4 right-1/4 h-1 bg-premium-gradient rounded-full"></span>
           </h1>
         </div>
 
