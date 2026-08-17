@@ -7,6 +7,7 @@ import { useAppStore } from '../store/useAppStore';
 import { Menu, Moon, Sun, X, Globe, Download } from 'lucide-react';
 import { RevealInteractive } from './RevealInteractive';
 import { motion, AnimatePresence } from 'framer-motion';
+import { playClickSound } from '../utils/sounds';
 
 interface NavItem {
   key: string;
