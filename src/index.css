@@ -23,17 +23,14 @@
     --gradient-primary: linear-gradient(135deg, #06b6d4 0%, #06b6d4 15%, #8b5cf6 35%, #d946ef 50%, #8b5cf6 65%, #06b6d4 85%, #06b6d4 100%);
     --gradient-border: linear-gradient(90deg, #06b6d4 0%, #06b6d4 15%, #8b5cf6 35%, #d946ef 50%, #8b5cf6 65%, #06b6d4 85%, #06b6d4 100%);
 
-    /* Reveal Intensity configuration - Light Mode */
-    --reveal-idle-opacity: 0.35;
-    --reveal-hover-opacity: 1.0;
-    /* Full opacity to pop against off-white */
+    /* Reveal Intensity configuration - Light Mode (Softened for Eye Comfort) */
+    --reveal-idle-opacity: 0.15;
+    --reveal-hover-opacity: 0.45;
 
-    /* Spotlight Reveal Effect - Light Mode (Same Violet/Magenta as Dark, boosted intensity) */
-    --spotlight-core: rgba(139, 92, 246, 0.8);
-    /* Violet Core — boosted */
-    --spotlight-fade: rgba(217, 70, 239, 0.4);
-    /* Magenta Fade — boosted */
-    --spotlight-hover-opacity: 0.5;
+    /* Spotlight Reveal Effect - Light Mode (Soft, subtle pastel glow) */
+    --spotlight-core: rgba(139, 92, 246, 0.22);
+    --spotlight-fade: rgba(217, 70, 239, 0.10);
+    --spotlight-hover-opacity: 0.18;
   }
 
   .dark {

@@ -70,11 +70,26 @@ export const useAppStore = create<AppState>((set, get) => {
     theme: initialTheme,
     alertContactPulse: false,
 
-    toggleLang: () => set((state) => {
+    toggleLang: () => {
+      const state = get();
       const nextLang = state.lang === 'en' ? 'ar' : 'en';
-      applyLang(nextLang);
-      return { lang: nextLang };
-    }),
+
+      const executeLangChange = () => {
+        applyLang(nextLang);
+        set({ lang: nextLang });
+      };
+
+      // @ts-ignore - View Transitions API
+      if (!document.startViewTransition) {
+        executeLangChange();
+        return;
+      }
+
+      // @ts-ignore
+      document.startViewTransition(() => {
+        executeLangChange();
+      });
+    },
 
     toggleTheme: () => {
       const state = get();

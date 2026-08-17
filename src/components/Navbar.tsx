@@ -94,14 +94,26 @@ export const Navbar: React.FC = () => {
             </RevealInteractive>
 
             <RevealInteractive radiusClass="rounded-full">
-              <button
-                onClick={toggleLang}
+              <motion.button
+                onClick={() => {
+                  playClickSound();
+                  toggleLang();
+                }}
+                whileTap={{ scale: 0.9 }}
                 className="flex items-center justify-center gap-1.5 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-900/5 dark:hover:bg-white/10 px-2 lg:px-3 py-2 rounded-full w-full h-full transition-colors cursor-pointer"
                 aria-label="Toggle Language"
               >
-                <Globe className="w-4 h-4 lg:w-5 lg:h-5" />
-                <span className="text-xs lg:text-sm font-bold uppercase block">{lang === 'en' ? 'AR' : 'EN'}</span>
-              </button>
+                <motion.div
+                  key={lang}
+                  initial={{ rotate: -90, scale: 0.8, opacity: 0 }}
+                  animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                  className="flex items-center gap-1.5"
+                >
+                  <Globe className="w-4 h-4 lg:w-5 lg:h-5 text-accent-cyan" />
+                  <span className="text-xs lg:text-sm font-bold uppercase block">{lang === 'en' ? 'AR' : 'EN'}</span>
+                </motion.div>
+              </motion.button>
             </RevealInteractive>
             
             <RevealInteractive radiusClass="rounded-full">
@@ -133,12 +145,43 @@ export const Navbar: React.FC = () => {
 
             {/* Toggle Group & Hamburger */}
             <div className="flex items-center gap-1 ml-auto min-[376px]:ml-0 min-[376px]:flex-1 min-[376px]:justify-end">
-              <button onClick={toggleLang} aria-label="Toggle Language" className="text-secondary p-1 cursor-pointer">
-                <span className="text-sm font-bold uppercase">{lang === 'en' ? 'AR' : 'EN'}</span>
-              </button>
-              <button onClick={toggleTheme} aria-label="Toggle Theme" className="text-secondary p-1 cursor-pointer">
-                {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-              </button>
+              <motion.button 
+                onClick={() => {
+                  playClickSound();
+                  toggleLang();
+                }} 
+                whileTap={{ scale: 0.88 }}
+                aria-label="Toggle Language" 
+                className="text-secondary hover:text-accent-cyan p-1.5 cursor-pointer flex items-center justify-center transition-colors"
+              >
+                <motion.span 
+                  key={lang}
+                  initial={{ rotate: -90, scale: 0.7, opacity: 0 }}
+                  animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.25 }}
+                  className="text-xs font-bold uppercase text-accent-cyan"
+                >
+                  {lang === 'en' ? 'AR' : 'EN'}
+                </motion.span>
+              </motion.button>
+              <motion.button 
+                onClick={() => {
+                  playClickSound();
+                  toggleTheme();
+                }} 
+                whileTap={{ scale: 0.88 }}
+                aria-label="Toggle Theme" 
+                className="text-secondary hover:text-accent-cyan p-1.5 cursor-pointer flex items-center justify-center transition-colors"
+              >
+                <motion.div
+                  key={theme}
+                  initial={{ rotate: -90, scale: 0.7, opacity: 0 }}
+                  animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                </motion.div>
+              </motion.button>
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 aria-label="Toggle Navigation Menu"
