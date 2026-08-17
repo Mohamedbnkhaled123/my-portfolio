@@ -17,11 +17,11 @@ export default {
         glow: 'var(--glow)',
       },
       fontFamily: {
-        english: ['Inter', 'sans-serif'],
-        arabic: ['Cairo', 'sans-serif'],
+        english: ['var(--font-inter)', 'Inter', 'sans-serif'],
+        arabic: ['var(--font-cairo)', 'Cairo', 'sans-serif'],
       },
       fontWeight: {
-        bold: '500',
+        bold: '700',
       },
     },
   },
