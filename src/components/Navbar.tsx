@@ -98,7 +98,6 @@ export const Navbar: React.FC = () => {
             <RevealInteractive radiusClass="rounded-full">
               <motion.button
                 onClick={() => {
-                  playClickSound();
                   toggleLang();
                 }}
                 whileTap={{ scale: 0.9 }}
@@ -149,7 +148,6 @@ export const Navbar: React.FC = () => {
             <div className="flex items-center gap-1 ml-auto min-[376px]:ml-0 min-[376px]:flex-1 min-[376px]:justify-end">
               <motion.button 
                 onClick={() => {
-                  playClickSound();
                   toggleLang();
                 }} 
                 whileTap={{ scale: 0.88 }}
