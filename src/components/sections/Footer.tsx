@@ -6,10 +6,9 @@ import { useAppStore } from '../../store/useAppStore';
 import { usePathname, useRouter } from 'next/navigation';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { Mail, Phone, ArrowUp, Download } from 'lucide-react';
-import { RevealInteractive } from '../RevealInteractive';
 
 export const Footer: React.FC = () => {
-  const { theme, lang, t } = useAppStore();
+  const { lang, t } = useAppStore();
   const router = useRouter();
   const pathname = usePathname();
 
