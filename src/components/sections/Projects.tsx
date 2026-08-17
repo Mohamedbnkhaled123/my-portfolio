@@ -161,7 +161,7 @@ export const Projects: React.FC = () => {
         <div className="text-center mb-16">
           <h1 className="text-3xl md:text-4xl font-bold text-premium-gradient mb-4 relative inline-block tracking-widest uppercase">
             {t('projects.title')}
-            <span className="absolute -bottom-2 left-0 w-full h-px bg-premium-gradient opacity-50" />
+            <span className="absolute -bottom-4 left-0 w-full h-px bg-premium-gradient opacity-50" />
           </h1>
         </div>
 

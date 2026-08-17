@@ -210,6 +210,8 @@ const jsonLdData = {
   ]
 };
 
+import { ClientStoreSync } from '../components/ClientStoreSync';
+
 export default function RootLayout({
   children,
 }: {
@@ -227,6 +229,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-background text-primary antialiased min-h-screen flex flex-col justify-between" suppressHydrationWarning>
+        <ClientStoreSync />
         {children}
       </body>
     </html>

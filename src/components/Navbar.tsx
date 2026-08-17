@@ -53,7 +53,8 @@ export const Navbar: React.FC = () => {
           
           {/* ═══ LOGO ═══ */}
           <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => handleNavClick('/')}>
-            <Image src={theme === 'dark' ? "/night-logo.png" : "/Light-logo.png"} alt="Logo" width={140} height={50} className="h-9 sm:h-11 w-auto object-contain origin-left" priority />
+            <Image src="/Light-logo.png" alt="Logo" width={140} height={50} className="h-9 sm:h-11 w-auto object-contain origin-left dark:hidden block" priority />
+            <Image src="/night-logo.png" alt="Logo" width={140} height={50} className="h-9 sm:h-11 w-auto object-contain origin-left hidden dark:block" priority />
           </div>
 
           {/* ═══ DESKTOP NAV LINKS — visible from md (768px) ═══ */}

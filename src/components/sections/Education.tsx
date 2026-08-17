@@ -29,7 +29,7 @@ export const Education: React.FC = () => {
         <div className="text-center mb-16">
           <h1 className="text-3xl md:text-4xl font-bold text-premium-gradient mb-4 relative inline-block">
             {t('education.title')}
-            <span className="absolute -bottom-2 left-1/4 right-1/4 h-1 bg-premium-gradient rounded-full"></span>
+            <span className="absolute -bottom-4 left-1/4 right-1/4 h-1 bg-premium-gradient rounded-full"></span>
           </h1>
         </div>
 
