@@ -63,15 +63,14 @@ export const Navbar: React.FC = () => {
               return (
                 <RevealInteractive 
                   key={item.key} 
-                  radiusClass="rounded-full"
-                  className={isActive ? "ring-2 ring-accent-cyan shadow-[0_0_15px_rgb(var(--accent-cyan)_/_0.35)]" : ""}
+                  radiusClass="rounded-lg"
+                  onClick={() => handleNavClick(item.path)}
                 >
                   <button
-                    onClick={() => handleNavClick(item.path)}
-                    className={`relative px-3 lg:px-4 py-1.5 lg:py-2 text-xs lg:text-sm font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer block w-full h-full rounded-full ${
+                    className={`rounded-lg px-2 lg:px-3 py-2 text-xs lg:text-sm font-bold transition-all duration-200 block cursor-pointer whitespace-nowrap ${
                       isActive
-                        ? 'text-accent-cyan font-extrabold shadow-sm'
-                        : 'text-secondary hover:text-primary hover:bg-slate-900/5 dark:hover:bg-white/10'
+                        ? 'text-accent-cyan bg-accent-cyan/10 shadow-[0_0_12px_rgba(0,251,255,0.2)] border border-accent-cyan/30'
+                        : 'text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-900/5 dark:hover:bg-white/10'
                     }`}
                   >
                     {t(`nav.${item.key}`)}
