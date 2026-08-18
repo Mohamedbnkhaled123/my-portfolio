@@ -22,9 +22,13 @@ export default function AboutPage() {
 
       <Navbar />
 
-      <main className="pt-16 sm:pt-20 flex-1 flex flex-col justify-between">
-        <About />
-        <PagePagination />
+      <main className="pt-16 sm:pt-20 flex-1 flex flex-col justify-between min-h-[100svh] w-full">
+        <div className="flex-1 flex items-center justify-center w-full">
+          <About />
+        </div>
+        <div className="pb-4 sm:pb-6 w-full flex-shrink-0">
+          <PagePagination />
+        </div>
       </main>
 
       <Footer />

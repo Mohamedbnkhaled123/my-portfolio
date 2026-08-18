@@ -6,8 +6,8 @@ import { Footer } from '@/components/sections/Footer';
 import { PagePagination } from '@/components/PagePagination';
 
 export const metadata: Metadata = {
-  title: 'Featured Projects',
-  description: 'Full-stack web applications built by Mohamed Khaled including Paris Clinic management system, Velora Bags e-commerce, and Next.js E-Shop.',
+  title: 'Projects & Case Studies',
+  description: 'Explore featured web development and engineering projects by Mohamed Khaled.',
 };
 
 export default function ProjectsPage() {
@@ -22,9 +22,13 @@ export default function ProjectsPage() {
 
       <Navbar />
 
-      <main className="pt-16 sm:pt-20 flex-1 flex flex-col justify-between">
-        <Projects />
-        <PagePagination />
+      <main className="pt-16 sm:pt-20 flex-1 flex flex-col justify-between min-h-[100svh] w-full">
+        <div className="flex-1 flex items-center justify-center w-full">
+          <Projects />
+        </div>
+        <div className="pb-4 sm:pb-6 w-full flex-shrink-0">
+          <PagePagination />
+        </div>
       </main>
 
       <Footer />

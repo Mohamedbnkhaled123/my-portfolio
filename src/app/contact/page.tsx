@@ -6,8 +6,8 @@ import { Footer } from '@/components/sections/Footer';
 import { PagePagination } from '@/components/PagePagination';
 
 export const metadata: Metadata = {
-  title: 'Contact & Hire',
-  description: 'Get in touch with Mohamed Khaled for full-stack engineering opportunities, remote work, or custom web application development.',
+  title: 'Contact',
+  description: 'Get in touch with Mohamed Khaled for web development, software engineering, and collaboration opportunities.',
 };
 
 export default function ContactPage() {
@@ -22,9 +22,13 @@ export default function ContactPage() {
 
       <Navbar />
 
-      <main className="pt-16 sm:pt-20 flex-1 flex flex-col justify-between">
-        <Contact />
-        <PagePagination />
+      <main className="pt-16 sm:pt-20 flex-1 flex flex-col justify-between min-h-[100svh] w-full">
+        <div className="flex-1 flex items-center justify-center w-full">
+          <Contact />
+        </div>
+        <div className="pb-4 sm:pb-6 w-full flex-shrink-0">
+          <PagePagination />
+        </div>
       </main>
 
       <Footer />

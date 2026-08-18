@@ -7,7 +7,7 @@ import { PagePagination } from '@/components/PagePagination';
 
 export const metadata: Metadata = {
   title: 'Education & Certifications',
-  description: 'Academic background, computer science studies, and professional web development certifications of Mohamed Khaled.',
+  description: 'Academic background and professional certifications of Mohamed Khaled.',
 };
 
 export default function EducationPage() {
@@ -22,9 +22,13 @@ export default function EducationPage() {
 
       <Navbar />
 
-      <main className="pt-16 sm:pt-20 flex-1 flex flex-col justify-between">
-        <Education />
-        <PagePagination />
+      <main className="pt-16 sm:pt-20 flex-1 flex flex-col justify-between min-h-[100svh] w-full">
+        <div className="flex-1 flex items-center justify-center w-full">
+          <Education />
+        </div>
+        <div className="pb-4 sm:pb-6 w-full flex-shrink-0">
+          <PagePagination />
+        </div>
       </main>
 
       <Footer />
