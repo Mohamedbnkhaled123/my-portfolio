@@ -64,10 +64,21 @@ export const useAppStore = create<AppState>()(
             }
           };
 
-          if (typeof document !== 'undefined' && 'startViewTransition' in document) {
+          if (
+            typeof document !== 'undefined' &&
+            'startViewTransition' in document &&
+            !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          ) {
             (document as any).startViewTransition(executeChange);
           } else {
             executeChange();
+          }
+
+          if (typeof document !== 'undefined') {
+            document.documentElement.classList.add('i18n-transitioning');
+            setTimeout(() => {
+              document.documentElement.classList.remove('i18n-transitioning');
+            }, 400);
           }
         },
 
