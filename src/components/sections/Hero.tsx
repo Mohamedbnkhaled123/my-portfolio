@@ -311,12 +311,14 @@ export const Hero: React.FC = () => {
   // ═══════════════════════════════════════════════════
   const ctaStrings = lang === 'ar'
     ? [
+      'الإبداع في كل لمسة.',
       'لنصنع شيئاً استثنائياً معاً.',
       'رؤيتك الرقمية تبدأ من هنا.',
       'حول أفكارك إلى تجارب مستخدم مذهلة.',
       'ارتقِ بعملك عبر حلول ويب عصرية.',
     ]
     : [
+      'Creativity in every touch.',
       "Let's build something extraordinary together.",
       'Your digital journey starts here.',
       'Transform your ideas into amazing digital experiences.',

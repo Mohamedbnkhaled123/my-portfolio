@@ -95,10 +95,11 @@ export const Typewriter: React.FC<TypewriterProps> = ({
     <span className={className} style={style}>
       {displayText}
       <span
-        className="inline-block w-[4px] ml-[2px] animate-blink"
+        className="inline-block w-[3px] sm:w-[4px] mx-[2px] animate-blink rounded-full"
         style={{
-          height: '1.1em',
-          verticalAlign: 'text-bottom',
+          height: '1em',
+          verticalAlign: 'middle',
+          marginBottom: '0.15em',
           background: 'linear-gradient(180deg, #06b6d4, #8b5cf6)',
           boxShadow: '0 0 8px rgba(139,92,246,0.6), 0 0 16px rgba(6,182,212,0.3)',
         }}
