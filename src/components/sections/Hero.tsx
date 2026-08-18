@@ -475,7 +475,9 @@ export const Hero: React.FC = () => {
           {/* ═══ TEXT & BUTTONS COLUMN ═══ */}
           <div className={`col-span-12 ${isSideBySide ? 'min-[321px]:col-span-7' : ''} lg:col-span-7 flex flex-col justify-center text-center ${isRtl ? 'min-[321px]:text-right' : 'min-[321px]:text-left'} z-10 w-full`}>
             <p className="text-sm md:text-base font-medium tracking-wide mb-2 md:mb-4 animate-fade-in-up text-accent-cyan transition-colors duration-300">
-              {t('hero.role')}
+              <span className="inline-block whitespace-nowrap">{lang === 'ar' ? 'مطور ويب' : 'Web Developer'}</span>
+              <span className="hidden min-[480px]:inline mx-1.5 opacity-60">|</span>
+              <span className="block min-[480px]:inline whitespace-nowrap mt-0.5 min-[480px]:mt-0">MEAN Stack</span>
             </p>
             <h1 className={`text-4xl min-[321px]:text-[20px] min-[425px]:text-[26px] sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-3 md:mb-6 text-premium-gradient leading-tight transition-all ${lang === 'ar' ? 'arabic-text-fix pt-2 md:pt-4' : ''}`}>
               {t('hero.name')}
