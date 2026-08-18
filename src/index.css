@@ -82,11 +82,21 @@
     @apply bg-background text-primary antialiased min-h-screen;
   }
 
-  /* Smooth cross-fade for the entire root */
+  /* Circular / Smooth View Transition for Themes & Direction */
   ::view-transition-old(root),
   ::view-transition-new(root) {
     animation-duration: 0.4s;
-    animation-timing-function: ease-in-out;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Fallback transitions for CSS properties */
+  html {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Prevent flash of unstyled content (FOUC) - Force Dark by default */
+  html:not([class*='light']) {
+    color-scheme: dark;
   }
 
   /* Global cursor: pointer on all interactive elements */

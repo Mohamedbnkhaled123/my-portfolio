@@ -4,10 +4,10 @@ import React from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { useAppStore } from '../store/useAppStore';
-import { Menu, Moon, Sun, X, Globe, Download } from 'lucide-react';
+import { Menu, X, Download } from 'lucide-react';
 import { RevealInteractive } from './RevealInteractive';
 import { motion, AnimatePresence } from 'framer-motion';
-import { playClickSound } from '../utils/sounds';
+import { HeaderControls } from './HeaderControls';
 
 interface NavItem {
   key: string;
@@ -18,8 +18,7 @@ export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const { theme, toggleTheme } = useAppStore();
-  const { lang, toggleLang, t, fireContactPulse } = useAppStore();
+  const { lang, t, fireContactPulse } = useAppStore();
 
   const navItems: NavItem[] = [
     { key: 'home', path: '/' },
@@ -31,11 +30,11 @@ export const Navbar: React.FC = () => {
     { key: 'contact', path: '/contact' },
   ];
 
-  const handleNavClick = (path: string): void => {
+  const handleNavClick = (path: string) => {
+    if (isOpen) setIsOpen(false);
     if (path === '/contact') {
       fireContactPulse();
     }
-    setIsOpen(false);
     if (pathname !== path) {
       router.push(path);
     }
@@ -64,14 +63,15 @@ export const Navbar: React.FC = () => {
               return (
                 <RevealInteractive 
                   key={item.key} 
-                  radiusClass="rounded-lg"
-                  onClick={() => handleNavClick(item.path)}
+                  radiusClass="rounded-full"
+                  className={isActive ? "ring-2 ring-accent-cyan shadow-[0_0_15px_rgb(var(--accent-cyan)_/_0.35)]" : ""}
                 >
                   <button
-                    className={`rounded-lg px-2 lg:px-3 py-2 text-xs lg:text-sm font-bold transition-all duration-200 block cursor-pointer whitespace-nowrap ${
+                    onClick={() => handleNavClick(item.path)}
+                    className={`relative px-3 lg:px-4 py-1.5 lg:py-2 text-xs lg:text-sm font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer block w-full h-full rounded-full ${
                       isActive
-                        ? 'text-accent-cyan bg-accent-cyan/10 shadow-[0_0_12px_rgba(0,251,255,0.2)] border border-accent-cyan/30'
-                        : 'text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-900/5 dark:hover:bg-white/10'
+                        ? 'text-accent-cyan font-extrabold shadow-sm'
+                        : 'text-secondary hover:text-primary hover:bg-slate-900/5 dark:hover:bg-white/10'
                     }`}
                   >
                     {t(`nav.${item.key}`)}
@@ -81,7 +81,7 @@ export const Navbar: React.FC = () => {
             })}
           </div>
 
-          {/* ═══ DESKTOP ACTIONS — visible from md (768px) and above ═══ */}
+          {/* ═══ ACTIONS (CV, Language, Theme) — visible from md (768px) ═══ */}
           <div className="hidden md:flex items-center gap-2 lg:gap-3 xl:gap-4 pl-2">
             {/* CV Download */}
             <RevealInteractive radiusClass="rounded-lg" className="light-teal-spotlight">
@@ -95,37 +95,8 @@ export const Navbar: React.FC = () => {
               </a>
             </RevealInteractive>
 
-            <RevealInteractive radiusClass="rounded-full">
-              <motion.button
-                onClick={() => {
-                  toggleLang();
-                }}
-                whileTap={{ scale: 0.9 }}
-                className="flex items-center justify-center gap-1.5 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-900/5 dark:hover:bg-white/10 px-2 lg:px-3 py-2 rounded-full w-full h-full transition-colors cursor-pointer"
-                aria-label="Toggle Language"
-              >
-                <motion.div
-                  key={lang}
-                  initial={{ rotate: -90, scale: 0.8, opacity: 0 }}
-                  animate={{ rotate: 0, scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.3, ease: 'easeOut' }}
-                  className="flex items-center gap-1.5"
-                >
-                  <Globe className="w-4 h-4 lg:w-5 lg:h-5 text-accent-cyan" />
-                  <span className="text-xs lg:text-sm font-bold uppercase block">{lang === 'en' ? 'AR' : 'EN'}</span>
-                </motion.div>
-              </motion.button>
-            </RevealInteractive>
-            
-            <RevealInteractive radiusClass="rounded-full">
-              <button
-                onClick={toggleTheme}
-                className="flex items-center justify-center text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-900/5 dark:hover:bg-white/10 p-2 rounded-full w-full h-full transition-colors cursor-pointer"
-                aria-label="Toggle Theme"
-              >
-                {theme === 'dark' ? <Sun className="w-4 h-4 lg:w-5 lg:h-5" /> : <Moon className="w-4 h-4 lg:w-5 lg:h-5" />}
-              </button>
-            </RevealInteractive>
+            {/* Desktop Header Controls (Language & Theme) */}
+            <HeaderControls isMobile={false} />
           </div>
 
           {/* ═══ MOBILE/TABLET LAYOUT ═══ */}
@@ -144,48 +115,13 @@ export const Navbar: React.FC = () => {
               </a>
             </div>
 
-            {/* Toggle Group & Hamburger */}
-            <div className="flex items-center gap-1 ml-auto min-[376px]:ml-0 min-[376px]:flex-1 min-[376px]:justify-end">
-              <motion.button 
-                onClick={() => {
-                  toggleLang();
-                }} 
-                whileTap={{ scale: 0.88 }}
-                aria-label="Toggle Language" 
-                className="text-secondary hover:text-accent-cyan p-1.5 cursor-pointer flex items-center justify-center transition-colors"
-              >
-                <motion.span 
-                  key={lang}
-                  initial={{ rotate: -90, scale: 0.7, opacity: 0 }}
-                  animate={{ rotate: 0, scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.25 }}
-                  className="text-xs font-bold uppercase text-accent-cyan"
-                >
-                  {lang === 'en' ? 'AR' : 'EN'}
-                </motion.span>
-              </motion.button>
-              <motion.button 
-                onClick={() => {
-                  playClickSound();
-                  toggleTheme();
-                }} 
-                whileTap={{ scale: 0.88 }}
-                aria-label="Toggle Theme" 
-                className="text-secondary hover:text-accent-cyan p-1.5 cursor-pointer flex items-center justify-center transition-colors"
-              >
-                <motion.div
-                  key={theme}
-                  initial={{ rotate: -90, scale: 0.7, opacity: 0 }}
-                  animate={{ rotate: 0, scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.25 }}
-                >
-                  {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-                </motion.div>
-              </motion.button>
+            {/* Mobile Header Controls & Hamburger */}
+            <div className="flex items-center gap-2 ml-auto min-[376px]:ml-0 min-[376px]:flex-1 min-[376px]:justify-end">
+              <HeaderControls isMobile={true} />
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 aria-label="Toggle Navigation Menu"
-                className="text-secondary hover:text-primary p-2 cursor-pointer"
+                className="text-secondary hover:text-primary p-1.5 cursor-pointer"
               >
                 {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
