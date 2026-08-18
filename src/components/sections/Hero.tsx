@@ -92,53 +92,40 @@ function computeDimensions(vw: number): OrbitDimensions {
   const isSideBySide = vw >= 321;
 
   // ── Profile Size ──
-  // On mobile (<425px) the image is the hero; it dominates.
-  // On desktop it shares space equally with the text column.
+  // Ensure profile image has prominent presence and visual leadership
   let profileSize: number;
   if (!isSideBySide) {
-    // Stacked — image can breathe, scale generously
     profileSize = Math.round(lerp(vw, 280, 400, 140, 190));
+  } else if (vw < 768) {
+    // Mobile side-by-side (321px - 767px): Balanced impactful profile image (115px - 185px)
+    profileSize = Math.round(lerp(vw, 321, 768, 115, 185));
   } else {
-    // Side-by-side — image lives in 5/12 column
-    const imageColumnWidth = vw * (5 / 12);
-    // Column fill ratio: reduced at narrow widths (321-417px) to prevent
-    // orbit icons from overlapping with the text column.
-    // Column fill ratio: reduced at narrow widths (321-417px) to prevent
-    // orbit icons from overlapping with the text column.
-    const columnFillRatio = lerp(vw, 321, 768, 0.48, 0.55);
-    profileSize = Math.round(
-      Math.min(
-        Math.max(imageColumnWidth * columnFillRatio, 90), // floor: 90px (was 110)
-        lerp(vw, 321, 1440, 100, 260)                     // starts smaller
-      )
-    );
+    // Desktop (768px - 1440px): Full desktop glory (190px - 260px)
+    profileSize = Math.round(lerp(vw, 768, 1440, 190, 260));
   }
 
   // ── Orbit Gap ──
-  // Tighter orbit on mobile (icons hug the image), looser on desktop.
-  // Increased starting gap from 0.15 to 0.24 to ensure icons don't touch image on small screens.
-  const GAP_RATIO = lerp(vw, 321, 768, 0.24, 0.32);
+  // Proportional orbit gap giving ample breathing room
+  const GAP_RATIO = lerp(vw, 321, 768, 0.22, 0.28);
   const dynamicGap = Math.round(profileSize * GAP_RATIO);
   const orbitRadius = Math.round(profileSize / 2 + dynamicGap);
 
   // ── Icon Dimensions ──
-  // Icons are supporting elements on mobile (smaller ratio),
-  // more prominent on desktop.
-  const ICON_SIZE_RATIO = lerp(vw, 321, 768, 0.09, 0.12);
-  const iconSize = Math.round(Math.max(profileSize * ICON_SIZE_RATIO, 12)); // floor 12px
-  const iconPadding = Math.round(iconSize * 0.4);
+  // Balanced icon sizes that complement rather than overpower the central photo
+  const ICON_SIZE_RATIO = lerp(vw, 321, 768, 0.10, 0.13);
+  const iconSize = Math.round(Math.max(profileSize * ICON_SIZE_RATIO, 14));
+  const iconPadding = Math.round(iconSize * 0.35);
   const iconBoxSize = iconSize + iconPadding * 2;
 
   // Container encompasses full orbit ring + icon box on each edge
   const containerSize = orbitRadius * 2 + iconBoxSize;
 
-  // Repulsion — proportional to available space (can never leave container)
+  // Repulsion — proportional to available space
   const availableSpace = (containerSize / 2) - orbitRadius;
-  const repulsionDist = Math.max(2, Math.round(availableSpace * 0.4));
+  const repulsionDist = Math.max(2, Math.round(availableSpace * 0.35));
 
-  // ── Float Amplitude ──
-  // Reduced on mobile to prevent overlap with the larger image
-  const floatAmplitude = Math.round(lerp(vw, 321, 768, 4, 7));
+  // Float Amplitude
+  const floatAmplitude = Math.round(lerp(vw, 321, 768, 3, 6));
 
   return {
     profileSize,
@@ -463,58 +450,58 @@ export const Hero: React.FC = () => {
   const total = orbitIcons.length;
 
   return (
-    <section id="hero" className="min-h-0 sm:min-h-[calc(100vh-5rem)] flex items-center justify-center py-6 sm:py-8 md:py-12 relative scroll-mt-20">
+    <section id="hero" className="min-h-[calc(100svh-4rem)] sm:min-h-[calc(100vh-5rem)] flex items-center justify-center py-8 sm:py-12 md:py-16 relative scroll-mt-20">
       <div className="absolute top-1/4 left-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-[rgba(139,92,246,0.15)] rounded-full blur-[128px] -z-10 pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-[rgba(217,70,239,0.12)] rounded-full blur-[128px] -z-10 pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[500px] h-[280px] sm:h-[500px] bg-[rgba(6,182,212,0.04)] sm:bg-[rgba(6,182,212,0.08)] rounded-full blur-[120px] sm:blur-[180px] -z-10 pointer-events-none" />
       <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[400px] sm:w-[600px] h-[200px] sm:h-[300px] bg-[rgba(139,92,246,0.08)] rounded-full blur-[120px] -z-10 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-8 w-full">
-        <div className="grid grid-cols-12 gap-y-8 gap-x-2 sm:gap-x-4 md:gap-x-10 lg:gap-x-16 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-8 w-full">
+        <div className="grid grid-cols-12 gap-y-6 sm:gap-y-8 gap-x-2 sm:gap-x-4 md:gap-x-10 lg:gap-x-16 items-center">
 
           {/* ═══ TEXT & BUTTONS COLUMN ═══ */}
           <div className={`col-span-12 ${isSideBySide ? 'min-[321px]:col-span-7' : ''} lg:col-span-7 flex flex-col justify-center text-center ${isRtl ? 'min-[321px]:text-right' : 'min-[321px]:text-left'} z-10 w-full`}>
-            <p className="text-sm md:text-base font-medium tracking-wide mb-2 md:mb-4 animate-fade-in-up text-accent-cyan transition-colors duration-300">
+            <p className="text-xs min-[360px]:text-sm sm:text-base font-semibold tracking-wide mb-1.5 sm:mb-3 md:mb-4 animate-fade-in-up text-accent-cyan transition-colors duration-300">
               <span className="inline-block whitespace-nowrap">{lang === 'ar' ? 'مطور ويب' : 'Web Developer'}</span>
               <span className="hidden min-[480px]:inline mx-1.5 opacity-60">|</span>
               <span className="block min-[480px]:inline whitespace-nowrap mt-0.5 min-[480px]:mt-0">MEAN Stack</span>
             </p>
-            <h1 className={`text-4xl min-[321px]:text-[20px] min-[425px]:text-[26px] sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-3 md:mb-6 text-premium-gradient leading-tight transition-all ${lang === 'ar' ? 'arabic-text-fix pt-2 md:pt-4' : ''}`}>
+            <h1 className={`text-2xl min-[360px]:text-3xl min-[425px]:text-4xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-2.5 sm:mb-4 md:mb-6 text-premium-gradient leading-tight tracking-tight transition-all ${lang === 'ar' ? 'arabic-text-fix pt-1 sm:pt-2' : ''}`}>
               {t('hero.name')}
             </h1>
-            <p className={`text-base min-[321px]:text-[9px] min-[425px]:text-[11px] sm:text-sm md:text-lg lg:text-xl text-secondary mb-0 max-w-2xl mx-auto min-[321px]:mx-0 leading-relaxed ${lang === 'ar' ? 'arabic-text-fix' : ''}`}>
+            <p className={`text-xs min-[360px]:text-sm sm:text-base md:text-lg text-secondary mb-0 max-w-2xl mx-auto min-[321px]:mx-0 leading-relaxed ${lang === 'ar' ? 'arabic-text-fix' : ''}`}>
               {t('hero.intro')}
             </p>
 
             {/* Typewriter CTA — drives engagement */}
-            <div className="min-h-[2rem] md:min-h-[2.5rem] mt-2 md:mt-4 flex items-center" style={{ minHeight: '2rem' }}>
+            <div className="min-h-[1.75rem] sm:min-h-[2.25rem] md:min-h-[2.5rem] mt-2 sm:mt-3 md:mt-4 flex items-center" style={{ minHeight: '1.75rem' }}>
               <Typewriter
                 key={lang}
                 strings={ctaStrings}
                 typingSpeed={30}
                 deletingSpeed={20}
                 delayBetween={1000}
-                className={`text-sm min-[321px]:text-[9px] min-[425px]:text-[11px] sm:text-sm md:text-lg lg:text-xl font-medium text-accent-cyan transition-colors duration-300 ${lang === 'ar' ? 'arabic-text-fix' : ''}`}
+                className={`text-xs min-[360px]:text-sm sm:text-base md:text-lg font-medium text-accent-cyan transition-colors duration-300 ${lang === 'ar' ? 'arabic-text-fix' : ''}`}
               />
             </div>
 
             {/* BUTTONS — always a row, below text */}
-            <div className={`flex flex-row items-center justify-center ${isRtl ? 'min-[321px]:justify-start' : 'min-[321px]:justify-start'} gap-2 sm:gap-4 w-full mt-4 sm:mt-8`}>
+            <div className={`flex flex-row items-center justify-center ${isRtl ? 'min-[321px]:justify-start' : 'min-[321px]:justify-start'} gap-2 sm:gap-4 w-full mt-4 sm:mt-6 md:mt-8`}>
               {/* PRIMARY CTA */}
-              <RevealInteractive radiusClass="rounded-lg" className="flex-1 min-w-0 md:flex-none md:w-40 h-8 min-[425px]:h-10 md:h-12">
+              <RevealInteractive radiusClass="rounded-lg" className="flex-1 min-w-0 md:flex-none md:w-40 h-9 min-[360px]:h-10 md:h-12">
                 <button
                   onClick={() => {
                     playClickSound();
                     router.push('/projects');
                   }}
-                  className="w-full h-full bg-premium-gradient text-white rounded-lg font-bold flex items-center justify-center transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(217,70,239,0.4)] cursor-pointer text-[9px] min-[425px]:text-[11px] sm:text-xs md:text-base whitespace-nowrap px-1"
+                  className="w-full h-full bg-premium-gradient text-white rounded-lg font-bold flex items-center justify-center transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(217,70,239,0.4)] cursor-pointer text-xs sm:text-sm md:text-base whitespace-nowrap px-2 sm:px-4"
                 >
                   {t('hero.viewProjects')}
                 </button>
               </RevealInteractive>
 
               {/* SECONDARY CTA */}
-              <RevealInteractive radiusClass="rounded-lg" className="flex-1 min-w-0 md:flex-none md:w-40 h-8 min-[425px]:h-10 md:h-12 light-teal-spotlight">
+              <RevealInteractive radiusClass="rounded-lg" className="flex-1 min-w-0 md:flex-none md:w-40 h-9 min-[360px]:h-10 md:h-12 light-teal-spotlight">
                 <motion.button
                   onClick={() => {
                     playClickSound();
@@ -524,7 +511,7 @@ export const Hero: React.FC = () => {
                     router.push('/contact');
                   }}
                   whileTap={{ scale: 0.95 }}
-                  className="relative overflow-hidden w-full h-full bg-transparent border-2 border-black/10 dark:border-white/10 text-accent-cyan rounded-lg font-bold flex items-center justify-center transition-all hover:bg-accent-cyan/10 hover:border-accent-cyan hover:shadow-[0_0_15px_rgb(var(--accent-cyan)_/_0.25)] cursor-pointer text-[9px] min-[425px]:text-[11px] sm:text-xs md:text-base whitespace-nowrap px-1"
+                  className="relative overflow-hidden w-full h-full bg-transparent border-2 border-black/10 dark:border-white/10 text-accent-cyan rounded-lg font-bold flex items-center justify-center transition-all hover:bg-accent-cyan/10 hover:border-accent-cyan hover:shadow-[0_0_15px_rgb(var(--accent-cyan)_/_0.25)] cursor-pointer text-xs sm:text-sm md:text-base whitespace-nowrap px-2 sm:px-4"
                 >
                   <motion.div
                     className="absolute inset-0 bg-[#00FBFF] pointer-events-none"
