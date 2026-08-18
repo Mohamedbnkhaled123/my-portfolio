@@ -82,11 +82,85 @@
     @apply bg-background text-primary antialiased min-h-screen;
   }
 
-  /* Circular / Smooth View Transition for Themes & Direction */
+  /* ═══════════════════════════════════════════════════ */
+  /* DIRECTIONAL VIEW TRANSITIONS (EN ⟷ AR)             */
+  /* ═══════════════════════════════════════════════════ */
+
   ::view-transition-old(root),
   ::view-transition-new(root) {
-    animation-duration: 0.4s;
-    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-duration: 0.38s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: center center;
+  }
+
+  /* ── When switching EN ➔ AR (Moving to RTL): ── */
+  /* Old EN page fades out and glides to Left with subtle 3D tilt */
+  [data-transition-dir="to-ar"]::view-transition-old(root) {
+    animation-name: slide-out-to-left;
+  }
+  /* New AR page glides in from Right with subtle 3D tilt */
+  [data-transition-dir="to-ar"]::view-transition-new(root) {
+    animation-name: slide-in-from-right;
+  }
+
+  /* ── When switching AR ➔ EN (Moving to LTR): ── */
+  /* Old AR page fades out and glides to Right with subtle 3D tilt */
+  [data-transition-dir="to-en"]::view-transition-old(root) {
+    animation-name: slide-out-to-right;
+  }
+  /* New EN page glides in from Left with subtle 3D tilt */
+  [data-transition-dir="to-en"]::view-transition-new(root) {
+    animation-name: slide-in-from-left;
+  }
+
+  @keyframes slide-out-to-left {
+    from {
+      opacity: 1;
+      transform: perspective(1200px) translateX(0) rotateY(0deg);
+    }
+    to {
+      opacity: 0;
+      transform: perspective(1200px) translateX(-35px) rotateY(2deg);
+    }
+  }
+
+  @keyframes slide-in-from-right {
+    from {
+      opacity: 0;
+      transform: perspective(1200px) translateX(35px) rotateY(-2deg);
+    }
+    to {
+      opacity: 1;
+      transform: perspective(1200px) translateX(0) rotateY(0deg);
+    }
+  }
+
+  @keyframes slide-out-to-right {
+    from {
+      opacity: 1;
+      transform: perspective(1200px) translateX(0) rotateY(0deg);
+    }
+    to {
+      opacity: 0;
+      transform: perspective(1200px) translateX(35px) rotateY(-2deg);
+    }
+  }
+
+  @keyframes slide-in-from-left {
+    from {
+      opacity: 0;
+      transform: perspective(1200px) translateX(-35px) rotateY(2deg);
+    }
+    to {
+      opacity: 1;
+      transform: perspective(1200px) translateX(0) rotateY(0deg);
+    }
+  }
+
+  /* Prevent jitter & horizontal scrollbars during directional transition */
+  html.i18n-transitioning,
+  html.i18n-transitioning body {
+    overflow-x: hidden !important;
   }
 
   /* Fallback transitions for CSS properties */

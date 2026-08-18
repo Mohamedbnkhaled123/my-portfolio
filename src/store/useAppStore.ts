@@ -48,7 +48,12 @@ export const useAppStore = create<AppState>()(
         },
 
         setLanguage: (newLang: Language) => {
+          const currentLang = get().lang || get().language;
+          if (currentLang === newLang) return;
+
           const nextDir: Direction = newLang === 'ar' ? 'rtl' : 'ltr';
+          const transitionDir = newLang === 'ar' ? 'to-ar' : 'to-en';
+
           const executeChange = () => {
             set({ language: newLang, lang: newLang, dir: nextDir });
             if (typeof document !== 'undefined') {
@@ -64,8 +69,26 @@ export const useAppStore = create<AppState>()(
             }
           };
 
-          if (typeof document !== 'undefined' && 'startViewTransition' in document) {
-            (document as any).startViewTransition(executeChange);
+          if (
+            typeof document !== 'undefined' &&
+            'startViewTransition' in document &&
+            !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          ) {
+            document.documentElement.setAttribute('data-transition-dir', transitionDir);
+            document.documentElement.classList.add('i18n-transitioning');
+
+            const transition = (document as any).startViewTransition(executeChange);
+            if (transition && transition.finished) {
+              transition.finished.finally(() => {
+                document.documentElement.removeAttribute('data-transition-dir');
+                document.documentElement.classList.remove('i18n-transitioning');
+              });
+            } else {
+              setTimeout(() => {
+                document.documentElement.removeAttribute('data-transition-dir');
+                document.documentElement.classList.remove('i18n-transitioning');
+              }, 400);
+            }
           } else {
             executeChange();
           }

@@ -25,7 +25,13 @@ export const HeaderControls: React.FC<HeaderControlsProps> = ({ isMobile = false
             aria-label="Toggle Language"
             className="flex items-center justify-center gap-1 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white px-2 py-1.5 rounded-full transition-colors cursor-pointer"
           >
-            <Globe className="w-3.5 h-3.5 text-accent-cyan flex-shrink-0" />
+            <motion.div
+              animate={{ rotate: currentLang === 'ar' ? 180 : 0 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center justify-center flex-shrink-0"
+            >
+              <Globe className="w-3.5 h-3.5 text-accent-cyan" />
+            </motion.div>
             <span className="text-[11px] font-bold uppercase tracking-wider block">
               {currentLang === 'en' ? 'AR' : 'EN'}
             </span>
@@ -61,7 +67,13 @@ export const HeaderControls: React.FC<HeaderControlsProps> = ({ isMobile = false
           aria-label="Toggle Language"
           className="flex items-center justify-center gap-1.5 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-900/5 dark:hover:bg-white/10 px-2.5 lg:px-3 py-2 rounded-full w-full h-full transition-colors cursor-pointer"
         >
-          <Globe className="w-4 h-4 lg:w-5 lg:h-5 text-accent-cyan flex-shrink-0" />
+          <motion.div
+            animate={{ rotate: currentLang === 'ar' ? 180 : 0 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="flex items-center justify-center flex-shrink-0"
+          >
+            <Globe className="w-4 h-4 lg:w-5 lg:h-5 text-accent-cyan" />
+          </motion.div>
           <span className="text-xs lg:text-sm font-bold uppercase block">
             {currentLang === 'en' ? 'AR' : 'EN'}
           </span>
