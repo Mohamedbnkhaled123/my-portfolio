@@ -184,7 +184,18 @@ const jsonLdData = {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Mohamed Khaled AbdelSattar",
-  "alternateName": ["Mohamed Khaled", "محمد خالد عبد الستار", "Mohamed Khaled Developer"],
+  "alternateName": [
+    "Mohamed Khaled",
+    "محمد خالد عبد الستار",
+    "Mohamed Khaled Developer",
+    "الدوت",
+    "محمد الدوت",
+    "محمد خالد الدوت",
+    "El Dot",
+    "ElDot",
+    "Mohamed El Dot",
+    "Mohamed Khaled El Dot"
+  ],
   "jobTitle": "Full-Stack Engineer",
   "url": "https://mohamedkhaled-dev-portfolio.vercel.app",
   "address": {
