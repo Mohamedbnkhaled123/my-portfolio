@@ -484,6 +484,7 @@ export const Hero: React.FC = () => {
             <h1 className={`text-4xl min-[321px]:text-[20px] min-[425px]:text-[26px] sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-3 md:mb-6 text-premium-gradient leading-tight transition-all ${lang === 'ar' ? 'arabic-text-fix pt-2 md:pt-4' : ''}`}>
               {t('hero.name')}
             </h1>
+            <span className="sr-only">محمد خالد (الدوت / El Dot) - مطور ويب ومهندس برمجيات MEAN Stack</span>
             <p className={`text-base min-[321px]:text-[9px] min-[425px]:text-[11px] sm:text-sm md:text-lg lg:text-xl text-secondary mb-0 max-w-2xl mx-auto min-[321px]:mx-0 leading-relaxed ${lang === 'ar' ? 'arabic-text-fix' : ''}`}>
               {t('hero.intro')}
             </p>
