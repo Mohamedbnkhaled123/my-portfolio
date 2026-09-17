@@ -5,7 +5,7 @@ import { useAppStore } from '../../store/useAppStore';
 import { RevealCard } from '../RevealCard';
 import { 
   ExternalLink, 
-  Sparkles, 
+  Sparkle, 
   ShoppingCart, 
   BarChart3, 
   ShieldCheck, 
@@ -24,8 +24,41 @@ interface ProjectData {
 }
 
 // ═══════════════════════════════════════════════════
+// TWIN STAR ICON — Matches About Me Badge Star Engine
+// ═══════════════════════════════════════════════════
+const TwinStarIcon: React.FC<{ isHovered?: boolean }> = ({ isHovered = false }) => {
+  const cycleDuration = isHovered ? 0.8 : 2;
+  const twinStarClass = "text-[7px] leading-none text-[#007A7C] dark:text-[#00FBFF] pointer-events-none select-none";
+
+  return (
+    <div className="relative flex items-center justify-center" style={{ width: 18, height: 18 }}>
+      <motion.div 
+        animate={{ scale: [1, 1.18, 1] }} 
+        transition={{ duration: cycleDuration, ease: "easeInOut", repeat: Infinity }} 
+        className="relative z-10"
+      >
+        <Sparkle className="w-4 h-4 text-[#007A7C] dark:text-[#00FBFF]" />
+      </motion.div>
+      <motion.span 
+        className={`absolute ${twinStarClass}`} 
+        animate={{ opacity: [0, 0, 1, 0], x: [0, 0, 9, 9], y: [0, 0, -9, -9] }} 
+        transition={{ duration: cycleDuration, times: [0, 0.5, 0.7, 1], ease: "easeOut", repeat: Infinity }}
+      >
+        ✦
+      </motion.span>
+      <motion.span 
+        className={`absolute ${twinStarClass}`} 
+        animate={{ opacity: [0, 0, 1, 0], x: [0, 0, -9, -9], y: [0, 0, 9, 9] }} 
+        transition={{ duration: cycleDuration, times: [0, 0.5, 0.7, 1], ease: "easeOut", repeat: Infinity }}
+      >
+        ✧
+      </motion.span>
+    </div>
+  );
+};
+
+// ═══════════════════════════════════════════════════
 // TIERED PROJECT LINK — Matches Hero Orbit Icon Logic
-// Subtle brand-color glow on hover, intense pulse on click.
 // ═══════════════════════════════════════════════════
 const TieredProjectLink: React.FC<{
   href: string;
@@ -55,7 +88,6 @@ const TieredProjectLink: React.FC<{
 
 // ═══════════════════════════════════════════════════
 // GITHUB INTERACTIVE DROPDOWN BUTTON
-// Clean button that expands a compact list on click
 // ═══════════════════════════════════════════════════
 const GitHubDropdownButton: React.FC<{ t: any }> = ({ t }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -77,7 +109,7 @@ const GitHubDropdownButton: React.FC<{ t: any }> = ({ t }) => {
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-white/[0.05] border border-slate-300 dark:border-white/15 hover:border-cyan-400/60 hover:bg-cyan-500/10 hover:text-cyan-600 dark:hover:text-cyan-300 hover:shadow-[0_0_20px_rgba(0,251,255,0.2)] transition-all duration-300 cursor-pointer"
+        className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 bg-white/70 dark:bg-white/[0.05] border border-slate-300/80 dark:border-white/15 hover:border-cyan-400/60 hover:bg-cyan-500/10 hover:text-cyan-600 dark:hover:text-cyan-300 hover:shadow-[0_0_20px_rgba(0,251,255,0.2)] backdrop-blur-xl transition-all duration-300 cursor-pointer"
         aria-expanded={isOpen}
       >
         <FaGithub className="w-4 h-4 text-slate-700 dark:text-slate-200" />
@@ -87,7 +119,7 @@ const GitHubDropdownButton: React.FC<{ t: any }> = ({ t }) => {
         />
       </button>
 
-      {/* Dropdown Menu (List of repositories) */}
+      {/* Dropdown Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -95,7 +127,7 @@ const GitHubDropdownButton: React.FC<{ t: any }> = ({ t }) => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.96 }}
             transition={{ duration: 0.18, ease: 'easeOut' }}
-            className="absolute z-50 bottom-full mb-2 sm:bottom-auto sm:top-full sm:mt-2 right-0 rtl:right-auto rtl:left-0 min-w-[220px] rounded-xl bg-white dark:bg-[#070d1e] border border-slate-200 dark:border-cyan-500/30 shadow-2xl p-1.5 backdrop-blur-xl"
+            className="absolute z-50 bottom-full mb-2 sm:bottom-auto sm:top-full sm:mt-2 right-0 rtl:right-auto rtl:left-0 min-w-[220px] rounded-2xl bg-white/95 dark:bg-[#070d1e]/95 border border-slate-200 dark:border-cyan-500/30 shadow-2xl p-2 backdrop-blur-2xl"
           >
             {/* Item 1: Frontend Code */}
             <a
@@ -103,7 +135,7 @@ const GitHubDropdownButton: React.FC<{ t: any }> = ({ t }) => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
-              className="flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-cyan-500/10 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all duration-200 group/item"
+              className="flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-cyan-500/10 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all duration-200 group/item"
             >
               <div className="flex items-center gap-2.5">
                 <span className="w-2 h-2 rounded-full bg-cyan-400 group-hover/item:scale-125 transition-transform" />
@@ -118,7 +150,7 @@ const GitHubDropdownButton: React.FC<{ t: any }> = ({ t }) => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
-              className="flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-purple-500/10 hover:text-purple-600 dark:hover:text-purple-300 transition-all duration-200 group/item border-t border-slate-100 dark:border-white/5"
+              className="flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-purple-500/10 hover:text-purple-600 dark:hover:text-purple-300 transition-all duration-200 group/item border-t border-slate-100 dark:border-white/5"
             >
               <div className="flex items-center gap-2.5">
                 <span className="w-2 h-2 rounded-full bg-purple-400 group-hover/item:scale-125 transition-transform" />
@@ -134,7 +166,7 @@ const GitHubDropdownButton: React.FC<{ t: any }> = ({ t }) => {
 };
 
 // ═══════════════════════════════════════════════════
-// PROJECT CARD — Secondary Projects Assembly
+// SECONDARY PROJECT CARD
 // ═══════════════════════════════════════════════════
 const ProjectCard: React.FC<{ project: ProjectData; t: any }> = ({ project, t }) => {
   const { lang } = useAppStore();
@@ -213,8 +245,11 @@ const ProjectCard: React.FC<{ project: ProjectData; t: any }> = ({ project, t })
 
 // ═══════════════════════════════════════════════════
 // FLAGSHIP PROJECT CARD — shoPRO Enterprise MEAN Stack
+// Glassy aesthetic with twin star engine & bottom tech stack
 // ═══════════════════════════════════════════════════
 const FlagshipProjectCard: React.FC<{ t: any; lang: string }> = ({ t, lang }) => {
+  const [isBadgeHovered, setIsBadgeHovered] = useState(false);
+
   const shoPROTech = [
     'Angular 21 (Signals & Standalone)',
     'Node.js & Express 5',
@@ -229,54 +264,39 @@ const FlagshipProjectCard: React.FC<{ t: any; lang: string }> = ({ t, lang }) =>
   return (
     <div className="w-full relative group/flagship mb-14">
       {/* Outer ambient radiant glow */}
-      <div className="absolute -inset-1 sm:-inset-1.5 bg-gradient-to-r from-cyan-500/30 via-purple-600/30 to-pink-500/30 rounded-3xl blur-xl opacity-70 group-hover/flagship:opacity-100 transition-opacity duration-700 pointer-events-none -z-10" />
+      <div className="absolute -inset-1 sm:-inset-1.5 bg-gradient-to-r from-cyan-500/25 via-purple-600/25 to-pink-500/25 rounded-3xl blur-xl opacity-70 group-hover/flagship:opacity-100 transition-opacity duration-700 pointer-events-none -z-10" />
 
-      {/* Flagship Container */}
-      <div className="relative rounded-2xl sm:rounded-3xl border-2 border-cyan-400/40 bg-white/95 dark:bg-[#070d1e]/95 backdrop-blur-2xl p-6 sm:p-8 md:p-10 shadow-[0_10px_40px_rgba(0,0,0,0.15)] dark:shadow-[0_15px_50px_rgba(0,251,255,0.12)] transition-all duration-500 group-hover/flagship:border-cyan-400/70">
+      {/* Flagship Container — Glassmorphic Surface */}
+      <div className="relative rounded-2xl sm:rounded-3xl border border-cyan-400/30 dark:border-white/[0.12] dark:border-t-cyan-400/40 bg-white/90 dark:bg-[#070d1e]/85 backdrop-blur-2xl p-6 sm:p-8 md:p-10 shadow-[0_12px_40px_rgba(0,0,0,0.08)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.5)] transition-all duration-500 group-hover/flagship:border-cyan-400/60">
         
-        {/* Top Header Badge & Live Production Signal */}
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide bg-gradient-to-r from-cyan-500/15 via-purple-500/15 to-pink-500/15 border border-cyan-400/40 text-cyan-600 dark:text-cyan-300 shadow-[0_0_15px_rgba(0,251,255,0.25)]">
-            <Sparkles className="w-3.5 h-3.5 text-cyan-500 dark:text-cyan-400 animate-pulse" />
+        {/* Top Header Badge with Twin Star Engine (Enterprise MEAN Stack badge removed) */}
+        <div className="flex items-center justify-between mb-6">
+          <div 
+            onMouseEnter={() => setIsBadgeHovered(true)}
+            onMouseLeave={() => setIsBadgeHovered(false)}
+            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-xs font-semibold tracking-wide bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-pink-500/10 border border-cyan-400/30 text-cyan-700 dark:text-cyan-300 shadow-[0_0_15px_rgba(0,251,255,0.15)] backdrop-blur-xl cursor-default transition-colors"
+          >
+            <TwinStarIcon isHovered={isBadgeHovered} />
             <span>{t('projects.flagshipBadge')}</span>
-          </div>
-
-          <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-            </span>
-            <span>Enterprise MEAN Stack</span>
           </div>
         </div>
 
         {/* Project Title */}
-        <h2 className={`text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-4 ${lang === 'ar' ? 'arabic-text-fix' : ''}`}>
+        <h2 className={`text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-6 ${lang === 'ar' ? 'arabic-text-fix' : ''}`}>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-sky-400 to-purple-600 dark:from-cyan-300 dark:via-sky-200 dark:to-purple-300">
             {t('projects.shoPRO.title')}
           </span>
         </h2>
 
-        {/* Tech Stack Pills */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          {shoPROTech.map((tech, idx) => (
-            <span 
-              key={idx}
-              className="text-[11px] sm:text-xs font-mono font-medium tracking-tight text-cyan-700 dark:text-cyan-300 bg-cyan-500/10 border border-cyan-400/30 px-3 py-1 rounded-lg shadow-sm hover:border-cyan-400 transition-colors"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-
-        {/* 1. Customer-Facing Description */}
-        <div className="p-5 sm:p-6 rounded-2xl bg-slate-50 dark:bg-cyan-950/20 border border-slate-200 dark:border-cyan-500/30 mb-8">
-          <p className={`text-sm sm:text-base md:text-lg text-slate-700 dark:text-slate-200 leading-relaxed ${lang === 'ar' ? 'arabic-text-fix' : ''}`}>
+        {/* 1. Customer-Facing Description (Glassy Card) */}
+        <div className="relative p-6 sm:p-7 rounded-2xl bg-gradient-to-b from-white/80 via-white/50 to-white/30 dark:from-white/[0.06] dark:via-white/[0.02] dark:to-transparent border border-slate-200/80 dark:border-white/[0.1] dark:border-t-white/[0.2] backdrop-blur-xl shadow-lg dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] mb-8 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-cyan-400/[0.02] to-transparent pointer-events-none" />
+          <p className={`text-sm sm:text-base md:text-lg text-slate-700 dark:text-slate-200 leading-relaxed relative z-10 ${lang === 'ar' ? 'arabic-text-fix' : ''}`}>
             {t('projects.shoPRO.description')}
           </p>
         </div>
 
-        {/* Operational & Technical Highlights Grid */}
+        {/* Operational & Technical Highlights Grid (3 Frosted Glassy Cards) */}
         <div className="mb-8">
           <h3 className={`text-xs tracking-wider font-semibold text-cyan-600 dark:text-cyan-400 mb-4 flex items-center gap-2 ${lang === 'ar' ? 'arabic-text-fix' : ''}`}>
             <Terminal className="w-4 h-4 text-cyan-500 dark:text-cyan-400" />
@@ -285,50 +305,78 @@ const FlagshipProjectCard: React.FC<{ t: any; lang: string }> = ({ t, lang }) =>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Highlight 1: Storefront */}
-            <div className="p-4 sm:p-5 rounded-xl bg-slate-50/80 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 hover:border-cyan-400/50 hover:bg-cyan-500/[0.04] transition-all duration-300 flex flex-col">
-              <div className="flex items-center gap-2.5 mb-2.5 text-cyan-600 dark:text-cyan-300 font-bold text-sm sm:text-base">
-                <div className="p-2 rounded-lg bg-cyan-500/10 border border-cyan-400/20">
-                  <ShoppingCart className="w-4 h-4 text-cyan-500 dark:text-cyan-400" />
+            <div className="group/item relative p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-white/70 via-white/40 to-white/20 dark:from-white/[0.05] dark:via-white/[0.02] dark:to-transparent border border-slate-200/80 dark:border-white/[0.08] dark:border-t-white/[0.16] hover:border-cyan-400/50 dark:hover:border-cyan-400/40 backdrop-blur-xl shadow-md dark:shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-all duration-300 flex flex-col justify-between overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-cyan-400/[0.03] to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div>
+                <div className="flex items-center gap-2.5 mb-3 text-cyan-600 dark:text-cyan-300 font-bold text-sm sm:text-base">
+                  <div className="p-2 rounded-xl bg-cyan-500/10 dark:bg-cyan-500/15 border border-cyan-400/25 text-cyan-500 dark:text-cyan-300 backdrop-blur-md">
+                    <ShoppingCart className="w-4 h-4" />
+                  </div>
+                  <span>{t('projects.shoPRO.highlight1Title')}</span>
                 </div>
-                <span>{t('projects.shoPRO.highlight1Title')}</span>
+                <p className={`text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed ${lang === 'ar' ? 'arabic-text-fix' : ''}`}>
+                  {t('projects.shoPRO.highlight1Desc')}
+                </p>
               </div>
-              <p className={`text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed ${lang === 'ar' ? 'arabic-text-fix' : ''}`}>
-                {t('projects.shoPRO.highlight1Desc')}
-              </p>
             </div>
 
             {/* Highlight 2: BI Hub */}
-            <div className="p-4 sm:p-5 rounded-xl bg-slate-50/80 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 hover:border-purple-400/50 hover:bg-purple-500/[0.04] transition-all duration-300 flex flex-col">
-              <div className="flex items-center gap-2.5 mb-2.5 text-purple-600 dark:text-purple-300 font-bold text-sm sm:text-base">
-                <div className="p-2 rounded-lg bg-purple-500/10 border border-purple-400/20">
-                  <BarChart3 className="w-4 h-4 text-purple-500 dark:text-purple-400" />
+            <div className="group/item relative p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-white/70 via-white/40 to-white/20 dark:from-white/[0.05] dark:via-white/[0.02] dark:to-transparent border border-slate-200/80 dark:border-white/[0.08] dark:border-t-white/[0.16] hover:border-purple-400/50 dark:hover:border-purple-400/40 backdrop-blur-xl shadow-md dark:shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-all duration-300 flex flex-col justify-between overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-purple-400/[0.03] to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div>
+                <div className="flex items-center gap-2.5 mb-3 text-purple-600 dark:text-purple-300 font-bold text-sm sm:text-base">
+                  <div className="p-2 rounded-xl bg-purple-500/10 dark:bg-purple-500/15 border border-purple-400/25 text-purple-500 dark:text-purple-400 backdrop-blur-md">
+                    <BarChart3 className="w-4 h-4" />
+                  </div>
+                  <span>{t('projects.shoPRO.highlight2Title')}</span>
                 </div>
-                <span>{t('projects.shoPRO.highlight2Title')}</span>
+                <p className={`text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed ${lang === 'ar' ? 'arabic-text-fix' : ''}`}>
+                  {t('projects.shoPRO.highlight2Desc')}
+                </p>
               </div>
-              <p className={`text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed ${lang === 'ar' ? 'arabic-text-fix' : ''}`}>
-                {t('projects.shoPRO.highlight2Desc')}
-              </p>
             </div>
 
             {/* Highlight 3: Clean Architecture */}
-            <div className="p-4 sm:p-5 rounded-xl bg-slate-50/80 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 hover:border-emerald-400/50 hover:bg-emerald-500/[0.04] transition-all duration-300 flex flex-col">
-              <div className="flex items-center gap-2.5 mb-2.5 text-emerald-600 dark:text-emerald-300 font-bold text-sm sm:text-base">
-                <div className="p-2 rounded-lg bg-emerald-500/10 border border-emerald-400/20">
-                  <ShieldCheck className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
+            <div className="group/item relative p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-white/70 via-white/40 to-white/20 dark:from-white/[0.05] dark:via-white/[0.02] dark:to-transparent border border-slate-200/80 dark:border-white/[0.08] dark:border-t-white/[0.16] hover:border-emerald-400/50 dark:hover:border-emerald-400/40 backdrop-blur-xl shadow-md dark:shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-all duration-300 flex flex-col justify-between overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-emerald-400/[0.03] to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div>
+                <div className="flex items-center gap-2.5 mb-3 text-emerald-600 dark:text-emerald-300 font-bold text-sm sm:text-base">
+                  <div className="p-2 rounded-xl bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-400/25 text-emerald-500 dark:text-emerald-400 backdrop-blur-md">
+                    <ShieldCheck className="w-4 h-4" />
+                  </div>
+                  <span>{t('projects.shoPRO.highlight3Title')}</span>
                 </div>
-                <span>{t('projects.shoPRO.highlight3Title')}</span>
+                <p className={`text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed ${lang === 'ar' ? 'arabic-text-fix' : ''}`}>
+                  {t('projects.shoPRO.highlight3Desc')}
+                </p>
               </div>
-              <p className={`text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed ${lang === 'ar' ? 'arabic-text-fix' : ''}`}>
-                {t('projects.shoPRO.highlight3Desc')}
-              </p>
             </div>
           </div>
         </div>
 
-        {/* 2. Architecture & Recruiter Insight (Deep sleek dark style, harmonious contrast) */}
-        <div className="relative rounded-xl border border-slate-200/80 dark:border-cyan-500/20 bg-slate-100/70 dark:bg-[#030712]/70 p-4 sm:p-5 mb-8 backdrop-blur-md shadow-sm">
+        {/* Tech Stack Pills — Moved to Bottom as Requested */}
+        <div className="mb-8">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 tracking-wider">
+              {t('projects.techStack')}:
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {shoPROTech.map((tech, idx) => (
+              <span 
+                key={idx}
+                className="text-[11px] sm:text-xs font-mono font-medium tracking-tight text-cyan-700 dark:text-cyan-300 bg-white/70 dark:bg-white/[0.04] border border-slate-300/80 dark:border-white/[0.1] backdrop-blur-md px-3 py-1.5 rounded-xl shadow-sm hover:border-cyan-400/50 hover:bg-cyan-500/10 transition-all duration-200"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Architecture & Recruiter Insight (Deep Glassy Note) */}
+        <div className="relative rounded-2xl border border-slate-200/80 dark:border-white/[0.08] dark:border-t-white/[0.15] bg-gradient-to-b from-slate-100/80 to-slate-50/40 dark:from-[#030712]/80 dark:to-black/50 p-4 sm:p-5 mb-8 backdrop-blur-xl shadow-sm overflow-hidden">
           <div className="flex items-start gap-3.5">
-            <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20 flex-shrink-0 mt-0.5">
+            <div className="p-2 rounded-xl bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20 flex-shrink-0 mt-0.5 backdrop-blur-md">
               <Terminal className="w-4 h-4" />
             </div>
             <p className={`text-xs sm:text-sm md:text-base text-slate-600 dark:text-slate-300/90 leading-relaxed italic ${lang === 'ar' ? 'arabic-text-fix' : ''}`}>
