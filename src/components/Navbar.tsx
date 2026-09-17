@@ -67,6 +67,7 @@ export const Navbar: React.FC = () => {
                   onClick={() => handleNavClick(item.path)}
                 >
                   <button
+                    suppressHydrationWarning
                     className={`rounded-lg px-2 lg:px-3 py-2 text-xs lg:text-sm font-bold transition-all duration-200 block cursor-pointer whitespace-nowrap ${
                       isActive
                         ? 'text-accent-cyan bg-accent-cyan/10 shadow-[0_0_12px_rgba(0,251,255,0.2)] border border-accent-cyan/30'
@@ -90,7 +91,7 @@ export const Navbar: React.FC = () => {
                 className="flex items-center justify-center gap-2 px-3 lg:px-4 py-1.5 lg:py-2 text-[11px] lg:text-sm font-bold rounded-lg border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/10 hover:border-accent-cyan/70 hover:shadow-[0_0_15px_rgb(var(--accent-cyan)_/_0.25)] transition-all duration-300 w-full h-full cursor-pointer whitespace-nowrap"
               >
                 <Download className="w-4 h-4 flex-shrink-0" />
-                <span className="inline">{t('nav.downloadCV')}</span>
+                <span suppressHydrationWarning className="inline">{t('nav.downloadCV')}</span>
               </a>
             </RevealInteractive>
 
@@ -110,7 +111,7 @@ export const Navbar: React.FC = () => {
                 className="flex items-center justify-center gap-1.5 px-3 py-1.5 text-[10px] min-[425px]:text-[11px] font-bold rounded-lg border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/10 hover:border-accent-cyan/70 transition-all duration-300 cursor-pointer whitespace-nowrap"
               >
                 <Download className="w-3.5 h-3.5 flex-shrink-0" />
-                <span>{t('nav.downloadCV')}</span>
+                <span suppressHydrationWarning>{t('nav.downloadCV')}</span>
               </a>
             </div>
 
@@ -147,6 +148,7 @@ export const Navbar: React.FC = () => {
                   <button
                     key={item.key}
                     type="button"
+                    suppressHydrationWarning
                     onClick={() => handleNavClick(item.path)}
                     className={`block w-full text-left px-3 py-2 rounded-md font-medium transition-colors cursor-pointer ${
                       isActive
@@ -167,7 +169,7 @@ export const Navbar: React.FC = () => {
                   className="flex items-center justify-center gap-2 w-full text-left px-3 py-2 rounded-md font-medium transition-colors border border-accent-cyan/40 text-accent-cyan hover:bg-accent-cyan/10 cursor-pointer"
                 >
                   <Download className="w-4 h-4" />
-                  {t('nav.downloadCV')}
+                  <span suppressHydrationWarning>{t('nav.downloadCV')}</span>
                 </a>
               </div>
             </div>

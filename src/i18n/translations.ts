@@ -38,6 +38,24 @@ export type Dictionary = {
   };
   projects: {
     title: string;
+    flagshipBadge: string;
+    otherProjectsTitle: string;
+    shoPRO: {
+      title: string;
+      description: string;
+      highlightsTitle: string;
+      highlight1Title: string;
+      highlight1Desc: string;
+      highlight2Title: string;
+      highlight2Desc: string;
+      highlight3Title: string;
+      highlight3Desc: string;
+      ctaQuote: string;
+      liveDemoBtn: string;
+      sourceCodeBtn: string;
+      frontendRepoBtn: string;
+      backendRepoBtn: string;
+    };
     parisClinic: {
       title: string;
       description: string;
@@ -154,6 +172,24 @@ Open to connecting with software engineers, tech leaders, and full-stack opportu
     },
     projects: {
       title: "Featured Projects",
+      flagshipBadge: "Flagship Enterprise Project",
+      otherProjectsTitle: "Other Production Projects",
+      shoPRO: {
+        title: "shoPRO — Enterprise Full-Stack E-Commerce Ecosystem",
+        description: "A production-grade e-commerce platform engineered to maximize conversion rates and eliminate cart abandonment while providing businesses with deep operational and financial intelligence. Built from the ground up to solve real-world retail scaling challenges, it features an intelligent hybrid guest-to-cloud cart synchronization system, native bilingual localization (Arabic & English) with silky 3D view transitions, a dynamic coupon promotion engine, and an executive Business Intelligence dashboard providing real-time financial trajectory and inventory metrics.",
+        highlightsTitle: "Core Highlights & Architectural Decisions",
+        highlight1Title: "High-Conversion Storefront",
+        highlight1Desc: "Seamless guest-to-authenticated cart migration, interactive fly-to-cart micro-interactions, multi-criteria instant filtering, and 7-stage live order tracking.",
+        highlight2Title: "Executive Business Intelligence Hub",
+        highlight2Desc: "Interactive analytics tracking gross and net revenue, top 10 best-selling items, category revenue share, and expandable transaction audit logs.",
+        highlight3Title: "Robust Engineering Standards",
+        highlight3Desc: "Powered by Angular 21 Standalone Components with Signals & RxJS, backed by a scalable Node.js & Express 5 and MongoDB REST API with JWT role-based security, password encryption, in-memory caching, and soft-delete safeguards.",
+        ctaQuote: "Interested in clean architecture, type-safe reactive state management, and enterprise-grade code scalability? Explore the repository on GitHub to inspect the component decoupling, route guards, and RESTful API design.",
+        liveDemoBtn: "Live Store Demo",
+        sourceCodeBtn: "GitHub Code",
+        frontendRepoBtn: "Frontend Code",
+        backendRepoBtn: "Backend Code"
+      },
       parisClinic: {
         title: "Paris Clinic System",
         description: "A comprehensive medical management platform with real-time patient booking and record tracking."
@@ -268,6 +304,24 @@ Open to connecting with software engineers, tech leaders, and full-stack opportu
     },
     projects: {
       title: "أبرز المشاريع",
+      flagshipBadge: "المشروع الريادي للمؤسسات",
+      otherProjectsTitle: "مشاريع برمجية أخرى",
+      shoPRO: {
+        title: "منصة shoPRO — نظام تجارة إلكترونية متكامل للمؤسسات",
+        description: "منصة تجارة إلكترونية متكاملة صُممت لتقديم تجربة تسوق فائقة السرعة ترفع معدلات التحويل وتمنح الشركات تحكماً تشغيلياً ومالياً شاملاً. يتميز المشروع بمعمارية هجينة لإدارة سلة المشتريات تمنع فقدان طلبات الزوار، مع دعم أصيل ثنائي اللغة (العربية والإنجليزية) بحركات انتقال ثلاثية الأبعاد سلسة، ومحرك خصومات وكوبونات تفاعلي، ولوحة تحكم ذكية تقدم رسوماً بيانية وتقارير لحظية للمبيعات وصافي الأرباح.",
+        highlightsTitle: "أبرز المميزات التشغيلية والتقنية",
+        highlight1Title: "تجربة عميل سلسة ومحفزة للتحويل",
+        highlight1Desc: "نظام سلة هجين يدمج مشتريات الزائر تلقائياً بالسحابة فور تسجيل الدخول، مع تأثير حركي مرئي لإضافة المنتجات، وتتبع حي لمراحل الشحن السبعة.",
+        highlight2Title: "ذكاء أعمال وإدارة متقدمة",
+        highlight2Desc: "لوحة تحكم تفاعلية متقدمة لقياس المبيعات، أفضل 10 منتجات، الأقسام الأكثر ربحية، وسجل تدقيق شامل للمعاملات المالية.",
+        highlight3Title: "معمارية كود نظيفة وصارمة",
+        highlight3Desc: "مبني بأحدث معايير Angular 21 بنظام المكونات المستقلة والإشارات لواجهة فائقة الاستجابة، مدعوماً بخلفية Node.js و Express 5 مع قاعدة بيانات MongoDB ونظام حماية وتوثيق مشفر بـ JWT و Bcrypt وذاكرة تخزين مؤقت لتسريع الاستجابة.",
+        ctaQuote: "هل تبحث عن بنية تحتية برمجية قابلة للتوسع وتراعي أفضل الممارسات الهندسية؟ أدعوك لفحص الكود المصدري للمشروع على GitHub للتعرف على التنظيم المعماري للخدمات، إدارة الحالة التفاعلية، وتأمين المسارات الحساسة.",
+        liveDemoBtn: "معاينة المتجر المباشر",
+        sourceCodeBtn: "كود المشروع على GitHub",
+        frontendRepoBtn: "كود الواجهة الأمامية",
+        backendRepoBtn: "كود الواجهة الخلفية"
+      },
       parisClinic: {
         title: "نظام عيادة باريس",
         description: "منصة طبية شاملة لإدارة الحجوزات وسجلات المرضى مع مزامنة سحابية لحظية."
