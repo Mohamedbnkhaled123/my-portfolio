@@ -1,7 +1,6 @@
 'use client';
 
-import React from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useAppStore } from '../store/useAppStore';
 import { Menu, X, Download } from 'lucide-react';
@@ -11,34 +10,78 @@ import { HeaderControls } from './HeaderControls';
 
 interface NavItem {
   key: string;
-  path: string;
+  id: string;
 }
 
 export const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const pathname = usePathname();
-  const router = useRouter();
-  const { lang, t, fireContactPulse } = useAppStore();
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
+  const { t, fireContactPulse } = useAppStore();
 
   const navItems: NavItem[] = [
-    { key: 'home', path: '/' },
-    { key: 'about', path: '/about' },
-    { key: 'skills', path: '/skills' },
-    { key: 'experience', path: '/experience' },
-    { key: 'projects', path: '/projects' },
-    { key: 'education', path: '/education' },
-    { key: 'contact', path: '/contact' },
+    { key: 'home', id: 'hero' },
+    { key: 'about', id: 'about' },
+    { key: 'skills', id: 'skills' },
+    { key: 'experience', id: 'experience' },
+    { key: 'projects', id: 'projects' },
+    { key: 'education', id: 'education' },
+    { key: 'contact', id: 'contact' },
   ];
 
-  const handleNavClick = (path: string) => {
+  // Robust Scrollspy to dynamically highlight the currently visible section
+  useEffect(() => {
+    const handleScroll = () => {
+      const sectionIds = ['hero', 'about', 'skills', 'experience', 'projects', 'education', 'contact'];
+      const scrollPosition = window.scrollY + 180;
+
+      // Bottom of page detection
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
+        setActiveSection('contact');
+        return;
+      }
+
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sectionIds[i]);
+        if (section) {
+          const top = section.offsetTop;
+          if (scrollPosition >= top) {
+            setActiveSection(sectionIds[i]);
+            return;
+          }
+        }
+      }
+      setActiveSection('hero');
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleNavClick = (id: string) => {
     if (isOpen) setIsOpen(false);
-    if (path === '/contact') {
+
+    if (id === 'contact') {
       fireContactPulse();
     }
-    if (pathname !== path) {
-      router.push(path);
+
+    if (id === 'hero') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setActiveSection('hero');
+      if (typeof window !== 'undefined' && window.history.pushState) {
+        window.history.pushState(null, '', '/');
+      }
+      return;
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setActiveSection(id);
+      if (typeof window !== 'undefined' && window.history.pushState) {
+        window.history.pushState(null, '', `#${id}`);
+      }
+    }
   };
 
   return (
@@ -47,11 +90,12 @@ export const Navbar: React.FC = () => {
       <div className="absolute top-0 left-0 w-full h-[2px] bg-premium-gradient"></div>
       {/* Ambient Top Glow (Dark Mode Only) */}
       <div className="absolute inset-0 hidden dark:block bg-gradient-to-b from-[rgba(139,92,246,0.1)] to-transparent pointer-events-none -z-10"></div>
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           
           {/* ═══ LOGO ═══ */}
-          <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => handleNavClick('/')}>
+          <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => handleNavClick('hero')}>
             <Image src="/Light-logo.png" alt="Logo" width={140} height={50} className="h-9 sm:h-11 w-auto object-contain origin-left dark:hidden block" priority />
             <Image src="/night-logo.png" alt="Logo" width={140} height={50} className="h-9 sm:h-11 w-auto object-contain origin-left hidden dark:block" priority />
           </div>
@@ -59,12 +103,12 @@ export const Navbar: React.FC = () => {
           {/* ═══ DESKTOP NAV LINKS — visible from md (768px) ═══ */}
           <div className="hidden md:flex items-center gap-x-1 lg:gap-x-2 xl:gap-x-4">
             {navItems.map((item) => {
-              const isActive = pathname === item.path || (item.path === '/' && pathname === '/');
+              const isActive = activeSection === item.id;
               return (
                 <RevealInteractive 
                   key={item.key} 
                   radiusClass="rounded-lg"
-                  onClick={() => handleNavClick(item.path)}
+                  onClick={() => handleNavClick(item.id)}
                 >
                   <button
                     suppressHydrationWarning
@@ -143,13 +187,13 @@ export const Navbar: React.FC = () => {
           >
             <div className="px-6 pt-2 pb-5 space-y-2">
               {navItems.map((item) => {
-                const isActive = pathname === item.path || (item.path === '/' && pathname === '/');
+                const isActive = activeSection === item.id;
                 return (
                   <button
                     key={item.key}
                     type="button"
                     suppressHydrationWarning
-                    onClick={() => handleNavClick(item.path)}
+                    onClick={() => handleNavClick(item.id)}
                     className={`block w-full text-left px-3 py-2 rounded-md font-medium transition-colors cursor-pointer ${
                       isActive
                         ? 'text-accent-cyan bg-accent-cyan/10 border border-accent-cyan/30'

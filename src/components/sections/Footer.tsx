@@ -3,30 +3,31 @@
 import React from 'react';
 import Image from 'next/image';
 import { useAppStore } from '../../store/useAppStore';
-import { usePathname, useRouter } from 'next/navigation';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { Mail, Phone, ArrowUp, Download } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const { lang, t } = useAppStore();
-  const router = useRouter();
-  const pathname = usePathname();
 
   const navLinks = [
-    { key: 'home', path: '/' },
-    { key: 'about', path: '/about' },
-    { key: 'skills', path: '/skills' },
-    { key: 'experience', path: '/experience' },
-    { key: 'projects', path: '/projects' },
-    { key: 'education', path: '/education' },
-    { key: 'contact', path: '/contact' },
+    { key: 'home', id: 'hero' },
+    { key: 'about', id: 'about' },
+    { key: 'skills', id: 'skills' },
+    { key: 'experience', id: 'experience' },
+    { key: 'projects', id: 'projects' },
+    { key: 'education', id: 'education' },
+    { key: 'contact', id: 'contact' },
   ];
 
-  const handleNavClick = (path: string) => {
-    if (pathname !== path) {
-      router.push(path);
+  const handleNavClick = (id: string) => {
+    if (id === 'hero') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const scrollToTop = () => {
@@ -48,7 +49,7 @@ export const Footer: React.FC = () => {
           
           {/* Column 1: Brand & Bio (Col span 5) */}
           <div className="md:col-span-5 flex flex-col items-start">
-            <div className="flex items-center cursor-pointer mb-2 sm:mb-4" onClick={() => handleNavClick('/')}>
+            <div className="flex items-center cursor-pointer mb-2 sm:mb-4" onClick={() => handleNavClick('hero')}>
               <Image 
                 src="/night-logo.png" 
                 alt="Logo" 
@@ -59,8 +60,8 @@ export const Footer: React.FC = () => {
             </div>
             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-sm mb-3 sm:mb-6">
               {lang === 'ar' 
-                ? 'مهندس برمجيات (MEAN Stack) معتمد من NTI، متخصص في تطوير حلول ويب متكاملة، سريعة، وعالية الأداء مع تصميم UI/UX مميز.'
-                : 'Full-Stack Engineer (MEAN Stack) & NTI Certified, specializing in building modern, scalable web applications with high-performance UI/UX.'}
+                ? 'مهندس برمجيات (MEAN Stack & React 19) معتمد من NTI، متخصص في تطوير حلول ويب متكاملة، سريعة، وعالية الأداء مع تصميم UI/UX مميز.'
+                : 'Full-Stack Software Engineer (MEAN Stack & React 19) & NTI Certified, specializing in building modern, scalable web applications with high-performance UI/UX.'}
             </p>
 
             {/* Social Icons Row */}
@@ -86,7 +87,7 @@ export const Footer: React.FC = () => {
               </a>
 
               <a
-                href="mailto:momokhaled937@gmail.com"
+                href="mailto:mokhaled937@gmail.com"
                 className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-red-500 hover:bg-red-500/10 hover:border-red-500/40 hover:-translate-y-0.5 transition-all duration-300 shadow-sm"
                 aria-label="Email"
               >
@@ -106,27 +107,20 @@ export const Footer: React.FC = () => {
           {/* Column 2: Quick Links (Col span 4) */}
           <div className="md:col-span-4">
             <h2 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wider mb-2 sm:mb-4 relative inline-block">
-              {lang === 'ar' ? 'روابط السريعة' : 'Quick Navigation'}
+              {lang === 'ar' ? 'روابط سريعة' : 'Quick Navigation'}
               <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-accent-cyan rounded-full"></span>
             </h2>
             <div className="grid grid-cols-2 min-[400px]:grid-cols-3 sm:grid-cols-2 gap-x-2 gap-y-1 sm:gap-2">
-              {navLinks.map((link) => {
-                const isActive = pathname === link.path || (link.path === '/' && pathname === '/');
-                return (
-                  <button
-                    key={link.key}
-                    onClick={() => handleNavClick(link.path)}
-                    className={`text-left text-xs sm:text-sm font-medium py-0.5 sm:py-1.5 transition-all duration-200 flex items-center gap-1.5 cursor-pointer group/link ${
-                      isActive
-                        ? 'text-accent-cyan font-bold'
-                        : 'text-slate-300 hover:text-accent-cyan'
-                    }`}
-                  >
-                    <span className="text-[10px] sm:text-xs text-accent-cyan opacity-60 transition-transform duration-200 group-hover/link:scale-125">›</span>
-                    <span className="transition-transform duration-200 group-hover/link:translate-x-1">{t(`nav.${link.key}`)}</span>
-                  </button>
-                );
-              })}
+              {navLinks.map((link) => (
+                <button
+                  key={link.key}
+                  onClick={() => handleNavClick(link.id)}
+                  className="text-left text-xs sm:text-sm font-medium py-0.5 sm:py-1.5 transition-all duration-200 flex items-center gap-1.5 cursor-pointer text-slate-300 hover:text-accent-cyan group/link"
+                >
+                  <span className="text-[10px] sm:text-xs text-accent-cyan opacity-60 transition-transform duration-200 group-hover/link:scale-125">›</span>
+                  <span className="transition-transform duration-200 group-hover/link:translate-x-1">{t(`nav.${link.key}`)}</span>
+                </button>
+              ))}
             </div>
           </div>
 

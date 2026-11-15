@@ -8,7 +8,6 @@ let clientPromise: Promise<MongoClient>;
 
 declare global {
   // Prevent multiple instances of MongoClient in development due to HMR
-  // eslint-disable-next-line no-var
   var _mongoClientPromise: Promise<MongoClient> | undefined;
 }
 

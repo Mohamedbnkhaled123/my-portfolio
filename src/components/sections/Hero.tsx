@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { useAppStore } from '../../store/useAppStore';
 import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate, AnimatePresence } from 'framer-motion';
@@ -300,7 +299,6 @@ const StaticOrbitIcon: React.FC<{
 // MAIN HERO COMPONENT
 // ═══════════════════════════════════════════════════
 export const Hero: React.FC = () => {
-  const router = useRouter();
   const { lang, t, fireContactPulse } = useAppStore();
   const isRtl = lang === 'ar';
   const [isGlowFlash, setIsGlowFlash] = useState(false);
@@ -465,7 +463,7 @@ export const Hero: React.FC = () => {
   const total = orbitIcons.length;
 
   return (
-    <section id="hero" className="w-full flex items-center justify-center py-2 sm:py-6 relative scroll-mt-20">
+    <section id="hero" className="w-full min-h-[calc(100vh-5rem)] flex items-center justify-center py-8 sm:py-14 md:py-20 relative scroll-mt-20">
       <div className="absolute top-1/4 left-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-[rgba(139,92,246,0.15)] rounded-full blur-[128px] -z-10 pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-[rgba(217,70,239,0.12)] rounded-full blur-[128px] -z-10 pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[500px] h-[280px] sm:h-[500px] bg-[rgba(6,182,212,0.04)] sm:bg-[rgba(6,182,212,0.08)] rounded-full blur-[120px] sm:blur-[180px] -z-10 pointer-events-none" />
@@ -477,9 +475,9 @@ export const Hero: React.FC = () => {
           {/* ═══ TEXT & BUTTONS COLUMN ═══ */}
           <div className={`col-span-12 ${isSideBySide ? 'min-[321px]:col-span-7' : ''} lg:col-span-7 flex flex-col justify-center text-center ${isRtl ? 'min-[321px]:text-right' : 'min-[321px]:text-left'} z-10 w-full`}>
             <p className="text-sm md:text-base font-medium tracking-wide mb-2 md:mb-4 animate-fade-in-up text-accent-cyan transition-colors duration-300">
-              <span className="inline-block whitespace-nowrap">{lang === 'ar' ? 'مطور ويب' : 'Web Developer'}</span>
+              <span className="inline-block whitespace-nowrap">{lang === 'ar' ? 'مهندس برمجيات' : 'Full-Stack Software Engineer'}</span>
               <span className="hidden min-[480px]:inline mx-1.5 opacity-60">|</span>
-              <span className="block min-[480px]:inline whitespace-nowrap mt-0.5 min-[480px]:mt-0">MEAN Stack</span>
+              <span className="block min-[480px]:inline whitespace-nowrap mt-0.5 min-[480px]:mt-0">MEAN Stack & React 19</span>
             </p>
             <h1 className={`text-4xl min-[321px]:text-[20px] min-[425px]:text-[26px] sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-3 md:mb-6 text-premium-gradient leading-tight transition-all ${lang === 'ar' ? 'arabic-text-fix pt-2 md:pt-4' : ''}`}>
               {t('hero.name')}
@@ -508,7 +506,7 @@ export const Hero: React.FC = () => {
                 <button
                   onClick={() => {
                     playClickSound();
-                    router.push('/projects');
+                    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
                   }}
                   className="w-full h-full bg-premium-gradient text-white rounded-lg font-bold flex items-center justify-center transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(217,70,239,0.4)] cursor-pointer text-[9px] min-[425px]:text-[11px] sm:text-xs md:text-base whitespace-nowrap px-1"
                 >
@@ -524,7 +522,7 @@ export const Hero: React.FC = () => {
                     fireContactPulse();
                     setIsGlowFlash(true);
                     setTimeout(() => setIsGlowFlash(false), 800);
-                    router.push('/contact');
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                   }}
                   whileTap={{ scale: 0.95 }}
                   className="relative overflow-hidden w-full h-full bg-transparent border-2 border-black/10 dark:border-white/10 text-accent-cyan rounded-lg font-bold flex items-center justify-center transition-all hover:bg-accent-cyan/10 hover:border-accent-cyan hover:shadow-[0_0_15px_rgb(var(--accent-cyan)_/_0.25)] cursor-pointer text-[9px] min-[425px]:text-[11px] sm:text-xs md:text-base whitespace-nowrap px-1"

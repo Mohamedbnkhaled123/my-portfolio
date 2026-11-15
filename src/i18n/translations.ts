@@ -56,6 +56,10 @@ export type Dictionary = {
       frontendRepoBtn: string;
       backendRepoBtn: string;
     };
+    personalPortfolio: {
+      title: string;
+      description: string;
+    };
     parisClinic: {
       title: string;
       description: string;
@@ -85,12 +89,6 @@ export type Dictionary = {
     email: string;
     linkedin: string;
     github: string;
-  };
-  pagination: {
-    previous: string;
-    next: string;
-    page: string;
-    of: string;
   };
   seo: {
     homeTitle: string;
@@ -128,34 +126,26 @@ export const translations: Record<Language, Dictionary> = {
     },
     hero: {
       name: "Mohamed Khaled AbdelSattar",
-      role: "Web Developer | MEAN Stack",
-      intro: "Crafting premium, scalable web applications with a focus on modern UI/UX and high-performance architecture.",
+      role: "Full-Stack Software Engineer | MEAN Stack & React",
+      intro: "Crafting premium, high-converting UI/UX designs while maintaining top-tier performance benchmarks and implementing multi-layered security architectures across the stack.",
       viewProjects: "View Projects",
       contactMe: "Contact Me",
       downloadCV: "Download CV"
     },
     about: {
       title: "About Me",
-      description: `Full-Stack Engineer (MEAN Stack) | NTI Certified | Angular, Node.js & MongoDB | UI/UX & Problem Solving
+      description: `I am Mohamed Khaled, a 22-year-old Full-Stack Software Engineer and HCMIS graduate. My academic background uniquely bridged core Computer Science principles with in-depth business studies, equipping me with a solid understanding of project management, effective stakeholder communication, and commercial viability.
 
-Passionate Full-Stack Engineer specializing in the MEAN Stack, with a strong focus on algorithmic problem solving and high-performance UI/UX design. Certified by the National Telecommunication Institute (NTI), I bridge creative frontend experiences with robust backend architecture to deliver scalable, enterprise-grade web applications.
+My technical career started in frontend engineering with React, before expanding into full-stack architecture through rigorous MEAN Stack training at the National Telecommunication Institute (NTI). Beyond core coding, this journey refined my ability to break down complex projects, gather requirements directly from clients, analyze pain points, and negotiate technical solutions effectively.
 
-After building a solid engineering foundation in modern frontend systems (including React 19 and Firebase), I expanded my full-stack capabilities through intensive NTI training, fully mastering MongoDB, Express.js, Angular, and Node.js. 
-
-I leverage this stack to architect production-ready solutions, most notably a fully-featured Real E-Commerce Platform built with Angular and Node.js. The system incorporates secure JWT authentication, dynamic product cataloging, advanced search/filtering, cart management, and optimized RESTful APIs designed for high traffic and speed.
+My unique selling proposition (USP) lies in crafting premium, high-converting UI/UX designs while maintaining top-tier performance benchmarks and implementing multi-layered security architectures across the stack. Currently, I continuously advance my engineering skill set by tracking industry shifts and integrating modern AI workflows into software development, aiming to deliver clean, scalable, and business-driven digital products.
 
 Core Technical Expertise:
-• Frontend & UI/UX: Angular, TypeScript, Tailwind CSS, Component Modularization, Intuitive UI/UX Design (React 19).
-• Backend & Databases: Node.js, Express.js, MongoDB, Mongoose ORM, RESTful API Architecture, Firebase.
-• State Management: RxJS, Reactive Forms, Zustand.
-• Engineering Best Practices:
-  - Problem Solving: Algorithmic thinking and efficient data structure utilization.
-  - User-Centric Design: Responsive, pixel-perfect, and accessible interfaces.
-  - Architecture & Security: Clean Architecture, DRY Principles, Secure JWT Auth.
-  - Performance: Optimistic UI Patterns and Asynchronous Processing.
-
-I thrive on solving complex engineering problems and transforming business needs into clean, maintainable, and scalable code.
-Open to connecting with software engineers, tech leaders, and full-stack opportunities!`
+• Frontend Development: Angular (Signals & Standalone Components), React 19, Next.js 15 (App Router, Server Components), TypeScript, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS, Bootstrap.
+• Backend & Databases: Node.js, Express.js (RESTful API Architecture), MongoDB, Mongoose ORM, Firebase (Cloud Firestore, Auth, onSnapshot Listeners).
+• State Management: RxJS, Reactive Forms, Zustand, React Context API.
+• Architecture & Security: Clean Architecture, Modular Systems, JWT Authentication, Bcrypt Hashing, RBAC, Soft-Delete Safeguards.
+• Engineering Best Practices: Optimistic UI Patterns, Asynchronous Processing, Web Performance Tuning, SEO / GEO / AEO Optimization, Prompt Engineering & AI Workflows.`
     },
     skills: {
       title: "Technical Skills",
@@ -190,27 +180,31 @@ Open to connecting with software engineers, tech leaders, and full-stack opportu
         frontendRepoBtn: "Frontend Code",
         backendRepoBtn: "Backend Code"
       },
+      personalPortfolio: {
+        title: "Personal Developer Portfolio & Brand Platform",
+        description: "Built a personal portfolio embodying the core USP: pairing high-end, responsive UI/UX with strict performance benchmarks, structured JSON-LD semantic schemas for SEO/GEO/AEO indexing, and Next.js 15 Server Components."
+      },
       parisClinic: {
-        title: "Paris Clinic System",
-        description: "A comprehensive medical management platform with real-time patient booking and record tracking."
+        title: "Paris Clinic System — Patient Booking Platform",
+        description: "A real-world management system for an active dental clinic to automate reservations and eliminate front-desk bottlenecks, featuring Cloud Firestore onSnapshot listeners and atomic transactions to prevent double-booking."
+      },
+      eShop: {
+        title: "E-Shop Electronics Marketplace",
+        description: "High-performance electronics marketplace built for scale with modern Next.js 15 Server Components, TypeScript, and responsive styling."
       },
       veloraBags: {
         title: "Velora Bags Store",
-        description: "Premium e-commerce experience for luxury goods with real-time inventory and search."
-      },
-      eShop: {
-        title: "E-Shop Electronics",
-        description: "High-performance electronics marketplace built for scale with modern Next.js architecture."
+        description: "Premium e-commerce experience for luxury goods with real-time inventory management, search, and Zustand state synchronization."
       },
       features: "Features",
       techStack: "Tech Stack"
     },
     education: {
       title: "Education & Certifications",
-      degree: "Graduated",
-      university: "High Institute for Computers and Information Systems",
-      ntiTitle: "MEAN Stack Software Engineering Training",
-      ntiInstitute: "NTI (National Telecommunication Institute)",
+      degree: "Bachelor's Degree in Management Information Systems (Graduated)",
+      university: "Higher Institute for Computer Science & Management Information Systems (HICMIS)",
+      ntiTitle: "MEAN Stack Software Engineering Training (Certified)",
+      ntiInstitute: "National Telecommunication Institute (NTI)",
       ntiPeriod: "Certified / Completed"
     },
     contact: {
@@ -220,23 +214,17 @@ Open to connecting with software engineers, tech leaders, and full-stack opportu
       linkedin: "LinkedIn",
       github: "GitHub"
     },
-    pagination: {
-      previous: "Previous",
-      next: "Next",
-      page: "Page",
-      of: "of"
-    },
     seo: {
-      homeTitle: "Mohamed Khaled - Frontend Developer Portfolio",
-      homeDesc: "Portfolio of Mohamed Khaled AbdelSattar, React Specialist & Frontend Developer building high-performance web applications.",
+      homeTitle: "Mohamed Khaled | Full-Stack Engineer (MEAN Stack & React 19 / Next.js)",
+      homeDesc: "Official portfolio of Mohamed Khaled AbdelSattar - Full-Stack Engineer in Cairo, Egypt. Specializing in MEAN Stack, React 19, Next.js 15, TypeScript, and high-performance Web Applications.",
       aboutTitle: "About - Mohamed Khaled",
-      aboutDesc: "Learn more about Mohamed Khaled, Frontend Developer specializing in React, Next.js, and modern UI engineering.",
+      aboutDesc: "Learn more about Mohamed Khaled, Full-Stack Engineer specializing in MEAN Stack, React, and modern UI engineering.",
       skillsTitle: "Skills - Mohamed Khaled",
-      skillsDesc: "Technical skills and expertise in React, TypeScript, Next.js, TailwindCSS, State Management, and web optimization.",
+      skillsDesc: "Technical skills and expertise in Angular, React 19, Next.js 15, Node.js, Express, MongoDB, TypeScript, and web optimization.",
       experienceTitle: "Experience - Mohamed Khaled",
       experienceDesc: "Professional career history, projects, and work experience of Mohamed Khaled AbdelSattar.",
       projectsTitle: "Projects - Mohamed Khaled",
-      projectsDesc: "Featured frontend and full-stack projects built with React, Next.js, and modern web architectures.",
+      projectsDesc: "Featured full-stack and frontend projects built with MEAN Stack, React 19, and modern web architectures.",
       educationTitle: "Education - Mohamed Khaled",
       educationDesc: "Academic background and degrees of Mohamed Khaled AbdelSattar.",
       contactTitle: "Contact - Mohamed Khaled",
@@ -244,7 +232,7 @@ Open to connecting with software engineers, tech leaders, and full-stack opportu
     },
     footer: {
       rights: "All rights reserved.",
-      madeWith: "Made with passion & React"
+      madeWith: "Crafted with passion & modern web technologies"
     }
   },
   ar: {
@@ -260,34 +248,26 @@ Open to connecting with software engineers, tech leaders, and full-stack opportu
     },
     hero: {
       name: "محمد خالد عبدالستار",
-      role: "مطور ويب | MEAN Stack",
-      intro: "مهتم بتطوير تطبيقات ويب عصرية، ذات جودة عالية وهندسة برمجية متقدمة.",
+      role: "مهندس برمجيات فول ستاك | MEAN Stack & React",
+      intro: "أبتكر واجهات مستخدم (UI/UX) استثنائية وعالية التحويل، مع الحفاظ على أعلى معايير الأداء وتطبيق معماريات أمنية قوية ومتكاملة.",
       viewProjects: "عرض المشاريع",
       contactMe: "تواصل معي",
       downloadCV: "تحميل السيرة الذاتية"
     },
     about: {
       title: "من أنا",
-      description: `مهندس برمجيات (MEAN Stack) | معتمد من NTI | Angular, Node.js & MongoDB | واجهات المستخدم وحل المشكلات
+      description: `أنا محمد خالد، مهندس برمجيات متكامل (Full-Stack Software Engineer) وخريج نظم معلومات الحاسب وإدارة الأعمال (HCMIS). يجمع مساري الأكاديمي بين المبادئ الأساسية لعلوم الحاسب ودراسات إدارة الأعمال، مما منحني فهماً عميقاً لإدارة المشاريع، والتواصل الفعال مع أصحاب المصلحة، والجدوى التجارية للمنتجات.
 
-مهندس برمجيات شغوف ومتخصص في تقنيات MEAN Stack، مع تركيز قوي على حل المشكلات الخوارزمية وتصميم واجهات مستخدم (UI/UX) عالية الأداء. حاصل على اعتماد من المعهد القومي للاتصالات (NTI)، وأجمع بين تجارب الواجهة الأمامية الإبداعية وبنية الواجهة الخلفية القوية لتقديم تطبيقات ويب متكاملة وقابلة للتوسع.
+بدأت مسيرتي التقنية في هندسة الواجهات الأمامية باستخدام React، قبل أن أتوسع نحو معمارية الفول ستاك الكاملة عبر تدريب مكثف في تقنيات MEAN Stack بالمعهد القومي للاتصالات (NTI). ساهمت هذه الرحلة في صقل قدرتي على تفكيك المشاريع المعقدة، وجمع متطلبات العملاء مباشرة، وتحليل نقاط الضعف، والتفاوض على أفضل الحلول التقنية الفعالة.
 
-بعد بناء أساس هندسي قوي في الأنظمة الأمامية الحديثة (بما في ذلك React 19 و Firebase)، قمت بتوسيع قدراتي الشاملة من خلال تدريب NTI المكثف، وإتقان تقنيات MongoDB، Express.js، Angular، و Node.js بالكامل.
+تكمن قيمتي الفريدة (USP) في ابتكار واجهات مستخدم (UI/UX) استثنائية وعالية التحويل، مع الحفاظ على أعلى معايير الأداء وتطبيق معماريات أمنية متعددة الطبقات عبر كامل طبقات التطبيق. أعمل باستمرار على تطوير مهاراتي الهندسية من خلال مواكبة تحولات الصناعة ودمج أدوات الذكاء الاصطناعي (AI Workflows) في دورة تطوير البرمجيات لبناء منتجات رقمية نظيفة، قابلة للتوسع، وموجهة لخدمة الأعمال.
 
-أعتمد على هذه التقنيات لبناء حلول جاهزة للإنتاج، أبرزها منصة تجارة إلكترونية حقيقية متكاملة تم تطويرها باستخدام Angular و Node.js. يدمج النظام مصادقة JWT آمنة، وإدارة ديناميكية للمنتجات، وبحث متقدم، وإدارة سلة المشتريات، وواجهات برمجة تطبيقات (RESTful APIs) محسنة مصممة لتحمل حركة المرور العالية والسرعة.
-
-أبرز الخبرات التقنية:
-• الواجهة الأمامية (Frontend & UI/UX): تقنيات Angular, TypeScript, Tailwind CSS, Component Modularization, وتصميم واجهات بديهية (React 19).
-• الواجهة الخلفية وقواعد البيانات (Backend & Databases): تقنيات Node.js, Express.js, MongoDB, Mongoose ORM, بناء هيكلية RESTful API, Firebase.
-• إدارة الحالة (State Management): أدوات RxJS, Reactive Forms, Zustand.
-• أفضل الممارسات الهندسية:
-  - حل المشكلات: التفكير الخوارزمي والاستخدام الفعال لهياكل البيانات.
-  - التصميم المتمحور حول المستخدم: واجهات متجاوبة ودقيقة (Pixel-perfect) وقابلة للوصول.
-  - المعمارية والأمان: Clean Architecture، مبادئ DRY، مصادقة JWT آمنة.
-  - الأداء: أنماط Optimistic UI والمعالجة غير المتزامنة (Asynchronous Processing).
-
-أجد متعتي في حل المشكلات الهندسية المعقدة وتحويل متطلبات العمل إلى كود نظيف، قابل للصيانة، وقابل للتوسع.
-منفتح للتواصل مع مهندسي البرمجيات، قادة التكنولوجيا، والفرص المهنية!`
+أبرز القدرات التقنية:
+• تطوير الواجهة الأمامية: تقنيات Angular (Signals & Standalone), React 19, Next.js 15, TypeScript, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS, Bootstrap.
+• الواجهة الخلفية وقواعد البيانات: Node.js, Express.js (REST APIs), MongoDB, Mongoose, Firebase (Firestore, Auth, onSnapshot).
+• إدارة الحالة: RxJS, Reactive Forms, Zustand, React Context API.
+• المعمارية والأمان: Clean Architecture, توثيق JWT, تشفير Bcrypt, صلاحيات RBAC, وضمانات Soft-Delete.
+• أفضل الممارسات: أنماط Optimistic UI, معالجة غير متزامنة, تحسين محركات البحث SEO / GEO / AEO, ومسارات الذكاء الاصطناعي.`
     },
     skills: {
       title: "المهارات التقنية",
@@ -322,26 +302,30 @@ Open to connecting with software engineers, tech leaders, and full-stack opportu
         frontendRepoBtn: "كود الواجهة الأمامية",
         backendRepoBtn: "كود الواجهة الخلفية"
       },
-      parisClinic: {
-        title: "نظام عيادة باريس",
-        description: "منصة طبية شاملة لإدارة الحجوزات وسجلات المرضى مع مزامنة سحابية لحظية."
+      personalPortfolio: {
+        title: "الموقع والمنصة الرقمية الشخصية",
+        description: "منصة وبورتفوليو رقمي يجسد القيمة الفريدة: تصميم واجهات مستخدم فائقة الاستجابة مع بنية Next.js 15 Server Components فائقة السرعة وهيكلية بيانات JSON-LD متوافقة مع محركات البحث وأنظمة الذكاء الاصطناعي (SEO / GEO / AEO)."
       },
-      veloraBags: {
-        title: "متجر فيلورا للحقائب",
-        description: "متجر إلكتروني فاخر لتسوق الحقائب مع إدارة لحظية للمخزون والطلبات."
+      parisClinic: {
+        title: "نظام عيادة باريس — منصة حجز المرضى",
+        description: "منصة طبية واقعية لإدارة عيادة أسنان وأتمتة الحجوزات مع منع التعارض والتكرار في المواعيد باستخدام Cloud Firestore onSnapshot والمعاملات الذرية."
       },
       eShop: {
         title: "إي-شوب للإلكترونيات",
-        description: "سوق إلكتروني متقدم للإلكترونيات مصمم للأداء العالي باستخدام تقنيات Next.js الحديثة."
+        description: "سوق إلكتروني متقدم للإلكترونيات مصمم للأداء العالي باستخدام تقنيات Next.js الحديثة ومكونات الخادم."
+      },
+      veloraBags: {
+        title: "متجر فيلورا للحقائب",
+        description: "متجر إلكتروني فاخر لتسوق الحقائب مع إدارة لحظية للمخزون والطلبات ومزامنة الحالة عبر Zustand."
       },
       features: "المميزات",
       techStack: "التقنيات المستخدمة"
     },
     education: {
       title: "التعليم والشهادات",
-      degree: "خريج (Graduated)",
-      university: "المعهد العالي للحاسبات ونظم المعلومات (High Institute for Computers and Information Systems)",
-      ntiTitle: "تدريب هندسة البرمجيات MEAN Stack",
+      degree: "بكالوريوس في نظم المعلومات الإدارية (تخرج)",
+      university: "المعهد العالي لعلوم الحاسب ونظم المعلومات الإدارية (HICMIS)",
+      ntiTitle: "تدريب هندسة برمجيات MEAN Stack (معتمد)",
       ntiInstitute: "المعهد القومي للاتصالات (NTI)",
       ntiPeriod: "شهادة معتمدة / مكتمل"
     },
@@ -352,31 +336,25 @@ Open to connecting with software engineers, tech leaders, and full-stack opportu
       linkedin: "لينكد إن",
       github: "جيت هب"
     },
-    pagination: {
-      previous: "السابق",
-      next: "التالي",
-      page: "صفحة",
-      of: "من"
-    },
     seo: {
-      homeTitle: "محمد خالد - مطور واجهات أمامية",
-      homeDesc: "الموقع الشخصي لمحمد خالد عبدالستار، متخصص في بناء تطبيقات الويب المتقدمة باستخدام React و Next.js.",
+      homeTitle: "محمد خالد | مهندس برمجيات فول ستاك (MEAN Stack & React 19 / Next.js)",
+      homeDesc: "الموقع الشخصي لمحمد خالد عبدالستار، متخصص في بناء تطبيقات الويب المتقدمة باستخدام MEAN Stack و React 19 و Next.js 15.",
       aboutTitle: "من أنا - محمد خالد",
-      aboutDesc: "تعرف على الخبرة والخلفية التقنية لمحمد خالد مطور الواجهات الأمامية.",
+      aboutDesc: "تعرف على الخبرة والخلفية التقنية لمحمد خالد مهندس برمجيات MEAN Stack.",
       skillsTitle: "المهارات - محمد خالد",
-      skillsDesc: "المهارات التقنية والخبرات في React, TypeScript, Next.js, TailwindCSS وإدارة الحالة.",
+      skillsDesc: "المهارات التقنية والخبرات في Angular, React 19, Next.js 15, Node.js, Express, MongoDB وإدارة الحالة.",
       experienceTitle: "الخبرات العملية - محمد خالد",
       experienceDesc: "سجل الخبرات والمسيرة المهنية لمحمد خالد عبدالستار.",
       projectsTitle: "المشاريع - محمد خالد",
-      projectsDesc: "أبرز مشاريع الواجهات الأمامية والأنظمة التفاعلية المتميزة.",
+      projectsDesc: "أبرز مشاريع وتطبيقات الويب المتكاملة المتميزة.",
       educationTitle: "التعليم - محمد خالد",
       educationDesc: "المؤهلات العلمية والأكاديمية لمحمد خالد عبدالستار.",
       contactTitle: "تواصل معي - محمد خالد",
-      contactDesc: "تواصل مع محمد خالد لبدء مشاريع جديدة أو الاستفسار عن فرّص العمل."
+      contactDesc: "تواصل مع محمد خالد لبدء مشاريع جديدة أو الاستفسار عن فرص العمل."
     },
     footer: {
       rights: "جميع الحقوق محفوظة.",
-      madeWith: "صُنع بشغف بواسطة React"
+      madeWith: "صُنع بشغف وبأحدث تقنيات الويب"
     }
   }
 };

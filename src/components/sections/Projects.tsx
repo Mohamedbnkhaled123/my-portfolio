@@ -413,22 +413,28 @@ export const Projects: React.FC = () => {
 
   const projectsData: ProjectData[] = [
     {
+      key: 'personalPortfolio',
+      tech: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'JSON-LD'],
+      githubUrl: 'https://github.com/Mohamedbnkhaled123',
+      liveUrl: 'https://mohamedkhaled-dev-portfolio.vercel.app',
+    },
+    {
       key: 'parisClinic',
       tech: ['React', 'Firebase', 'Tailwind CSS', 'Cloud Firestore'],
       githubUrl: 'https://github.com/Mohamedbnkhaled123/react-firebase-clinic-system',
       liveUrl: 'https://paris-clinic.vercel.app/',
     },
     {
-      key: 'veloraBags',
-      tech: ['React', 'Firebase', 'Zustand', 'Context API'],
-      githubUrl: 'https://github.com/Mohamedbnkhaled123/E-commerce-firebase-React-system',
-      liveUrl: 'https://velora-bag.vercel.app/',
-    },
-    {
       key: 'eShop',
       tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Server Components'],
       githubUrl: 'https://github.com/Mohamedbnkhaled123/E-commerce-React-Next.js',
       liveUrl: 'https://electronice-ecommerce-alpha.vercel.app/',
+    },
+    {
+      key: 'veloraBags',
+      tech: ['React', 'Firebase', 'Zustand', 'Context API'],
+      githubUrl: 'https://github.com/Mohamedbnkhaled123/E-commerce-firebase-React-system',
+      liveUrl: 'https://velora-bag.vercel.app/',
     }
   ];
 

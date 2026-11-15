@@ -45,8 +45,8 @@ export const Contact: React.FC = () => {
     {
       icon: Mail,
       label: 'contact.email',
-      value: 'momokhaled937@gmail.com',
-      href: 'mailto:momokhaled937@gmail.com',
+      value: 'mokhaled937@gmail.com',
+      href: 'mailto:mokhaled937@gmail.com',
       color: '#ef4444',
       bgColor: 'rgba(239,68,68,0.12)',
     },
