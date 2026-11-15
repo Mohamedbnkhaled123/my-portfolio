@@ -282,11 +282,11 @@ const FlagshipProjectCard: React.FC<{ t: any; lang: string }> = ({ t, lang }) =>
         </div>
 
         {/* Project Title */}
-        <h2 className={`text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-6 ${lang === 'ar' ? 'arabic-text-fix' : ''}`}>
+        <h3 className={`text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-6 ${lang === 'ar' ? 'arabic-text-fix' : ''}`}>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-sky-400 to-purple-600 dark:from-cyan-300 dark:via-sky-200 dark:to-purple-300">
             {t('projects.shoPRO.title')}
           </span>
-        </h2>
+        </h3>
 
         {/* 1. Customer-Facing Description (Glassy Card) */}
         <div className="relative p-6 sm:p-7 rounded-2xl bg-gradient-to-b from-white/80 via-white/50 to-white/30 dark:from-white/[0.06] dark:via-white/[0.02] dark:to-transparent border border-slate-200/80 dark:border-white/[0.1] dark:border-t-white/[0.2] backdrop-blur-xl shadow-lg dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] mb-8 overflow-hidden">
@@ -415,7 +415,7 @@ export const Projects: React.FC = () => {
     {
       key: 'personalPortfolio',
       tech: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'JSON-LD'],
-      githubUrl: 'https://github.com/Mohamedbnkhaled123',
+      githubUrl: 'https://github.com/Mohamedbnkhaled123/my-portfolio',
       liveUrl: 'https://mohamedkhaled-dev-portfolio.vercel.app',
     },
     {
@@ -447,10 +447,10 @@ export const Projects: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 lg:px-8">
         {/* Section Main Title */}
         <div className="text-center mb-12 sm:mb-16">
-          <h1 className="text-3xl md:text-4xl font-bold text-premium-gradient mb-4 relative inline-block tracking-widest uppercase">
+          <h2 className="text-3xl md:text-4xl font-bold text-premium-gradient mb-4 relative inline-block tracking-widest uppercase">
             {t('projects.title')}
             <span className="absolute -bottom-4 left-0 w-full h-px bg-premium-gradient opacity-50" />
-          </h1>
+          </h2>
         </div>
 
         {/* 1. Flagship Enterprise Project Showcase */}

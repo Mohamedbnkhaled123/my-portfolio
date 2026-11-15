@@ -43,7 +43,7 @@ export const Experience: React.FC = () => {
 • إنشاء واجهات أمامية تفاعلية وديناميكية عالية الأداء باستخدام Angular، RxJS، النماذج التفاعلية، و Tailwind CSS.
 • توظيف مهارات متقدمة في حل المشكلات لتحسين معالجة البيانات غير المتزامنة، وإدارة الحالة، ورفع أداء التطبيق.
 • العمل والتنسيق في بيئة مرنة (Agile-like)، وإدارة الكود البرمجي عبر Git/GitHub، مع تطبيق أساليب هندسة البرمجيات الحديثة.`,
-      skills: ['MongoDB', 'Express.js', 'Angular', 'Node.js', 'JavaScript']
+      skills: ['MongoDB', 'Express.js', 'Angular', 'Node.js', 'TypeScript', 'RxJS', 'JavaScript']
     }
   ];
 
@@ -53,10 +53,10 @@ export const Experience: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary mb-6 relative inline-block pb-3">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary mb-6 relative inline-block pb-3">
             {isRtl ? 'مسيرتي ' : 'My '}
             <span className="text-premium-gradient">{t('experience.title')}</span>
-          </h1>
+          </h2>
           <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-sm md:text-base mt-2">
             {t('experience.subtitle')}
           </p>

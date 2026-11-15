@@ -28,14 +28,28 @@ export const Navbar: React.FC = () => {
     { key: 'contact', id: 'contact' },
   ];
 
-  // Robust Scrollspy to dynamically highlight the currently visible section
+  // Handle initial hash scrolling on mount (e.g., /#projects or redirect from /projects)
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.hash) {
+      const hash = window.location.hash.replace('#', '');
+      const element = document.getElementById(hash);
+      if (element) {
+        const timer = setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+          setActiveSection(hash);
+        }, 150);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, []);
+
+  // Robust Scrollspy to dynamically highlight the currently visible section using viewport coordinates
   useEffect(() => {
     const handleScroll = () => {
       const sectionIds = ['hero', 'about', 'skills', 'experience', 'projects', 'education', 'contact'];
-      const scrollPosition = window.scrollY + 180;
 
       // Bottom of page detection
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80) {
         setActiveSection('contact');
         return;
       }
@@ -43,8 +57,8 @@ export const Navbar: React.FC = () => {
       for (let i = sectionIds.length - 1; i >= 0; i--) {
         const section = document.getElementById(sectionIds[i]);
         if (section) {
-          const top = section.offsetTop;
-          if (scrollPosition >= top) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 200) {
             setActiveSection(sectionIds[i]);
             return;
           }

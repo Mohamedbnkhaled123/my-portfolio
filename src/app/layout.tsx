@@ -210,13 +210,17 @@ const jsonLdData = {
   "knowsAbout": [
     "Full-Stack Engineering",
     "MEAN Stack",
+    "Angular",
     "React 19",
     "Next.js 15",
     "TypeScript",
     "Node.js",
     "MongoDB",
     "Express.js",
+    "RxJS",
+    "Clean Architecture",
     "Tailwind CSS",
+    "Firebase",
     "Web Application Development"
   ]
 };
@@ -229,7 +233,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${cairo.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${cairo.variable} scroll-smooth`}>
       <head>
         <script
           dangerouslySetInnerHTML={{ __html: themeInitScript }}

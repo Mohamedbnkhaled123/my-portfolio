@@ -82,12 +82,12 @@ export const About: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-10 md:mb-14 z-10 relative">
           <AnimatedAboutBadge t={t} isRtl={isRtl} onClick={triggerShimmer} />
           
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mt-2">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mt-2">
             <span className="text-accent">{lang === 'ar' ? 'تصميم وتطوير ' : 'Crafting '}</span>
             <span className="text-premium-gradient">
               {lang === 'ar' ? 'تجارب رقمية مذهلة' : 'Digital Experiences'}
             </span>
-          </h1>
+          </h2>
         </div>
 
         {/* ═══ SIDE-BY-SIDE CONTENT (IMAGE AND TEXT START AT THE TOP BASELINE) ═══ */}

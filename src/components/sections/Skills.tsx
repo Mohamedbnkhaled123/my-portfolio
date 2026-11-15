@@ -344,7 +344,7 @@ const SkillCard = ({ skill, isActive, onClick, isDark }: { skill: SkillData; isA
           </motion.div>
 
           {/* Skill Name — font size fluidly bound to card width */}
-          <h2
+          <h3
             className="font-medium text-primary tracking-wide mx-auto w-full text-center block leading-tight transition-all duration-300"
             style={{
               fontSize: '7.77cqw',
@@ -355,7 +355,7 @@ const SkillCard = ({ skill, isActive, onClick, isDark }: { skill: SkillData; isA
             }}
           >
             {skill.name}
-          </h2>
+          </h3>
         </div>
       </RevealCard>
     </div>
@@ -400,9 +400,9 @@ export const Skills: React.FC = () => {
           Reduced by a total of 35% across the board starting at 1025px per request. */}
       <div className="w-[95vw] lg:w-[90vw] min-[1025px]:w-[60vw] max-w-[1440px] min-[1025px]:max-w-[950px] mx-auto px-4 md:px-8 transition-all duration-300">
         <div className="text-center mb-16">
-          <h1 className="text-3xl md:text-4xl font-bold text-premium-gradient mb-4 relative inline-block no-underline tracking-normal leading-relaxed">
+          <h2 className="text-3xl md:text-4xl font-bold text-premium-gradient mb-4 relative inline-block no-underline tracking-normal leading-relaxed">
             {t('skills.title')}
-          </h1>
+          </h2>
         </div>
 
         <motion.div
